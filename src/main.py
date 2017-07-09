@@ -750,55 +750,30 @@ class BrainNet:
 
         return data_list, class_list
 
-    def plot_confusion_matrix(self, cm, classes, normalize=False, title='Confusion Matrix', cmap=plt.cm.Blues):
-    	plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    	plt.title(title)
-    	plt.colorbar()
-    	tick_marks=np.arange(len(classes))
-    	plt.xticks(tick_marks, classes, rotation=45)
-    	plt.yticks(tick_marks, classes)
-
-    	if normalize:
-    		cm = cm.astype('float')/cm.sum(axis=1)[:, np.newaxis]
-
-		print(cm)
-
-		thresh = cm.max()/2
-
-		for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-			plt.text(j, i, cm[i, j], horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
-
-		plt.tight_layout()
-		plt.ylabel('True label')
-		plt.xlabel('Pred label')
-		plt.savefig(str(datetime.datetime.now())+'.png')
-
-
     def validate(self):
         self.load_files(True)
 
-        for _ in range(0, 5):
-            inputs, classes = self.get_sample(size=10000)
+        inputs, classes = self.get_sample(size=10000)
 
-            vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
+        vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 
-            knn = neighbors.KNeighborsClassifier()
-            knn.fit(vector_inputs, classes)
+        knn = neighbors.KNeighborsClassifier()
+        knn.fit(vector_inputs, classes)
 
-            val_inputs, val_classes = self.get_sample(size=self.validation_size)
+        val_inputs, val_classes = self.get_sample(size=self.validation_size)
 
-            vector_val_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs})
+        vector_val_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs})
 
-            pred_class = knn.predict(vector_val_inputs)
+        pred_class = knn.predict(vector_val_inputs)
 
-            percentage = len([i for i, j in zip(val_classes, pred_class) if i==j])*100/self.validation_size
+        percentage = len([i for i, j in zip(val_classes, pred_class) if i==j])*100/self.validation_size
 
-            print("Validation Results: %.3d out of %d correct" %  (percentage, self.validation_size)
-            
-            class_labels = [0, 1, 2, 3, 4, 5]
-            conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
+        print("Validation Results: %.3d out of %d correct" %  (percentage, self.validation_size)
+        
+        class_labels = [0, 1, 2, 3, 4, 5]
+        conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
 
-            self.plot_confusion_matrix(conf_matrix, class_labels)
+        return percentage, conf_matrix
 
 
 sess = tf.Session()
