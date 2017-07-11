@@ -1,5 +1,4 @@
 import os
-import itertools 
 
 import matplotlib.pyplot as plt
 
@@ -8,26 +7,43 @@ import tensorflow.contrib.slim as slim
 import random
 import numpy as np
 from sklearn import neighbors
-from sklearn.metrics import confusion_matrix
-import datetime
-
-random.seed(81496)
 
 saver = None
 sess = None
 
+loss_mem = []
+
+#Garbage to make it pull properly
+
+
+bckg_num = 0
+artf_num = 1
+eybl_num = 2
+gped_num = 3
+spsw_num = 4
+pled_num = 5
+
+
+def get_loss(loss_mem):
+    print(loss_mem)
+    plt.figure(1)
+    plt.subplot(211)
+    plt.plot(loss_mem, 'r--')
+    plt.xlabel("100 Iterations")
+    plt.ylabel("Average Loss in 100 Iterations")
+    plt.title("Iterations vs. Average Loss")
+    plt.show()
+
+
+def save_model(sess, saver):
+    save_path = saver.save(sess, "./latest_weights.ckpt")
+    print("Model saved in file: %s" % save_path)
+
 
 class BrainNet:
-    def __init__(self, sess, input_shape=[None, 71, 125], path_to_files='/media/krishna/My Passport/DataForUsage/labeled', l2_weight = 0.05, num_output=64, num_classes=6, alpha=0.5, validation_size=1000, learning_rate=5e-4, batch_size=5000, train_epoch=5, keep_prob = 0.5, restore_dir=None):
-        self.BCKG_NUM = 0
-        self.ARTF_NUM = 1
-        self.EYBL_NUM = 2
-        self.GPED_NUM = 3
-        self.SPSW_NUM = 4
-        self.PLED_NUM = 5
-        self.path_to_files = path_to_files
+    def __init__(self, sess, input_shape=[None, 71, 125], num_output=64, num_classes=6, restore_dir=None):
 
-        path = os.path.abspath(self.path_to_files)
+        path = os.path.abspath('/media/krishna/My Passport/DataForUsage/labeled')
         self.ARTF = [os.path.join(dp, f) for dp, dn, filenames in os.walk(path) for f in filenames if
                      'artf' in os.path.join(dp, f) and 'npz' in os.path.join(dp, f)]
         self.ARTF_VAL = self.ARTF[:len(self.ARTF)/2]
@@ -35,496 +51,488 @@ class BrainNet:
 
         self.BCKG = [os.path.join(dp, f) for dp, dn, filenames in os.walk(path) for f in filenames if
                      'bckg' in os.path.join(dp, f) and 'npz' in os.path.join(dp, f)]
-        self.BCKG_VAL = self.BCKG[:len(self.BCKG)/2]
-        self.BCKG = self.BCKG[len(self.BCKG)/2:]
+        self.BCKG_VAL = self.ARTF[:len(self.BCKG)/2]
+        self.BCKG = self.ARTF[len(self.BCKG)/2:]
 
-        self.SPSW = [self.path_to_files + '/session10/spsw0.npz',
-                     self.path_to_files + '/session11/spsw0.npz',
-                     self.path_to_files + '/session112/spsw0.npz',
-                     self.path_to_files + '/session114/spsw0.npz',
-                     self.path_to_files + '/session115/spsw0.npz',
-                     self.path_to_files + '/session116/spsw0.npz',
-                     self.path_to_files + '/session118/spsw0.npz',
-                     self.path_to_files + '/session119/spsw0.npz',
-                     self.path_to_files + '/session12/spsw0.npz',
-                     self.path_to_files + '/session121/spsw0.npz',
-                     self.path_to_files + '/session122/spsw0.npz',
-                     self.path_to_files + '/session123/spsw0.npz',
-                     self.path_to_files + '/session216/spsw0.npz',
-                     self.path_to_files + '/session219/spsw0.npz',
-                     self.path_to_files + '/session220/spsw0.npz',
-                     self.path_to_files + '/session222/spsw0.npz',
-                     self.path_to_files + '/session225/spsw0.npz',
-                     self.path_to_files + '/session226/spsw0.npz',
-                     self.path_to_files + '/session227/spsw0.npz',
-                     self.path_to_files + '/session228/spsw0.npz',
-                     self.path_to_files + '/session229/spsw0.npz',
-                     self.path_to_files + '/session230/spsw0.npz',
-                     self.path_to_files + '/session231/spsw0.npz',
-                     self.path_to_files + '/session232/spsw0.npz',
-                     self.path_to_files + '/session233/spsw0.npz',
-                     self.path_to_files + '/session54/spsw0.npz',
-                     self.path_to_files + '/session55/spsw0.npz',
-                     self.path_to_files + '/session57/spsw0.npz',
-                     self.path_to_files + '/session59/spsw0.npz',
-                     self.path_to_files + '/session73/spsw0.npz',
-                     self.path_to_files + '/session76/spsw0.npz',
-                     self.path_to_files + '/session78/spsw0.npz',
-                     self.path_to_files + '/session79/spsw0.npz',
-                     self.path_to_files + '/session81/spsw0.npz',
-                     self.path_to_files + '/session83/spsw0.npz',
-                     self.path_to_files + '/session85/spsw0.npz',
-                     self.path_to_files + '/session87/spsw0.npz',
-                     self.path_to_files + '/session89/spsw0.npz',
-                     self.path_to_files + '/session9/spsw0.npz',
-                     self.path_to_files + '/session91/spsw0.npz',
-                     self.path_to_files + '/session92/spsw0.npz',
-                     self.path_to_files + '/session94/spsw0.npz',
-                     self.path_to_files + '/session95/spsw0.npz',
-                     self.path_to_files + '/session96/spsw0.npz',
-                     self.path_to_files + '/session99/spsw0.npz',
-                     self.path_to_files + '/session127/spsw0.npz',
-                     self.path_to_files + '/session129/spsw0.npz',
-                     self.path_to_files + '/session130/spsw0.npz',
-                     self.path_to_files + '/session131/spsw0.npz',
-                     self.path_to_files + '/session132/spsw0.npz',
-                     self.path_to_files + '/session133/spsw0.npz',
-                     self.path_to_files + '/session135/spsw0.npz',
-                     self.path_to_files + '/session136/spsw0.npz',
-                     self.path_to_files + '/session137/spsw0.npz',
-                     self.path_to_files + '/session138/spsw0.npz',
-                     self.path_to_files + '/session139/spsw0.npz',
-                     self.path_to_files + '/session14/spsw0.npz',
-                     self.path_to_files + '/session140/spsw0.npz',
-                     self.path_to_files + '/session141/spsw0.npz',
-                     self.path_to_files + '/session142/spsw0.npz',
-                     self.path_to_files + '/session143/spsw0.npz',
-                     self.path_to_files + '/session144/spsw0.npz',
-                     self.path_to_files + '/session17/spsw0.npz',
-                     self.path_to_files + '/session234/spsw0.npz',
-                     self.path_to_files + '/session255/spsw0.npz',
-                     self.path_to_files + '/session276/spsw0.npz',
-                     self.path_to_files + '/session298/spsw0.npz',
-                     self.path_to_files + '/session32/spsw0.npz',
-                     self.path_to_files + '/session358/spsw0.npz',
-                     self.path_to_files + '/session53/spsw0.npz',
-                     self.path_to_files + '/session80/spsw0.npz',
-                     self.path_to_files + '/session146/spsw0.npz',
-                     self.path_to_files + '/session147/spsw0.npz',
-                     self.path_to_files + '/session148/spsw0.npz',
-                     self.path_to_files + '/session149/spsw0.npz',
-                     self.path_to_files + '/session150/spsw0.npz',
-                     self.path_to_files + '/session152/spsw0.npz',
-                     self.path_to_files + '/session154/spsw0.npz',
-                     self.path_to_files + '/session155/spsw0.npz',
-                     self.path_to_files + '/session157/spsw0.npz',
-                     self.path_to_files + '/session166/spsw0.npz',
-                     self.path_to_files + '/session168/spsw0.npz',
-                     self.path_to_files + '/session178/spsw0.npz',
-                     self.path_to_files + '/session179/spsw0.npz',
-                     self.path_to_files + '/session180/spsw0.npz',
-                     self.path_to_files + '/session181/spsw0.npz',
-                     self.path_to_files + '/session185/spsw0.npz',
-                     self.path_to_files + '/session19/spsw0.npz',
-                     self.path_to_files + '/session197/spsw0.npz',
-                     self.path_to_files + '/session199/spsw0.npz',
-                     self.path_to_files + '/session2/spsw0.npz',
-                     self.path_to_files + '/session200/spsw0.npz',
-                     self.path_to_files + '/session201/spsw0.npz',
-                     self.path_to_files + '/session203/spsw0.npz',
-                     self.path_to_files + '/session205/spsw0.npz',
-                     self.path_to_files + '/session206/spsw0.npz',
-                     self.path_to_files + '/session207/spsw0.npz',
-                     self.path_to_files + '/session212/spsw0.npz',
-                     self.path_to_files + '/session213/spsw0.npz',
-                     self.path_to_files + '/session235/spsw0.npz',
-                     self.path_to_files + '/session237/spsw0.npz',
-                     self.path_to_files + '/session24/spsw0.npz',
-                     self.path_to_files + '/session241/spsw0.npz',
-                     self.path_to_files + '/session244/spsw0.npz',
-                     self.path_to_files + '/session245/spsw0.npz',
-                     self.path_to_files + '/session246/spsw0.npz',
-                     self.path_to_files + '/session247/spsw0.npz',
-                     self.path_to_files + '/session248/spsw0.npz',
-                     self.path_to_files + '/session249/spsw0.npz',
-                     self.path_to_files + '/session25/spsw0.npz',
-                     self.path_to_files + '/session254/spsw0.npz',
-                     self.path_to_files + '/session256/spsw0.npz',
-                     self.path_to_files + '/session258/spsw0.npz',
-                     self.path_to_files + '/session259/spsw0.npz',
-                     self.path_to_files + '/session261/spsw0.npz',
-                     self.path_to_files + '/session262/spsw0.npz',
-                     self.path_to_files + '/session264/spsw0.npz',
-                     self.path_to_files + '/session269/spsw0.npz',
-                     self.path_to_files + '/session27/spsw0.npz',
-                     self.path_to_files + '/session270/spsw0.npz',
-                     self.path_to_files + '/session274/spsw0.npz',
-                     self.path_to_files + '/session277/spsw0.npz',
-                     self.path_to_files + '/session279/spsw0.npz',
-                     self.path_to_files + '/session28/spsw0.npz',
-                     self.path_to_files + '/session280/spsw0.npz',
-                     self.path_to_files + '/session281/spsw0.npz',
-                     self.path_to_files + '/session282/spsw0.npz',
-                     self.path_to_files + '/session283/spsw0.npz',
-                     self.path_to_files + '/session284/spsw0.npz',
-                     self.path_to_files + '/session285/spsw0.npz',
-                     self.path_to_files + '/session287/spsw0.npz',
-                     self.path_to_files + '/session288/spsw0.npz',
-                     self.path_to_files + '/session289/spsw0.npz',
-                     self.path_to_files + '/session29/spsw0.npz',
-                     self.path_to_files + '/session291/spsw0.npz',
-                     self.path_to_files + '/session295/spsw0.npz',
-                     self.path_to_files + '/session296/spsw0.npz',
-                     self.path_to_files + '/session297/spsw0.npz',
-                     self.path_to_files + '/session299/spsw0.npz',
-                     self.path_to_files + '/session30/spsw0.npz',
-                     self.path_to_files + '/session300/spsw0.npz',
-                     self.path_to_files + '/session301/spsw0.npz',
-                     self.path_to_files + '/session302/spsw0.npz',
-                     self.path_to_files + '/session304/spsw0.npz',
-                     self.path_to_files + '/session305/spsw0.npz',
-                     self.path_to_files + '/session306/spsw0.npz',
-                     self.path_to_files + '/session307/spsw0.npz',
-                     self.path_to_files + '/session308/spsw0.npz',
-                     self.path_to_files + '/session309/spsw0.npz',
-                     self.path_to_files + '/session31/spsw0.npz',
-                     self.path_to_files + '/session310/spsw0.npz',
-                     self.path_to_files + '/session314/spsw0.npz',
-                     self.path_to_files + '/session317/spsw0.npz',
-                     self.path_to_files + '/session319/spsw0.npz',
-                     self.path_to_files + '/session320/spsw0.npz',
-                     self.path_to_files + '/session321/spsw0.npz',
-                     self.path_to_files + '/session322/spsw0.npz',
-                     self.path_to_files + '/session323/spsw0.npz',
-                     self.path_to_files + '/session324/spsw0.npz',
-                     self.path_to_files + '/session325/spsw0.npz',
-                     self.path_to_files + '/session326/spsw0.npz',
-                     self.path_to_files + '/session327/spsw0.npz',
-                     self.path_to_files + '/session328/spsw0.npz',
-                     self.path_to_files + '/session329/spsw0.npz']
-        self.SPSW_VAL = [self.path_to_files + '/session33/spsw0.npz',
-                     self.path_to_files + '/session331/spsw0.npz',
-                     self.path_to_files + '/session332/spsw0.npz',
-                     self.path_to_files + '/session333/spsw0.npz',
-                     self.path_to_files + '/session334/spsw0.npz',
-                     self.path_to_files + '/session335/spsw0.npz',
-                     self.path_to_files + '/session34/spsw0.npz',
-                     self.path_to_files + '/session359/spsw0.npz',
-                     self.path_to_files + '/session36/spsw0.npz',
-                     self.path_to_files + '/session360/spsw0.npz',
-                     self.path_to_files + '/session363/spsw0.npz',
-                     self.path_to_files + '/session364/spsw0.npz',
-                     self.path_to_files + '/session365/spsw0.npz',
-                     self.path_to_files + '/session369/spsw0.npz',
-                     self.path_to_files + '/session371/spsw0.npz',
-                     self.path_to_files + '/session376/spsw0.npz',
-                     self.path_to_files + '/session39/spsw0.npz',
-                     self.path_to_files + '/session46/spsw0.npz',
-                     self.path_to_files + '/session48/spsw0.npz',
-                     self.path_to_files + '/session49/spsw0.npz',
-                     self.path_to_files + '/session50/spsw0.npz']
-        self.PLED = [self.path_to_files + '/session120/pled0.npz',
-                     self.path_to_files + '/session232/pled0.npz',
-                     self.path_to_files + '/session233/pled0.npz',
-                     self.path_to_files + '/session139/pled0.npz',
-                     self.path_to_files + '/session140/pled0.npz',
-                     self.path_to_files + '/session141/pled0.npz',
-                     self.path_to_files + '/session181/pled0.npz',
-                     self.path_to_files + '/session244/pled0.npz',
-                     self.path_to_files + '/session245/pled0.npz',
-                     self.path_to_files + '/session247/pled0.npz',
-                     self.path_to_files + '/session248/pled0.npz',
-                     self.path_to_files + '/session299/pled0.npz',
-                     self.path_to_files + '/session300/pled0.npz']
-        self.PLED_VAL = [self.path_to_files + '/session301/pled0.npz',
-                     self.path_to_files + '/session31/pled0.npz',
-                     self.path_to_files + '/session317/pled0.npz',
-                     self.path_to_files + '/session319/pled0.npz',
-                     self.path_to_files + '/session320/pled0.npz',
-                     self.path_to_files + '/session322/pled0.npz',
-                     self.path_to_files + '/session324/pled0.npz']
-        self.GPED = [self.path_to_files + '/session119/gped0.npz',
-                     self.path_to_files + '/session121/gped0.npz',
-                     self.path_to_files + '/session122/gped0.npz',
-                     self.path_to_files + '/session123/gped0.npz',
-                     self.path_to_files + '/session125/gped0.npz',
-                     self.path_to_files + '/session168/gped0.npz',
-                     self.path_to_files + '/session181/gped0.npz']
-        self.GPED_VAL = [self.path_to_files + '/session283/gped0.npz',
-                     self.path_to_files + '/session284/gped0.npz']
-        self.EYBL = [self.path_to_files + '/session0/eybl0.npz',
-                     self.path_to_files + '/session1/eybl0.npz',
-                     self.path_to_files + '/session10/eybl0.npz',
-                     self.path_to_files + '/session104/eybl0.npz',
-                     self.path_to_files + '/session11/eybl0.npz',
-                     self.path_to_files + '/session112/eybl0.npz',
-                     self.path_to_files + '/session114/eybl0.npz',
-                     self.path_to_files + '/session115/eybl0.npz',
-                     self.path_to_files + '/session116/eybl0.npz',
-                     self.path_to_files + '/session117/eybl0.npz',
-                     self.path_to_files + '/session118/eybl0.npz',
-                     self.path_to_files + '/session119/eybl0.npz',
-                     self.path_to_files + '/session12/eybl0.npz',
-                     self.path_to_files + '/session120/eybl0.npz',
-                     self.path_to_files + '/session121/eybl0.npz',
-                     self.path_to_files + '/session122/eybl0.npz',
-                     self.path_to_files + '/session123/eybl0.npz',
-                     self.path_to_files + '/session125/eybl0.npz',
-                     self.path_to_files + '/session215/eybl0.npz',
-                     self.path_to_files + '/session216/eybl0.npz',
-                     self.path_to_files + '/session217/eybl0.npz',
-                     self.path_to_files + '/session218/eybl0.npz',
-                     self.path_to_files + '/session219/eybl0.npz',
-                     self.path_to_files + '/session220/eybl0.npz',
-                     self.path_to_files + '/session221/eybl0.npz',
-                     self.path_to_files + '/session222/eybl0.npz',
-                     self.path_to_files + '/session223/eybl0.npz',
-                     self.path_to_files + '/session224/eybl0.npz',
-                     self.path_to_files + '/session225/eybl0.npz',
-                     self.path_to_files + '/session226/eybl0.npz',
-                     self.path_to_files + '/session227/eybl0.npz',
-                     self.path_to_files + '/session228/eybl0.npz',
-                     self.path_to_files + '/session229/eybl0.npz',
-                     self.path_to_files + '/session230/eybl0.npz',
-                     self.path_to_files + '/session231/eybl0.npz',
-                     self.path_to_files + '/session232/eybl0.npz',
-                     self.path_to_files + '/session233/eybl0.npz',
-                     self.path_to_files + '/session54/eybl0.npz',
-                     self.path_to_files + '/session55/eybl0.npz',
-                     self.path_to_files + '/session56/eybl0.npz',
-                     self.path_to_files + '/session57/eybl0.npz',
-                     self.path_to_files + '/session58/eybl0.npz',
-                     self.path_to_files + '/session59/eybl0.npz',
-                     self.path_to_files + '/session60/eybl0.npz',
-                     self.path_to_files + '/session61/eybl0.npz',
-                     self.path_to_files + '/session63/eybl0.npz',
-                     self.path_to_files + '/session64/eybl0.npz',
-                     self.path_to_files + '/session65/eybl0.npz',
-                     self.path_to_files + '/session66/eybl0.npz',
-                     self.path_to_files + '/session73/eybl0.npz',
-                     self.path_to_files + '/session74/eybl0.npz',
-                     self.path_to_files + '/session75/eybl0.npz',
-                     self.path_to_files + '/session76/eybl0.npz',
-                     self.path_to_files + '/session77/eybl0.npz',
-                     self.path_to_files + '/session78/eybl0.npz',
-                     self.path_to_files + '/session79/eybl0.npz',
-                     self.path_to_files + '/session81/eybl0.npz',
-                     self.path_to_files + '/session82/eybl0.npz',
-                     self.path_to_files + '/session83/eybl0.npz',
-                     self.path_to_files + '/session84/eybl0.npz',
-                     self.path_to_files + '/session85/eybl0.npz',
-                     self.path_to_files + '/session86/eybl0.npz',
-                     self.path_to_files + '/session87/eybl0.npz',
-                     self.path_to_files + '/session88/eybl0.npz',
-                     self.path_to_files + '/session89/eybl0.npz',
-                     self.path_to_files + '/session9/eybl0.npz',
-                     self.path_to_files + '/session90/eybl0.npz',
-                     self.path_to_files + '/session91/eybl0.npz',
-                     self.path_to_files + '/session92/eybl0.npz',
-                     self.path_to_files + '/session93/eybl0.npz',
-                     self.path_to_files + '/session94/eybl0.npz',
-                     self.path_to_files + '/session95/eybl0.npz',
-                     self.path_to_files + '/session96/eybl0.npz',
-                     self.path_to_files + '/session97/eybl0.npz',
-                     self.path_to_files + '/session99/eybl0.npz',
-                     self.path_to_files + '/session127/eybl0.npz',
-                     self.path_to_files + '/session129/eybl0.npz',
-                     self.path_to_files + '/session13/eybl0.npz',
-                     self.path_to_files + '/session130/eybl0.npz',
-                     self.path_to_files + '/session131/eybl0.npz',
-                     self.path_to_files + '/session132/eybl0.npz',
-                     self.path_to_files + '/session133/eybl0.npz',
-                     self.path_to_files + '/session134/eybl0.npz',
-                     self.path_to_files + '/session135/eybl0.npz',
-                     self.path_to_files + '/session136/eybl0.npz',
-                     self.path_to_files + '/session137/eybl0.npz',
-                     self.path_to_files + '/session138/eybl0.npz',
-                     self.path_to_files + '/session139/eybl0.npz',
-                     self.path_to_files + '/session14/eybl0.npz',
-                     self.path_to_files + '/session140/eybl0.npz',
-                     self.path_to_files + '/session141/eybl0.npz',
-                     self.path_to_files + '/session142/eybl0.npz',
-                     self.path_to_files + '/session143/eybl0.npz',
-                     self.path_to_files + '/session144/eybl0.npz',
-                     self.path_to_files + '/session126/eybl0.npz',
-                     self.path_to_files + '/session145/eybl0.npz',
-                     self.path_to_files + '/session17/eybl0.npz',
-                     self.path_to_files + '/session214/eybl0.npz',
-                     self.path_to_files + '/session234/eybl0.npz',
-                     self.path_to_files + '/session255/eybl0.npz',
-                     self.path_to_files + '/session276/eybl0.npz',
-                     self.path_to_files + '/session298/eybl0.npz',
-                     self.path_to_files + '/session32/eybl0.npz',
-                     self.path_to_files + '/session358/eybl0.npz',
-                     self.path_to_files + '/session53/eybl0.npz',
-                     self.path_to_files + '/session80/eybl0.npz',
-                     self.path_to_files + '/session146/eybl0.npz',
-                     self.path_to_files + '/session147/eybl0.npz',
-                     self.path_to_files + '/session148/eybl0.npz',
-                     self.path_to_files + '/session149/eybl0.npz',
-                     self.path_to_files + '/session150/eybl0.npz',
-                     self.path_to_files + '/session151/eybl0.npz',
-                     self.path_to_files + '/session152/eybl0.npz',
-                     self.path_to_files + '/session153/eybl0.npz',
-                     self.path_to_files + '/session154/eybl0.npz',
-                     self.path_to_files + '/session155/eybl0.npz',
-                     self.path_to_files + '/session156/eybl0.npz',
-                     self.path_to_files + '/session157/eybl0.npz',
-                     self.path_to_files + '/session161/eybl0.npz',
-                     self.path_to_files + '/session162/eybl0.npz',
-                     self.path_to_files + '/session164/eybl0.npz',
-                     self.path_to_files + '/session165/eybl0.npz',
-                     self.path_to_files + '/session166/eybl0.npz',
-                     self.path_to_files + '/session168/eybl0.npz',
-                     self.path_to_files + '/session178/eybl0.npz',
-                     self.path_to_files + '/session179/eybl0.npz',
-                     self.path_to_files + '/session180/eybl0.npz',
-                     self.path_to_files + '/session181/eybl0.npz',
-                     self.path_to_files + '/session185/eybl0.npz',
-                     self.path_to_files + '/session187/eybl0.npz',
-                     self.path_to_files + '/session19/eybl0.npz',
-                     self.path_to_files + '/session196/eybl0.npz',
-                     self.path_to_files + '/session199/eybl0.npz',
-                     self.path_to_files + '/session200/eybl0.npz',
-                     self.path_to_files + '/session201/eybl0.npz',
-                     self.path_to_files + '/session203/eybl0.npz',
-                     self.path_to_files + '/session205/eybl0.npz',
-                     self.path_to_files + '/session206/eybl0.npz',
-                     self.path_to_files + '/session207/eybl0.npz',
-                     self.path_to_files + '/session209/eybl0.npz',
-                     self.path_to_files + '/session210/eybl0.npz',
-                     self.path_to_files + '/session212/eybl0.npz',
-                     self.path_to_files + '/session213/eybl0.npz',
-                     self.path_to_files + '/session235/eybl0.npz',
-                     self.path_to_files + '/session236/eybl0.npz',
-                     self.path_to_files + '/session237/eybl0.npz',
-                     self.path_to_files + '/session238/eybl0.npz',
-                     self.path_to_files + '/session24/eybl0.npz',
-                     self.path_to_files + '/session241/eybl0.npz',
-                     self.path_to_files + '/session242/eybl0.npz',
-                     self.path_to_files + '/session243/eybl0.npz',
-                     self.path_to_files + '/session244/eybl0.npz',
-                     self.path_to_files + '/session245/eybl0.npz',
-                     self.path_to_files + '/session246/eybl0.npz',
-                     self.path_to_files + '/session247/eybl0.npz',
-                     self.path_to_files + '/session248/eybl0.npz',
-                     self.path_to_files + '/session249/eybl0.npz',
-                     self.path_to_files + '/session25/eybl0.npz',
-                     self.path_to_files + '/session250/eybl0.npz',
-                     self.path_to_files + '/session252/eybl0.npz',
-                     self.path_to_files + '/session253/eybl0.npz',
-                     self.path_to_files + '/session254/eybl0.npz',
-                     self.path_to_files + '/session256/eybl0.npz',
-                     self.path_to_files + '/session257/eybl0.npz',
-                     self.path_to_files + '/session258/eybl0.npz',
-                     self.path_to_files + '/session259/eybl0.npz',
-                     self.path_to_files + '/session260/eybl0.npz',
-                     self.path_to_files + '/session261/eybl0.npz',
-                     self.path_to_files + '/session262/eybl0.npz',
-                     self.path_to_files + '/session263/eybl0.npz',
-                     self.path_to_files + '/session264/eybl0.npz',
-                     self.path_to_files + '/session268/eybl0.npz',
-                     self.path_to_files + '/session269/eybl0.npz',
-                     self.path_to_files + '/session27/eybl0.npz',
-                     self.path_to_files + '/session270/eybl0.npz',
-                     self.path_to_files + '/session271/eybl0.npz',
-                     self.path_to_files + '/session272/eybl0.npz',
-                     self.path_to_files + '/session273/eybl0.npz',
-                     self.path_to_files + '/session274/eybl0.npz',
-                     self.path_to_files + '/session275/eybl0.npz',
-                     self.path_to_files + '/session277/eybl0.npz',
-                     self.path_to_files + '/session279/eybl0.npz',
-                     self.path_to_files + '/session28/eybl0.npz',
-                     self.path_to_files + '/session280/eybl0.npz',
-                     self.path_to_files + '/session281/eybl0.npz',
-                     self.path_to_files + '/session282/eybl0.npz',
-                     self.path_to_files + '/session283/eybl0.npz',
-                     self.path_to_files + '/session284/eybl0.npz',
-                     self.path_to_files + '/session285/eybl0.npz',
-                     self.path_to_files + '/session287/eybl0.npz',
-                     self.path_to_files + '/session289/eybl0.npz',
-                     self.path_to_files + '/session29/eybl0.npz',
-                     self.path_to_files + '/session291/eybl0.npz',
-                     self.path_to_files + '/session292/eybl0.npz',
-                     self.path_to_files + '/session295/eybl0.npz',
-                     self.path_to_files + '/session296/eybl0.npz',
-                     self.path_to_files + '/session297/eybl0.npz',
-                     self.path_to_files + '/session299/eybl0.npz',
-                     self.path_to_files + '/session30/eybl0.npz',
-                     self.path_to_files + '/session300/eybl0.npz',
-                     self.path_to_files + '/session301/eybl0.npz',
-                     self.path_to_files + '/session302/eybl0.npz',
-                     self.path_to_files + '/session304/eybl0.npz',
-                     self.path_to_files + '/session305/eybl0.npz',
-                     self.path_to_files + '/session306/eybl0.npz',
-                     self.path_to_files + '/session307/eybl0.npz',
-                     self.path_to_files + '/session308/eybl0.npz',
-                     self.path_to_files + '/session309/eybl0.npz',
-                     self.path_to_files + '/session31/eybl0.npz',
-                     self.path_to_files + '/session310/eybl0.npz',
-                     self.path_to_files + '/session313/eybl0.npz',
-                     self.path_to_files + '/session314/eybl0.npz',
-                     self.path_to_files + '/session317/eybl0.npz',
-                     self.path_to_files + '/session318/eybl0.npz',
-                     self.path_to_files + '/session319/eybl0.npz',
-                     self.path_to_files + '/session320/eybl0.npz',
-                     self.path_to_files + '/session321/eybl0.npz',
-                     self.path_to_files + '/session322/eybl0.npz',
-                     self.path_to_files + '/session323/eybl0.npz',
-                     self.path_to_files + '/session324/eybl0.npz',
-                     self.path_to_files + '/session325/eybl0.npz',
-                     self.path_to_files + '/session326/eybl0.npz',
-                     self.path_to_files + '/session327/eybl0.npz',
-                     self.path_to_files + '/session328/eybl0.npz',
-                     self.path_to_files + '/session329/eybl0.npz',
-                     self.path_to_files + '/session33/eybl0.npz',
-                     self.path_to_files + '/session330/eybl0.npz',
-                     self.path_to_files + '/session331/eybl0.npz',
-                     self.path_to_files + '/session332/eybl0.npz',
-                     self.path_to_files + '/session333/eybl0.npz',
-                     self.path_to_files + '/session334/eybl0.npz',
-                     self.path_to_files + '/session335/eybl0.npz',
-                     self.path_to_files + '/session34/eybl0.npz',
-                     self.path_to_files + '/session35/eybl0.npz',
-                     self.path_to_files + '/session359/eybl0.npz',
-                     self.path_to_files + '/session36/eybl0.npz',
-                     self.path_to_files + '/session360/eybl0.npz']
-        self.EYBL_VAL = [self.path_to_files + '/session363/eybl0.npz',
-                     self.path_to_files + '/session364/eybl0.npz',
-                     self.path_to_files + '/session365/eybl0.npz',
-                     self.path_to_files + '/session366/eybl0.npz',
-                     self.path_to_files + '/session367/eybl0.npz',
-                     self.path_to_files + '/session369/eybl0.npz',
-                     self.path_to_files + '/session37/eybl0.npz',
-                     self.path_to_files + '/session371/eybl0.npz',
-                     self.path_to_files + '/session375/eybl0.npz',
-                     self.path_to_files + '/session376/eybl0.npz',
-                     self.path_to_files + '/session38/eybl0.npz',
-                     self.path_to_files + '/session39/eybl0.npz',
-                     self.path_to_files + '/session40/eybl0.npz',
-                     self.path_to_files + '/session44/eybl0.npz',
-                     self.path_to_files + '/session45/eybl0.npz',
-                     self.path_to_files + '/session46/eybl0.npz',
-                     self.path_to_files + '/session47/eybl0.npz',
-                     self.path_to_files + '/session48/eybl0.npz',
-                     self.path_to_files + '/session49/eybl0.npz',
-                     self.path_to_files + '/session50/eybl0.npz',
-                     self.path_to_files + '/session52/eybl0.npz']
+        self.SPSW = ['/media/krishna/My Passport/DataForUsage/labeled/session10/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session11/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session112/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session114/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session115/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session116/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session118/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session119/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session12/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session121/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session122/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session123/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session216/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session219/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session220/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session222/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session225/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session226/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session227/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session228/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session229/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session230/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session231/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session232/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session233/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session54/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session55/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session57/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session59/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session73/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session76/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session78/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session79/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session81/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session83/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session85/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session87/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session89/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session9/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session91/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session92/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session94/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session95/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session96/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session99/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session127/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session129/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session130/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session131/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session132/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session133/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session135/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session136/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session137/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session138/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session139/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session14/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session140/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session141/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session142/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session143/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session144/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session17/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session234/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session255/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session276/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session298/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session32/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session358/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session53/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session80/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session146/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session147/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session148/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session149/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session150/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session152/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session154/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session155/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session157/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session166/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session168/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session178/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session179/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session180/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session181/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session185/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session19/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session197/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session199/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session2/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session200/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session201/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session203/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session205/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session206/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session207/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session212/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session213/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session235/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session237/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session24/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session241/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session244/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session245/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session246/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session247/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session248/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session249/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session25/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session254/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session256/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session258/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session259/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session261/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session262/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session264/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session269/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session27/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session270/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session274/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session277/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session279/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session28/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session280/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session281/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session282/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session283/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session284/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session285/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session287/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session288/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session289/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session29/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session291/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session295/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session296/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session297/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session299/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session30/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session300/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session301/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session302/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session304/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session305/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session306/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session307/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session308/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session309/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session31/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session310/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session314/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session317/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session319/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session320/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session321/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session322/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session323/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session324/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session325/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session326/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session327/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session328/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session329/spsw0.npz']
+        self.SPSW_VAL = ['/media/krishna/My Passport/DataForUsage/labeled/session33/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session331/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session332/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session333/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session334/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session335/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session34/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session359/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session36/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session360/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session363/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session364/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session365/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session369/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session371/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session376/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session39/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session46/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session48/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session49/spsw0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session50/spsw0.npz']
+        self.PLED = ['/media/krishna/My Passport/DataForUsage/labeled/session120/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session232/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session233/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session139/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session140/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session141/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session181/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session244/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session245/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session247/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session248/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session299/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session300/pled0.npz']
+        self.PLED_VAL = ['/media/krishna/My Passport/DataForUsage/labeled/session301/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session31/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session317/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session319/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session320/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session322/pled0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session324/pled0.npz']
+        self.GPED = ['/media/krishna/My Passport/DataForUsage/labeled/session119/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session121/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session122/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session123/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session125/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session168/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session181/gped0.npz']
+        self.GPED_VAL = ['/media/krishna/My Passport/DataForUsage/labeled/session283/gped0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session284/gped0.npz']
+        self.EYBL = ['/media/krishna/My Passport/DataForUsage/labeled/session0/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session1/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session10/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session104/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session11/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session112/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session114/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session115/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session116/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session117/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session118/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session119/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session12/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session120/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session121/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session122/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session123/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session125/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session215/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session216/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session217/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session218/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session219/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session220/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session221/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session222/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session223/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session224/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session225/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session226/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session227/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session228/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session229/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session230/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session231/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session232/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session233/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session54/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session55/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session56/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session57/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session58/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session59/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session60/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session61/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session63/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session64/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session65/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session66/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session73/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session74/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session75/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session76/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session77/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session78/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session79/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session81/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session82/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session83/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session84/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session85/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session86/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session87/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session88/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session89/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session9/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session90/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session91/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session92/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session93/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session94/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session95/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session96/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session97/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session99/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session127/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session129/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session13/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session130/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session131/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session132/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session133/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session134/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session135/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session136/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session137/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session138/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session139/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session14/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session140/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session141/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session142/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session143/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session144/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session126/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session145/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session17/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session214/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session234/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session255/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session276/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session298/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session32/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session358/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session53/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session80/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session146/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session147/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session148/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session149/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session150/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session151/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session152/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session153/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session154/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session155/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session156/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session157/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session161/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session162/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session164/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session165/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session166/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session168/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session178/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session179/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session180/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session181/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session185/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session187/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session19/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session196/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session199/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session200/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session201/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session203/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session205/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session206/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session207/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session209/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session210/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session212/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session213/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session235/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session236/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session237/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session238/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session24/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session241/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session242/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session243/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session244/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session245/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session246/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session247/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session248/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session249/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session25/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session250/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session252/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session253/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session254/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session256/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session257/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session258/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session259/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session260/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session261/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session262/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session263/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session264/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session268/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session269/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session27/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session270/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session271/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session272/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session273/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session274/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session275/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session277/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session279/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session28/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session280/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session281/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session282/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session283/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session284/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session285/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session287/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session289/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session29/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session291/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session292/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session295/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session296/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session297/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session299/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session30/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session300/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session301/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session302/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session304/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session305/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session306/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session307/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session308/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session309/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session31/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session310/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session313/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session314/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session317/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session318/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session319/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session320/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session321/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session322/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session323/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session324/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session325/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session326/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session327/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session328/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session329/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session33/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session330/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session331/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session332/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session333/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session334/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session335/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session34/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session35/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session359/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session36/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session360/eybl0.npz']
+        self.EYBL_VAL = ['/media/krishna/My Passport/DataForUsage/labeled/session363/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session364/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session365/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session366/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session367/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session369/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session37/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session371/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session375/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session376/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session38/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session39/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session40/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session44/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session45/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session46/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session47/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session48/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session49/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session50/eybl0.npz',
+                     '/media/krishna/My Passport/DataForUsage/labeled/session52/eybl0.npz']
 
         self.sess = sess
         self.num_classes = num_classes
         self.num_output = num_output
         self.input_shape = input_shape
-        self.batch_size = batch_size
-        self.alpha = alpha
-        self.train_epoch = train_epoch
-        self.learning_rate=learning_rate
-        self.keep_prob = keep_prob
-        self.validation_size = validation_size
-        self.l2_weight = l2_weight
         self.inference_input = tf.placeholder(tf.float32, shape=input_shape)
         self.inference_model = self.get_model(self.inference_input, reuse=False)
-
         if restore_dir is not None:
             dir = tf.train.Saver()
             dir.restore(self.sess, restore_dir)
@@ -536,7 +544,6 @@ class BrainNet:
         print(len(self.PLED))
         print(len(self.GPED))
         self.load_files()
-        self.train_model()
 
     def triplet_loss(self, alpha):
         self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -652,7 +659,7 @@ class BrainNet:
         with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected],
                             weights_initializer=tf.contrib.layers.xavier_initializer(seed=random.random(),
                                                                                      uniform=True),
-                            weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
+                            weights_regularizer=slim.l2_regularizer(0.05), reuse=reuse):
             net = tf.expand_dims(input, axis=3)
             net = slim.layers.conv2d(net, num_outputs=32, kernel_size=4, scope='conv1', trainable=True)
             net = slim.layers.max_pool2d(net, kernel_size=3, scope='maxpool1')
@@ -666,19 +673,20 @@ class BrainNet:
             
             return net
 
-    def train_model(self, outdir=None):
-        loss = self.triplet_loss(alpha=self.alpha)
-        self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
+    def train_model(self, learning_rate, keep_prob, batch_size, train_epoch, outdir=None):
+        loss = self.triplet_loss(alpha=0.5)
+        self.optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
         self.optim = self.optimizer.minimize(loss=loss)
         self.sess.run(tf.global_variables_initializer())
 
         count = 0
         ii = 0
 
-        for epoch in range(0, self.train_epoch):
+        for epoch in range(0, train_epoch):
             ii = 0
             count = 0
-            while ii <= self.batch_size:
+            full_loss = 0
+            while ii <= batch_size:
                 ii += 1
                 feeder = self.get_triplets()
 
@@ -697,6 +705,12 @@ class BrainNet:
                     ii -= 1
                     count += 1
                     continue
+
+                full_loss += temploss
+
+                if ii % 100 == 0:
+                    loss_mem.append(full_loss /(100+ count))
+                    full_loss = 0
 
                 _, anchor, positive, negative = self.sess.run([self.optim,
                                                                self.anchor_out,
@@ -724,28 +738,28 @@ class BrainNet:
             if choice == 'bckg':
                 ii = random.randint(0, len(self.bckg) - 1)
                 data_list.append(self.bckg[ii])
-                class_list.append(self.BCKG_NUM)
+                class_list.append(bckg_num)
 
             elif choice=='eybl':
                 ii = random.randint(0, len(self.eybl) - 1)
                 data_list.append(self.eybl[ii])
-                class_list.append(self.EYBL_NUM)
+                class_list.append(eybl_num)
             elif choice =='gped':
                 ii = random.randint(0, len(self.gped) - 1)
                 data_list.append(self.gped[ii])
-                class_list.append(self.GPED_NUM)
+                class_list.append(gped_num)
             elif choice == 'spsw':
                 ii = random.randint(0, len(self.spsw) -1)
                 data_list.append(self.spsw[ii])
-                class_list.append(self.SPSW_NUM)
+                class_list.append(spsw_num)
             elif choice=='pled':
-                ii = random.randint(0, len(self.pled) - 1)
+                ii = random.randint(0, len(self.spsw) - 1)
                 data_list.append(self.pled[ii])
-                class_list.append(self.PLED_NUM)
+                class_list.append(pled_num)
             else:
                 ii = random.randint(0, len(self.artf) -1)
                 data_list.append(self.artf[ii])
-                class_list.append(self.ARTF_NUM)
+                class_list.append(artf_num)
 
 
         return data_list, class_list
@@ -753,29 +767,35 @@ class BrainNet:
     def validate(self):
         self.load_files(True)
 
-        inputs, classes = self.get_sample(size=10000)
+        for _ in range(0, 5):
+            inputs, classes = self.get_sample(size=1000)
 
-        vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
+            vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 
-        knn = neighbors.KNeighborsClassifier()
-        knn.fit(vector_inputs, classes)
+            knn = neighbors.KNeighborsClassifier()
+            knn.fit(vector_inputs, classes)
 
-        val_inputs, val_classes = self.get_sample(size=self.validation_size)
+            val_inputs, val_classes = self.get_sample(size=100)
 
-        vector_val_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs})
+            vector_val_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs})
 
-        pred_class = knn.predict(vector_val_inputs)
+            pred_class = knn.predict(vector_val_inputs)
 
-        percentage = len([i for i, j in zip(val_classes, pred_class) if i==j])*100/self.validation_size
+            percentage = len([i for i, j in zip(val_classes, pred_class) if i==j])
 
-        print("Validation Results: %.3d out of %d correct" %  (percentage, self.validation_size)
-        
-        class_labels = [0, 1, 2, 3, 4, 5]
-        conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
-
-        return percentage, conf_matrix
+            print("Validation Results: %d out of 100 correct" %  percentage )
 
 
-sess = tf.Session()
-model = BrainNet(sess=sess)
-model.validate()
+
+if __name__ == "__main__":
+    try:
+        sess = tf.Session()
+        model = BrainNet(sess=sess, restore_dir='previous_run/latest_weights.ckpt')
+        model.validate()
+    except (KeyboardInterrupt, SystemError, SystemExit):
+        save_model(sess, saver)
+        get_loss(loss_mem)
+
+#
+# sess = tf.Session()
+# model = BrainNet(sess=sess, restore_dir='./latest_weights.ckpt')
