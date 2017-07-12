@@ -17,7 +17,7 @@ class BrainNet:
 	def __init__(self, sess, input_shape=[None, 71, 125],
 				 path_to_files='/media/krishna/My Passport/DataForUsage/labeled',
 				 l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3,
-				 batch_size=100, train_epoch=5, keep_prob=0.5, restore_dir=None):
+				 batch_size=100, train_epoch=5, keep_prob=0.5, debug=True, restore_dir=None):
 		self.BCKG_NUM = 0
 		self.ARTF_NUM = 1
 		self.EYBL_NUM = 2
@@ -25,6 +25,8 @@ class BrainNet:
 		self.SPSW_NUM = 4
 		self.PLED_NUM = 5
 		self.path_to_files = path_to_files
+
+		self.DEBUG = debug
 
 		path = os.path.abspath(self.path_to_files)
 		self.ARTF = [os.path.join(dp, f) for dp, dn, filenames in os.walk(path) for f in filenames if
@@ -525,10 +527,12 @@ class BrainNet:
 		self.inference_model = self.get_model(self.inference_input, reuse=False)
 
 		if restore_dir is not None:
-			print("Loading saved data...")
+			if self.DEBUG:
+				print("Loading saved data...")
 			dir = tf.train.Saver()
 			dir.restore(self.sess, restore_dir)
-			print("Finished loading saved data...")
+			if self.DEBUG:
+				print("Finished loading saved data...")
 
 		self.load_files()
 		self.train_model()
@@ -550,7 +554,8 @@ class BrainNet:
 
 	def load_files(self, validate=False):
 		start_time = timeit.default_timer()
-		print("Loading new source files...")
+		if self.DEBUG:
+			print("Loading new source files...")
 		if not validate:
 			self.bckg_file = np.load(random.choice(self.BCKG))
 			self.eybl_file = np.load(random.choice(self.EYBL))
@@ -572,7 +577,8 @@ class BrainNet:
 		self.gped = self.gped_file['arr_0']
 		self.pled = self.pled_file['arr_0']
 		self.spsw = self.spsw_file['arr_0']
-		print("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
+		if self.DEBUG:
+			print("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
 
 	def get_triplets(self):
 
@@ -677,6 +683,8 @@ class BrainNet:
 
 		count = 0
 		ii = 0
+		val_percentage = 0
+		val_conf_matrix = 0
 
 		for epoch in range(0, self.train_epoch):
 			ii = 0
@@ -706,10 +714,13 @@ class BrainNet:
 				d1 = np.linalg.norm(positive - anchor)
 				d2 = np.linalg.norm(negative - anchor)
 
-				print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
-				print("Iterations skipped: ", count)
-			self.validate()
-			self.load_files()
+				if self.DEBUG:
+					print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
+					print("Iterations skipped: ", count)
+			val_percentage, val_conf_matrix = self.validate()
+			if epoch == range(0, self.train_epoch)[-1]:
+				self.load_files()
+		return epoch, val_percentage, val_conf_matrix
 
 	def get_sample(self, size=1):
 		data_list = []
@@ -783,7 +794,8 @@ class BrainNet:
 
 		self.load_files(True)
 
-		print("Validation files loaded!")
+		if self.DEBUG:
+			print("Validation files loaded!")
 
 		inputs, classes = self.get_sample(size=1000)
 
@@ -800,7 +812,8 @@ class BrainNet:
 
 		percentage = len([i for i, j in zip(val_classes, pred_class) if i == j]) * 100.0 / self.validation_size
 
-		print("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
+		if self.DEBUG:
+			print("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
 
 		class_labels = [0, 1, 2, 3, 4, 5]
 		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
@@ -850,6 +863,6 @@ class BrainNet:
 		return percentage, conf_matrix
 
 
-sess = tf.Session()
-model = BrainNet(sess=sess)
-model.validate()
+# sess = tf.Session()
+# model = BrainNet(sess=sess)
+# model.validate()

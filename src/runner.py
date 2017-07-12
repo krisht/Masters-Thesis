@@ -1,14 +1,38 @@
 from BrainNet import BrainNet
-
-
-alpha = 0.5
-net = BrainNet(sess, input_shape=[None, 71, 125],
-				 path_to_files='/media/krishna/My Passport/DataForUsage/labeled',
-				 l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3,
-				 batch_size=100, train_epoch=5, keep_prob=0.5, restore_dir=None)
+import random
+import tensorflow as tf
 
 
 
 alphas = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
-learning_rate = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
-l2_weight =
+learning_rates = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
+l2_weights = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
+batch_sizes = [100, 1000, 10000]
+
+
+for run in range(0, 1):
+	alpha = random.choice(alphas)
+	learning_rate = random.choice(learning_rates)
+	l2_weight = random.choice(l2_weights)
+	batch_size = random.choice(batch_sizes)
+
+	print('Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}'.format(run + 1, alpha, learning_rate, l2_weight, batch_size))
+
+	sess = tf.Session()
+
+	net = BrainNet(sess, alpha = alpha, learning_rate = learning_rate, l2_weight = l2_weight, batch_size = batch_size, debug=False, train_epoch = 2)
+	val_percent, val_conf_matrix = net.train_model()
+
+
+	output = 'Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}, Validation Percentage: {:2.2f}, Confusion Matrix: {}'.format(run+1, alpha, learning_rate, l2_weight, batch_size, val_percent, val_conf_matrix)
+
+	del sess
+	del net
+	del val_percent
+	del val_conf_matrix
+	del alpha
+	del learning_rate
+	del l2_weight
+	del batch_size
+
+	print(output)
