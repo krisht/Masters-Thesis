@@ -18,7 +18,7 @@ for run in range(0, 5):
 
 	sess = tf.Session()
 
-	net = BrainNet(sess, alpha=alpha, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size, debug=False, train_epoch=2)
+	net = BrainNet(sess, alpha=alpha, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size, debug=False, train_epoch=5)
 	_, val_percent, val_conf_matrix = net.train_model()
 
 	output = 'Validation Percentage: {:2.2f}\nConfusion Matrix:\n{}'.format(val_percent, val_conf_matrix)
