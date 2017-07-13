@@ -1,6 +1,9 @@
+from __future__ import print_function
+
 import gc
 import os
 import random
+import sys
 import timeit
 
 import numpy as np
@@ -8,9 +11,6 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
-
-saver = None
-sess = None
 
 
 class BrainNet:
@@ -237,24 +237,20 @@ class BrainNet:
 					 self.path_to_files + '/session248/pled0.npz',
 					 self.path_to_files + '/session299/pled0.npz',
 					 self.path_to_files + '/session300/pled0.npz']
-		self.PLED_VAL = [self.path_to_files + '/session301/pled0.npz',
-						 self.path_to_files + '/session31/pled0.npz',
+		self.PLED_VAL = [self.path_to_files + '/session301/pled0.npz', self.path_to_files + '/session31/pled0.npz',
 						 self.path_to_files + '/session317/pled0.npz',
 						 self.path_to_files + '/session319/pled0.npz',
 						 self.path_to_files + '/session320/pled0.npz',
 						 self.path_to_files + '/session322/pled0.npz',
 						 self.path_to_files + '/session324/pled0.npz']
-		self.GPED = [self.path_to_files + '/session119/gped0.npz',
-					 self.path_to_files + '/session121/gped0.npz',
+		self.GPED = [self.path_to_files + '/session119/gped0.npz', self.path_to_files + '/session121/gped0.npz',
 					 self.path_to_files + '/session122/gped0.npz',
 					 self.path_to_files + '/session123/gped0.npz',
 					 self.path_to_files + '/session125/gped0.npz',
 					 self.path_to_files + '/session168/gped0.npz',
 					 self.path_to_files + '/session181/gped0.npz']
-		self.GPED_VAL = [self.path_to_files + '/session283/gped0.npz',
-						 self.path_to_files + '/session284/gped0.npz']
-		self.EYBL = [self.path_to_files + '/session0/eybl0.npz',
-					 self.path_to_files + '/session1/eybl0.npz',
+		self.GPED_VAL = [self.path_to_files + '/session283/gped0.npz', self.path_to_files + '/session284/gped0.npz']
+		self.EYBL = [self.path_to_files + '/session0/eybl0.npz', self.path_to_files + '/session1/eybl0.npz',
 					 self.path_to_files + '/session10/eybl0.npz',
 					 self.path_to_files + '/session104/eybl0.npz',
 					 self.path_to_files + '/session11/eybl0.npz',
@@ -490,8 +486,7 @@ class BrainNet:
 					 self.path_to_files + '/session359/eybl0.npz',
 					 self.path_to_files + '/session36/eybl0.npz',
 					 self.path_to_files + '/session360/eybl0.npz']
-		self.EYBL_VAL = [self.path_to_files + '/session363/eybl0.npz',
-						 self.path_to_files + '/session364/eybl0.npz',
+		self.EYBL_VAL = [self.path_to_files + '/session363/eybl0.npz', self.path_to_files + '/session364/eybl0.npz',
 						 self.path_to_files + '/session365/eybl0.npz',
 						 self.path_to_files + '/session366/eybl0.npz',
 						 self.path_to_files + '/session367/eybl0.npz',
@@ -528,14 +523,13 @@ class BrainNet:
 
 		if restore_dir is not None:
 			if self.DEBUG:
-				print("Loading saved data...")
+				eprint("Loading saved data...")
 			dir = tf.train.Saver()
 			dir.restore(self.sess, restore_dir)
 			if self.DEBUG:
-				print("Finished loading saved data...")
+				eprint("Finished loading saved data...")
 
 		self.load_files()
-		self.train_model()
 
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -554,8 +548,7 @@ class BrainNet:
 
 	def load_files(self, validate=False):
 		start_time = timeit.default_timer()
-		if self.DEBUG:
-			print("Loading new source files...")
+		eprint("Loading new source files...")
 		if not validate:
 			self.bckg_file = np.load(random.choice(self.BCKG))
 			self.eybl_file = np.load(random.choice(self.EYBL))
@@ -577,8 +570,7 @@ class BrainNet:
 		self.gped = self.gped_file['arr_0']
 		self.pled = self.pled_file['arr_0']
 		self.spsw = self.spsw_file['arr_0']
-		if self.DEBUG:
-			print("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
+		eprint("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
 
 	def get_triplets(self):
 
@@ -587,7 +579,8 @@ class BrainNet:
 
 		choice = random.choice(choices)
 
-		if choice in neg_choices: neg_choices.remove(choice)
+		if choice in neg_choices:
+			neg_choices.remove(choice)
 
 		if choice == 'bckg':
 			ii = random.randint(0, len(self.bckg) - 1)
@@ -687,6 +680,7 @@ class BrainNet:
 		val_conf_matrix = 0
 
 		for epoch in range(0, self.train_epoch):
+			eprint("In epoch {:d}".format(epoch))
 			ii = 0
 			count = 0
 			while ii <= self.batch_size:
@@ -715,11 +709,10 @@ class BrainNet:
 				d2 = np.linalg.norm(negative - anchor)
 
 				if self.DEBUG:
-					print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
-					print("Iterations skipped: ", count)
+					eprint("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
+					eprint("Iterations skipped: ", count)
 			val_percentage, val_conf_matrix = self.validate()
-			if epoch == range(0, self.train_epoch)[-1]:
-				self.load_files()
+			self.load_files()
 		return epoch, val_percentage, val_conf_matrix
 
 	def get_sample(self, size=1):
@@ -795,7 +788,7 @@ class BrainNet:
 		self.load_files(True)
 
 		if self.DEBUG:
-			print("Validation files loaded!")
+			eprint("Validation files loaded!")
 
 		inputs, classes = self.get_sample(size=1000)
 
@@ -813,7 +806,7 @@ class BrainNet:
 		percentage = len([i for i, j in zip(val_classes, pred_class) if i == j]) * 100.0 / self.validation_size
 
 		if self.DEBUG:
-			print("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
+			eprint("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
 
 		class_labels = [0, 1, 2, 3, 4, 5]
 		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
@@ -862,6 +855,9 @@ class BrainNet:
 
 		return percentage, conf_matrix
 
+
+def eprint(*args, **kwargs):
+	print(*args, file=sys.stderr, **kwargs)
 
 # sess = tf.Session()
 # model = BrainNet(sess=sess)
