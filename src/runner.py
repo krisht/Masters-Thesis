@@ -13,12 +13,17 @@ for run in range(0, 5):
 	l2_weight = random.choice(l2_weights)
 	batch_size = random.choice(batch_sizes)
 
+	batch_size = 5000
+	alpha = 2.5
+	learning_rate = 1e-5
+	l2_weight = 1e-5
+
 	print('Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}'.format(run + 1, alpha, learning_rate,
 																										   l2_weight, batch_size))
 
 	sess = tf.Session()
 
-	net = BrainNet(sess, alpha=alpha, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size, debug=False, train_epoch=5)
+	net = BrainNet(sess, alpha=alpha, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size, debug=True, train_epoch=5)
 	_, val_percent, val_conf_matrix = net.train_model()
 
 	output = 'Validation Percentage: {:2.2f}\nConfusion Matrix:\n{}'.format(val_percent, val_conf_matrix)

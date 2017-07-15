@@ -523,11 +523,11 @@ class BrainNet:
 
 		if restore_dir is not None:
 			if self.DEBUG:
-				eprint("Loading saved data...")
+				print("Loading saved data...")
 			dir = tf.train.Saver()
 			dir.restore(self.sess, restore_dir)
 			if self.DEBUG:
-				eprint("Finished loading saved data...")
+				print("Finished loading saved data...")
 
 		self.load_files()
 
@@ -548,7 +548,7 @@ class BrainNet:
 
 	def load_files(self, validate=False):
 		start_time = timeit.default_timer()
-		eprint("Loading new source files...")
+		print("Loading new source files...")
 		if not validate:
 			self.bckg_file = np.load(random.choice(self.BCKG))
 			self.eybl_file = np.load(random.choice(self.EYBL))
@@ -570,7 +570,7 @@ class BrainNet:
 		self.gped = self.gped_file['arr_0']
 		self.pled = self.pled_file['arr_0']
 		self.spsw = self.spsw_file['arr_0']
-		eprint("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
+		print("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
 
 	def get_triplets(self):
 
@@ -657,15 +657,21 @@ class BrainNet:
 																					 uniform=True),
 							weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
 			net = tf.expand_dims(input, axis=3)
-			net = slim.layers.conv2d(net, num_outputs=32, kernel_size=4, scope='conv1', trainable=True)
-			net = slim.layers.max_pool2d(net, kernel_size=3, scope='maxpool1')
-			net = slim.layers.conv2d(net, num_outputs=64, kernel_size=5, scope='conv2', trainable=True)
+			net = slim.layers.conv2d(net, num_outputs=32, kernel_size=5, scope='conv1', trainable=True)
+			net = slim.layers.max_pool2d(net, kernel_size=5, scope='maxpool1')
+			net = slim.layers.conv2d(net, num_outputs=64, kernel_size=3, scope='conv2', trainable=True)
 			net = slim.layers.max_pool2d(net, kernel_size=3, scope='maxpool2')
+			net = slim.layers.conv2d(net, num_outputs=128, kernel_size=2, scope='conv3', trainable=True)
+			net = slim.layers.max_pool2d(net, kernel_size=2, scope='maxpool3')
+			net = slim.layers.conv2d(net, num_outputs=256, kernel_size=1, scope='conv4', trainable=True)
+			net = slim.layers.max_pool2d(net, kernel_size=2, scope='maxpool4')
+			net = slim.layers.conv2d(net, num_outputs=1024, kernel_size=4, scope='conv5', trainable=True)
+			net = slim.layers.max_pool2d(net, kernel_size=4, scope='maxpool5')
 			net = slim.layers.flatten(net, scope='flatten')
-			net = slim.layers.fully_connected(net, 256, scope='fc1', trainable=True)
-			net = slim.layers.fully_connected(net, 1024, scope='fc2', trainable=True)
+			net = slim.layers.fully_connected(net, 1024, scope='fc1', trainable=True)
+			net = slim.layers.fully_connected(net, 512, scope='fc2', trainable=True)
+			net = slim.layers.fully_connected(net, 256, scope='fc3', trainable=True)
 			net = slim.layers.fully_connected(net, self.num_output, activation_fn=None, weights_regularizer=None, scope='output')
-
 			return net
 
 	def train_model(self, outdir=None):
@@ -680,7 +686,7 @@ class BrainNet:
 		val_conf_matrix = 0
 
 		for epoch in range(0, self.train_epoch):
-			eprint("In epoch {:d}".format(epoch))
+			print("In epoch {:d}".format(epoch))
 			ii = 0
 			count = 0
 			while ii <= self.batch_size:
@@ -709,8 +715,8 @@ class BrainNet:
 				d2 = np.linalg.norm(negative - anchor)
 
 				if self.DEBUG:
-					eprint("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
-					eprint("Iterations skipped: ", count)
+					print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
+					print("Iterations skipped: ", count)
 			val_percentage, val_conf_matrix = self.validate()
 			self.load_files()
 		return epoch, val_percentage, val_conf_matrix
@@ -788,7 +794,7 @@ class BrainNet:
 		self.load_files(True)
 
 		if self.DEBUG:
-			eprint("Validation files loaded!")
+			print("Validation files loaded!")
 
 		inputs, classes = self.get_sample(size=1000)
 
@@ -806,7 +812,7 @@ class BrainNet:
 		percentage = len([i for i, j in zip(val_classes, pred_class) if i == j]) * 100.0 / self.validation_size
 
 		if self.DEBUG:
-			eprint("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
+			print("Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
 
 		class_labels = [0, 1, 2, 3, 4, 5]
 		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
@@ -855,9 +861,6 @@ class BrainNet:
 
 		return percentage, conf_matrix
 
-
-def eprint(*args, **kwargs):
-	print(*args, file=sys.stderr, **kwargs)
 
 # sess = tf.Session()
 # model = BrainNet(sess=sess)
