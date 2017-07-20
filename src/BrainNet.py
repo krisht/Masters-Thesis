@@ -1,23 +1,80 @@
 from __future__ import print_function
 
+import datetime
+
+curr_time = random_seed = datetime.datetime.now()
+constant_seed = 42
+
 import gc
 import os
 import random
 import sys
 import timeit
-
+import itertools
+import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 
+random.seed(constant_seed)
+
+np.random.seed(constant_seed)
+
+tf.set_random_seed(constant_seed)
+
+global_random_state = 0
+global_constant_state = 0
+
+loss_mem = []
+
+def get_loss(loss_mem):
+    plt.figure(figsize=(15.0, 15.0))
+    plt.plot(loss_mem, 'r--')
+    plt.xlabel("1000 Iterations")
+    plt.ylabel("Average Loss in 1000 Iterations")
+    plt.title("Iterations vs. Average Loss")
+    plt.savefig('%s_convergence_plot.png' % curr_time, bbox_inches='tight')
+
+def plot_confusion_matrix(cm, classes,
+                          normalize=True,
+                          title='Confusion matrix',
+                          cmap=plt.cm.Blues, accuracy = None, epoch=None):
+    """
+    This function prints and plots the confusion matrix.
+    Normalization can be applied by setting `normalize=True`.
+    """
+    plt.figure(figsize=(15.0, 15.0))
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    plt.title(title)
+    plt.colorbar()
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
+
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
+
+    print(cm)
+
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, cm[i, j],
+                 horizontalalignment="center",
+                 color="white" if cm[i, j] > thresh else "black")
+
+    plt.tight_layout()
+    plt.ylabel('True label')
+    plt.xlabel('Predicted label')
+    plt.savefig('%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, epoch, accuracy), bbox_inches='tight')
+
 
 class BrainNet:
-	def __init__(self, sess, input_shape=[None, 71, 125],
-				 path_to_files='/media/krishna/My Passport/DataForUsage/labeled',
-				 l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3,
-				 batch_size=100, train_epoch=5, keep_prob=0.5, debug=True, restore_dir=None):
+	def __init__(self, sess, input_shape=[None, 71, 125], path_to_files='/media/krishna/My Passport/DataForUsage/labeled', l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3, batch_size=100, train_epoch=5, keep_prob=0.5, debug=True, restore_dir=None):
 		self.BCKG_NUM = 0
 		self.ARTF_NUM = 1
 		self.EYBL_NUM = 2
@@ -25,6 +82,8 @@ class BrainNet:
 		self.SPSW_NUM = 4
 		self.PLED_NUM = 5
 		self.path_to_files = path_to_files
+
+		self.count_of_triplets = dict()
 
 		self.DEBUG = debug
 
@@ -529,7 +588,7 @@ class BrainNet:
 			if self.DEBUG:
 				print("Finished loading saved data...")
 
-		self.load_files()
+		self.load_files(first_loading=True)
 
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -546,7 +605,8 @@ class BrainNet:
 			loss = tf.reduce_mean(basic_loss)
 			return loss
 
-	def load_files(self, validate=False):
+	def load_files(self, validate=False, first_loading=False):
+		gc.collect()
 		start_time = timeit.default_timer()
 		print("Loading new source files...")
 		if not validate:
@@ -573,6 +633,14 @@ class BrainNet:
 		print("Finished loading source files in ", timeit.default_timer() - start_time, " seconds")
 
 	def get_triplets(self):
+		# global global_random_state
+		# global global_constant_state
+
+		# global_constant_state = random.getstate()
+		# if global_random_state == 0:
+		# 	random.seed(random_seed)
+		# else:
+		# 	random.setstate(global_random_state)
 
 		choices = ['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf']
 		neg_choices = choices
@@ -645,16 +713,25 @@ class BrainNet:
 			ii = random.randint(0, len(self.artf) - 1)
 			n = self.artf[ii]
 
+		key = choice + choice + neg_choice
+
+		if key in self.count_of_triplets:
+			self.count_of_triplets[key] = self.count_of_triplets[key] + 1
+		else:
+			self.count_of_triplets[key] = 1
+
 		a = np.expand_dims(a, 0) * 10e4
 		p = np.expand_dims(p, 0) * 10e4
 		n = np.expand_dims(n, 0) * 10e4
+
+		# global_random_state = random.getstate()
+		# random.setstate(global_constant_state)
 
 		return np.vstack([a, p, n])
 
 	def get_model(self, input, reuse=False):
 		with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected],
-							weights_initializer=tf.contrib.layers.xavier_initializer(seed=random.random(),
-																					 uniform=True),
+							weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True),
 							weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
 			net = tf.expand_dims(input, axis=3)
 			net = slim.layers.conv2d(net, num_outputs=32, kernel_size=5, scope='conv1', trainable=True)
@@ -689,6 +766,7 @@ class BrainNet:
 			print("In epoch {:d}".format(epoch))
 			ii = 0
 			count = 0
+			full_loss = 0
 			while ii <= self.batch_size:
 				ii += 1
 				feeder = self.get_triplets()
@@ -703,9 +781,16 @@ class BrainNet:
 				temploss = self.sess.run(loss, feed_dict={self.anchor: anchor, self.positive: positive, self.negative: negative})
 
 				if temploss == 0:
+					print(anchor[0][0][0], positive[0][0][0], negative[0][0][0])
 					ii -= 1
 					count += 1
 					continue
+
+				full_loss += temploss
+
+				if ((ii + epoch * self.batch_size) % 1000 == 0):
+					loss_mem.append(full_loss/(1000 + count))
+					full_loss = 0
 
 				_, anchor, positive, negative = self.sess.run([self.optim, self.anchor_out, self.positive_out, self.negative_out],
 															  feed_dict={self.anchor: anchor, self.positive: positive,
@@ -717,8 +802,13 @@ class BrainNet:
 				if self.DEBUG:
 					print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
 					print("Iterations skipped: ", count)
-			val_percentage, val_conf_matrix = self.validate()
+			val_percentage, val_conf_matrix = self.validate(epoch)
 			self.load_files()
+
+		for key in count:
+			print(str(key) + "\t" + str(count[key]))
+
+		get_loss(loss_mem)		
 		return epoch, val_percentage, val_conf_matrix
 
 	def get_sample(self, size=1):
@@ -756,40 +846,7 @@ class BrainNet:
 
 		return data_list, class_list
 
-	def validate(self):
-
-		del self.bckg_file.f
-		self.bckg_file.close()
-		del self.bckg_file
-
-		del self.eybl_file.f
-		self.eybl_file.close()
-		del self.eybl_file
-
-		del self.artf_file.f
-		self.artf_file.close()
-		del self.artf_file
-
-		del self.gped_file.f
-		self.gped_file.close()
-		del self.gped_file
-
-		del self.pled_file.f
-		self.pled_file.close()
-		del self.pled_file
-
-		del self.spsw_file.f
-		self.spsw_file.close()
-		del self.spsw_file
-
-		del self.bckg
-		del self.eybl
-		del self.artf
-		del self.gped
-		del self.pled
-		del self.spsw
-
-		gc.collect()
+	def validate(self, epoch):
 
 		self.load_files(True)
 
@@ -816,6 +873,16 @@ class BrainNet:
 
 		class_labels = [0, 1, 2, 3, 4, 5]
 		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
+		np.set_printoptions(precision=2)
+
+		plot_confusion_matrix(conf_matrix, classes=class_labels, title='Confusion Matrix', epoch=epoch, accuracy=percentage)
+
+		plt.figure(figsize=(15.0, 15.0))
+
+		plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center', color='b')
+		plt.xticks(range(len(self.count_of_triplets)), self.count_of_triplets.keys(), rotation='vertical')
+		plt.subplots_adjust(bottom=0.30)
+		plt.savefig('%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, epoch, percentage), bbox_inches='tight')
 
 		del inputs
 		del classes
@@ -861,7 +928,3 @@ class BrainNet:
 
 		return percentage, conf_matrix
 
-
-# sess = tf.Session()
-# model = BrainNet(sess=sess)
-# model.validate()
