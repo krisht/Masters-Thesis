@@ -1,0 +1,16 @@
+Time of training: 2017-07-20 20:01:27.568463
+Input shape: [None, 71, 125]
+Path to files: /media/krishna/Seagate Backup Plus Drive/DataForUsage/labeled
+L2 Regularization Weight: 1e-05
+Number of outputs: 64
+Number of classes: 6
+Alpha value: 2.5
+Validation Size: 500
+Learning rate: 1e-05
+Batch size: 5000
+Number of Epochs: 5
+Dropout probability: 0.5
+Debug mode: True
+Restore directory: None
+
+TF SEED RELEASED

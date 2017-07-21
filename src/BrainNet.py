@@ -18,7 +18,7 @@ import tensorflow.contrib.slim as slim
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 
-random.seed(constant_seed)
+#random.seed(constant_seed)
 
 np.random.seed(constant_seed)
 
@@ -35,7 +35,7 @@ def get_loss(loss_mem):
     plt.xlabel("1000 Iterations")
     plt.ylabel("Average Loss in 1000 Iterations")
     plt.title("Iterations vs. Average Loss")
-    plt.savefig('%s_convergence_plot.png' % curr_time, bbox_inches='tight')
+    plt.savefig('./%s Results/%s_convergence_plot.png' % (curr_time, curr_time), bbox_inches='tight')
 
 def plot_confusion_matrix(cm, classes,
                           normalize=True,
@@ -70,11 +70,11 @@ def plot_confusion_matrix(cm, classes,
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
-    plt.savefig('%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, epoch, accuracy), bbox_inches='tight')
+    plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 
 class BrainNet:
-	def __init__(self, sess, input_shape=[None, 71, 125], path_to_files='/media/krishna/My Passport/DataForUsage/labeled', l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3, batch_size=100, train_epoch=5, keep_prob=0.5, debug=True, restore_dir=None):
+	def __init__(self, input_shape=[None, 71, 125], path_to_files='/media/krishna/My Passport/DataForUsage/labeled', l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3, batch_size=100, train_epoch=5, keep_prob=0.5, debug=True, restore_dir=None):
 		self.BCKG_NUM = 0
 		self.ARTF_NUM = 1
 		self.EYBL_NUM = 2
@@ -566,7 +566,7 @@ class BrainNet:
 						 self.path_to_files + '/session50/eybl0.npz',
 						 self.path_to_files + '/session52/eybl0.npz']
 
-		self.sess = sess
+		self.sess = tf.Session()
 		self.num_classes = num_classes
 		self.num_output = num_output
 		self.input_shape = input_shape
@@ -579,6 +579,26 @@ class BrainNet:
 		self.l2_weight = l2_weight
 		self.inference_input = tf.placeholder(tf.float32, shape=input_shape)
 		self.inference_model = self.get_model(self.inference_input, reuse=False)
+
+		if not os.path.exists('./%s Results' % curr_time):
+			os.makedirs('./%s Results' % curr_time)
+
+		with open('./%s Results/METADATA.txt' % curr_time, 'w') as file:
+			file.write('Time of training: %s\n' % curr_time)
+			file.write('Input shape: %s\n' % input_shape)
+			file.write('Path to files: %s\n' % path_to_files)
+			file.write('L2 Regularization Weight: %s\n' % l2_weight)
+			file.write('Number of outputs: %s\n' % num_output)
+			file.write('Number of classes: %s\n' % num_classes)
+			file.write('Alpha value: %s\n' % alpha)
+			file.write('Validation Size: %s\n' % validation_size)
+			file.write('Learning rate: %s\n' % learning_rate)
+			file.write('Batch size: %s\n' % batch_size)
+			file.write('Number of Epochs: %s\n' % train_epoch)
+			file.write('Dropout probability: %s\n' % keep_prob)
+			file.write('Debug mode: %s\n' % debug)
+			file.write('Restore directory: %s\n' % restore_dir)
+			file.close()
 
 		if restore_dir is not None:
 			if self.DEBUG:
@@ -766,6 +786,7 @@ class BrainNet:
 			print("In epoch {:d}".format(epoch))
 			ii = 0
 			count = 0
+			temp_count = 0
 			full_loss = 0
 			while ii <= self.batch_size:
 				ii += 1
@@ -784,6 +805,7 @@ class BrainNet:
 					print(anchor[0][0][0], positive[0][0][0], negative[0][0][0])
 					ii -= 1
 					count += 1
+					temp_count += 1
 					continue
 
 				full_loss += temploss
@@ -791,6 +813,7 @@ class BrainNet:
 				if ((ii + epoch * self.batch_size) % 1000 == 0):
 					loss_mem.append(full_loss/(1000 + count))
 					full_loss = 0
+					temp_count = 0
 
 				_, anchor, positive, negative = self.sess.run([self.optim, self.anchor_out, self.positive_out, self.negative_out],
 															  feed_dict={self.anchor: anchor, self.positive: positive,
@@ -803,12 +826,12 @@ class BrainNet:
 					print("Epoch: ", epoch, "Iteration:", ii, ", Loss: ", temploss, ", Positive Diff: ", d1, ", Negative diff: ", d2)
 					print("Iterations skipped: ", count)
 			val_percentage, val_conf_matrix = self.validate(epoch)
-			self.load_files()
+			if(epoch < self.train_epoch - 1):
+				self.load_files()
 
-		for key in count:
-			print(str(key) + "\t" + str(count[key]))
-
-		get_loss(loss_mem)		
+		get_loss(loss_mem)
+		self.sess.close()
+		gc.collect()	
 		return epoch, val_percentage, val_conf_matrix
 
 	def get_sample(self, size=1):
@@ -882,8 +905,8 @@ class BrainNet:
 		plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center', color='b')
 		plt.xticks(range(len(self.count_of_triplets)), self.count_of_triplets.keys(), rotation='vertical')
 		plt.subplots_adjust(bottom=0.30)
-		plt.savefig('%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, epoch, percentage), bbox_inches='tight')
-
+		plt.savefig('./%s Results/%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, percentage), bbox_inches='tight')
+		self.count_of_triplets=dict()
 		del inputs
 		del classes
 		del vector_inputs
