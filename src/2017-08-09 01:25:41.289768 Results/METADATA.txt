@@ -1,0 +1,15 @@
+LSTM Network with 10 Layers
+Time of training: 2017-08-09 01:25:41.289768
+Input shape: [None, 71, 125]
+Path to files: /media/krishna/DATA
+L2 Regularization Weight: 0.001
+Number of outputs: 64
+Number of classes: 6
+Alpha value: 0.5
+Validation Size: 500
+Learning rate: 1e-05
+Batch size: 5000
+Number of Epochs: 20
+Dropout probability: 0.5
+Debug mode: True
+Restore directory: None

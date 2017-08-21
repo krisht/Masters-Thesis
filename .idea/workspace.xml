@@ -2,8 +2,210 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9490803-aa0a-4d76-9c34-18b16938ad57" name="Default" comment="Changed file names">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runner.py" afterPath="$PROJECT_DIR$/src/runner.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/2017-07-26 19:51:13.300557_confusion_matrix_epoch0_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/2017-07-26 19:51:13.300557_confusion_matrix_epoch1_21.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/2017-07-26 19:51:13.300557_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/2017-07-26 19:51:13.300557triplet_distribution_epoch0_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/2017-07-26 19:51:13.300557triplet_distribution_epoch1_21.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827_confusion_matrix_epoch0_27.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827_confusion_matrix_epoch1_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827_confusion_matrix_epoch2_29.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827triplet_distribution_epoch0_27.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827triplet_distribution_epoch1_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/2017-07-26 20:53:17.311827triplet_distribution_epoch2_29.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 22:57:37.886472 Results/2017-07-26 22:57:37.886472_confusion_matrix_epoch0_26.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 22:57:37.886472 Results/2017-07-26 22:57:37.886472_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 22:57:37.886472 Results/2017-07-26 22:57:37.886472triplet_distribution_epoch0_26.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch0_25.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch10_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch11_18.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch12_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch1_19.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch2_25.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch3_21.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch4_18.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch5_23.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch6_18.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch7_21.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch8_23.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_confusion_matrix_epoch9_24.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch0_25.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch10_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch11_18.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch12_22.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch1_19.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch2_25.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch3_21.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch4_18.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch5_23.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch6_18.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch7_21.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch8_23.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/2017-07-26 23:28:22.974741triplet_distribution_epoch9_24.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/2017-07-29 14:47:00.899684_confusion_matrix_epoch0_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/2017-07-29 14:47:00.899684_confusion_matrix_epoch1_28.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/2017-07-29 14:47:00.899684_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/2017-07-29 14:47:00.899684triplet_distribution_epoch0_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/2017-07-29 14:47:00.899684triplet_distribution_epoch1_28.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch0_32.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch10_32.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch11_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch1_35.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch2_33.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch3_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch4_34.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch5_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch6_34.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch7_32.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch8_35.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_confusion_matrix_epoch9_35.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch0_32.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch10_32.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch11_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch1_35.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch2_33.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch3_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch4_34.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch5_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch6_34.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch7_32.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch8_35.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/2017-07-29 15:45:53.539225triplet_distribution_epoch9_35.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch0_21.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch10_31.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch11_31.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch12_31.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch13_29.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch14_29.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch15_30.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch16_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch17_26.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch18_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch19_29.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch1_22.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch2_27.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch3_27.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch4_29.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch5_30.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch6_30.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch7_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch8_25.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_confusion_matrix_epoch9_29.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch0_21.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch10_31.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch11_31.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch12_31.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch13_29.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch14_29.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch15_30.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch16_31.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch17_26.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch18_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch19_29.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch1_22.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch2_27.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch3_27.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch4_29.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch5_30.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch6_30.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch7_30.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch8_25.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/2017-07-30 01:52:57.186957triplet_distribution_epoch9_29.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch0_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch10_55.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch11_48.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch12_46.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch13_52.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch14_49.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch15_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch16_49.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch17_55.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch18_53.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch19_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch1_41.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch2_47.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch3_48.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch4_45.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch5_51.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch6_44.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch7_46.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch8_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_confusion_matrix_epoch9_50.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch0_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch10_55.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch11_48.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch12_46.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch13_52.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch14_49.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch15_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch16_49.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch17_55.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch18_53.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch19_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch1_41.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch2_47.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch3_48.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch4_45.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch5_51.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch6_44.200%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch7_46.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch8_52.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/2017-07-31 06:21:50.754705triplet_distribution_epoch9_50.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/2017-07-31 21:25:55.306593_confusion_matrix_epoch0_33.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/2017-07-31 21:25:55.306593_confusion_matrix_epoch1_31.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/2017-07-31 21:25:55.306593_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/2017-07-31 21:25:55.306593triplet_distribution_epoch0_33.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/2017-07-31 21:25:55.306593triplet_distribution_epoch1_31.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch0_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch10_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch11_41.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch12_40.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch13_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch1_35.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch2_34.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch3_40.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch4_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch5_40.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch6_39.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch7_39.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch8_41.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_confusion_matrix_epoch9_41.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812_convergence_plot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch0_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch10_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch11_41.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch12_40.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch13_44.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch1_35.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch2_34.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch3_40.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch4_36.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch5_40.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch6_39.000%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch7_39.600%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch8_41.800%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/2017-08-01 00:57:59.079812triplet_distribution_epoch9_41.400%.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace (krishna-ubuntu-desktop's conflicted copy 2017-07-25).xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 19:51:13.300557 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 20:53:17.311827 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 22:57:37.886472 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-26 23:28:22.974741 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 14:47:00.899684 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-29 15:45:53.539225 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-30 01:52:57.186957 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 06:21:50.754705 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-07-31 21:25:55.306593 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/2017-08-01 00:57:59.079812 Results/METADATA.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/BrainNet_old.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-07-20 23:10:10.933276 Results/METADATA.txt" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BrainNet.py" afterPath="$PROJECT_DIR$/src/BrainNet.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runner.py" afterPath="$PROJECT_DIR$/src/runner.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,6 +215,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Krishna_Thesis$SuperBrain.coverage" NAME="SuperBrain Coverage Results" MODIFIED="1501381090587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
     <SUITE FILE_PATH="coverage/Krishna_Thesis$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1499911794136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -43,23 +246,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="runner.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="runner.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/runner.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+            <state relative-caret-position="345">
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BrainNet.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BrainNet.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="22" column="56" lean-forward="false" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+            <state relative-caret-position="1620">
+              <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -76,7 +279,11 @@
       <find>if self.DEBUG</find>
       <find>self.path</find>
       <find>print(</find>
+      <find />
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,6 +296,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main.py" />
+        <option value="$PROJECT_DIR$/src/SuperBrainNet.py" />
         <option value="$PROJECT_DIR$/src/BrainNet.py" />
         <option value="$PROJECT_DIR$/src/runner.py" />
       </list>
@@ -101,10 +309,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="47" />
-    <option name="y" value="52" />
-    <option name="width" value="1854" />
-    <option name="height" value="1028" />
+    <option name="x" value="986" />
+    <option name="y" value="24" />
+    <option name="width" value="930" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -155,7 +363,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/SuperBrainNet.py" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RunDashboard">
@@ -170,7 +378,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Unnamed">
+  <component name="RunManager" selected="Python.SuperBrain">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -187,6 +395,7 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
@@ -233,19 +442,12 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Krishna-Thesis" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="false" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;.&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method />
     </configuration>
-    <configuration default="false" name="Unnamed" type="PythonConfigurationType" factoryName="Python">
+    <configuration default="false" name="SuperBrain" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -258,13 +460,14 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Krishna-Thesis" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/runner.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/SuperBrainNet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Python.Unnamed" />
+      <item index="0" class="java.lang.String" itemvalue="Python.SuperBrain" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -305,35 +508,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="52" width="1854" height="1028" extended-state="4" />
-    <editor active="false" />
+    <frame x="986" y="24" width="930" height="1056" extended-state="4" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3892473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19633226" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35991606" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Running Result" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="MaxCompute Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43623483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43623483" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967743" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Project Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35020244" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Running Result" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,22 +563,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+        <state relative-caret-position="360">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="22" column="56" lean-forward="false" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+        <state relative-caret-position="5265">
+          <caret line="366" column="66" lean-forward="true" selection-start-line="366" selection-start-column="66" selection-end-line="366" selection-end-column="66" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5235">
+          <caret line="351" column="75" lean-forward="false" selection-start-line="351" selection-start-column="75" selection-end-line="351" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="33" column="23" lean-forward="false" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SuperBrainNet.py" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1620">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding>
+            <marker date="1502430715913" expanded="true" signature="322:353" ph="..." />
           </folding>
         </state>
       </provider>
