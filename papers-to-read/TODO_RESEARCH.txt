@@ -1,0 +1,3 @@
+- Look at Jamshed's thing
+- Look at different types of classification
+- Look at different output dimensions

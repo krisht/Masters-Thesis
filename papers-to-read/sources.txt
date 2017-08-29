@@ -1,0 +1,15 @@
+1 - Learning Low-Dimensional Representations of Medical Concepts
+13 - 
+2 - Applying deep learning techniques on medical corpora from the World Wide Web: a prototypical system and evaluation
+4 - Exclusive Sparsity Norm Minimization with Random Groups via
+Cone Projection
+5 - FaceNet: A Unified Embedding for Face Recognition and Clustering
+6 - Joint Unsupervised Learning of Deep Representations and Image Clusters
+7 - Distance Metric Learning for Large Margin Nearest Neighbor Classification
+8 - Learning Fine-grained Image Similarity with Deep Ranking
+9 - Learning a Distance Metric from Relative Comparisons
+10 - Learning representations by back propagating errors
+11 - Learnable Structured Clustering Framework for Deep Metric Learning
+12 - Deep Metric Learning via Lifted Structured Feature Embedding
+13 - Multi-layer Representation Learning for Medical Concepts
+14 - Frequency Band Separability Feature Extraction Method with Weighted Haar Wavelet Implementation for Implantable Spike Sorting

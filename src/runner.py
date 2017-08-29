@@ -1,9 +1,8 @@
-from BrainNet import BrainNet
 import random
 import tensorflow as tf
-import gc
 from sklearn.svm import SVC
 
+from BrainNet import BrainNet
 
 alphas = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]
 learning_rates = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
@@ -24,7 +23,8 @@ for run in range(0, 1):
 
 	print('Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}'.format(run + 1, alpha, learning_rate, l2_weight, batch_size))
 
-	net = BrainNet(path_to_files='/media/krishna/DATA', alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size, debug=True, train_epoch=20)
+	net = BrainNet(path_to_files='/media/krishna/DATA', alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size,
+				   debug=True, train_epoch=20)
 	blah, val_percent, val_conf_matrix = net.train_model()
 
 	print('Validation Percentage: {:2.2f}\nConfusion Matrix:\n{}'.format(val_percent, val_conf_matrix))
