@@ -34,12 +34,14 @@ def plot_embedding(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embed
     X = (X - x_min) / (x_max - x_min)
     cmap = plt.get_cmap('gist_rainbow')
     color_map = [cmap(1.*i/6) for i in range(6)]
+    legend_entry = []
+    for ii, c in enumerate(color_map):
+    	legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
 
-    plt.figure(figsize=(10.0, 10.0))
-    for ii in range(X.shape[0]):
-    	plt.text(X[ii, 0], X[ii, 1], str(num_to_label[y[ii]]),
-    		color=color_map[y[ii]], 
-    		fontdict={'weight': 'bold', 'size': 12})
+
+    plt.figure(figsize=(5.0, 5.0), dpi=800)
+    plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
+    plt.legend(handles=legend_entry)
     plt.xticks([]), plt.yticks([])
     plt.title(title)
     plt.savefig('./%s Results/%s_tSNE_plot_perp%d_epoch%s_%.3f%%.png' % (curr_time, curr_time, perp, epoch, accuracy), bbox_inches='tight')
@@ -49,17 +51,18 @@ def compute_tSNE(X, y, epoch, accuracy, num_to_label):
 		tsne = TSNE(n_components=2, init='random', random_state=0)
 		X_tsne = tsne.fit_transform(X)
 		plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, perp=perp, num_to_label=num_to_label)
+		np.savez('./%s Results/%s_tSNE_plot_perp%d_epoch%s_%.3f%%' % (curr_time, curr_time, perp, epoch, accuracy), X_tsne, y)
 
 
 def get_loss(loss_mem, loss_mem_skip):
-	plt.figure(figsize=(20.0, 20.0))
+	plt.figure(figsize=(20.0, 20.0), dpi=800)
 	plt.plot(loss_mem_skip, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
 	plt.savefig('./%s Results/%s_convergence_with_skip_plot.png' % (curr_time, curr_time), bbox_inches='tight')
 
-	plt.figure(figsize=(20.0, 20.0))
+	plt.figure(figsize=(20.0, 20.0), dpi=800)
 	plt.plot(loss_mem, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
@@ -465,16 +468,18 @@ class BrainNet:
 		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
 		np.set_printoptions(precision=2)
 
+		np.save('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage), conf_matrix)
+
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
 		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class)
 
-		plt.figure(figsize=(5.0, 5.0))
+		# plt.figure(figsize=(5.0, 5.0))
 
-		plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center')
-		plt.xticks(range(len(self.count_of_triplets)), self.count_of_triplets.keys(), rotation='vertical')
-		plt.subplots_adjust(bottom=0.30)
-		plt.savefig('./%s Results/%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, percentage), bbox_inches='tight')
+		# plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center')
+		# plt.xticks(range(len(self.count_of_triplets)), self.count_of_triplets.keys(), rotation='vertical')
+		# plt.subplots_adjust(bottom=0.30)
+		# plt.savefig('./%s Results/%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, percentage), bbox_inches='tight')
 		self.count_of_triplets = dict()
 
 		# with open('temp.txt', 'a+') as file:
