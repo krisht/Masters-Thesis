@@ -35,7 +35,7 @@ def plot_embeddin g(X, y, epoch, accuracy, title="t-SNE Embedding of DCNN Cluste
     cmap = plt.get_cmap('gist_rainbow')
     color_map = [cmap(1.*i/6) for i in range(6)]
 
-    plt.figure(figsize=(10.0, 100.0))
+    plt.figure(figsize=(10.0, 10.0))
     for ii in range(X.shape[0]):
     	plt.text(X[ii, 0], X[ii, 1], str(y[ii]),
     		color=color_map[y[ii]], 
