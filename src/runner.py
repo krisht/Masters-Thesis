@@ -13,7 +13,7 @@ for run in range(0, 1):
 	# alpha = random.choice(alphas)Shape [-1,1,6] has negative dimensions
 	# learning_rate = random.choice(learning_rates)
 	# l2_weight = random.choice(l2_weights)
-	# batch_size = random.choice(batch_sizes)
+	# batch_size = random.choice(  batch_sizes)
 
 	batch_size = 5000
 	alpha = 0.5

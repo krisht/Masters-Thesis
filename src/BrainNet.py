@@ -31,11 +31,11 @@ def plot_embedding(X, y, epoch, accuracy, title="t-SNE Embedding of DCNN Cluster
     cmap = plt.get_cmap('gist_rainbow')
     color_map = [cmap(1.*i/6) for i in range(6)]
 
-    plt.figure(figsize=(20.0, 20.0))
+    plt.figure(figsize=(10.0, 100.0))
     for ii in range(X.shape[0]):
     	plt.text(X[ii, 0], X[ii, 1], str(y[ii]),
     		color=color_map[y[ii]], 
-    		fontdict={'weight': 'bold', 'size': 9})
+    		fontdict={'weight': 'bold', 'size': 12})
     plt.xticks([]), plt.yticks([])
     plt.title(title)
     plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
