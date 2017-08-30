@@ -467,7 +467,7 @@ class BrainNet:
 
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
-		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=num_to_class)
+		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class)
 
 		plt.figure(figsize=(5.0, 5.0))
 
