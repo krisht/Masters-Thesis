@@ -29,7 +29,7 @@ def norm_op(vector, axis):
 	# return normalize(vector, axis=axis, norm='l2')
 	return vector * 10e4
 
-def plot_embeddin g(X, y, epoch, accuracy, title="t-SNE Embedding of DCNN Clustering Network"):
+def plot_embeddin g(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     X = (X - x_min) / (x_max - x_min)
     cmap = plt.get_cmap('gist_rainbow')
@@ -37,17 +37,18 @@ def plot_embeddin g(X, y, epoch, accuracy, title="t-SNE Embedding of DCNN Cluste
 
     plt.figure(figsize=(10.0, 10.0))
     for ii in range(X.shape[0]):
-    	plt.text(X[ii, 0], X[ii, 1], str(y[ii]),
+    	plt.text(X[ii, 0], X[ii, 1], str(num_to_label[y[ii]]),
     		color=color_map[y[ii]], 
     		fontdict={'weight': 'bold', 'size': 12})
     plt.xticks([]), plt.yticks([])
     plt.title(title)
-    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+    plt.savefig('./%s Results/%s_tSNE_plot_perp%d_epoch%s_%.3f%%.png' % (curr_time, curr_time, perp, epoch, accuracy), bbox_inches='tight')
 
-def compute_tSNE(X, y, epoch, accuracy):
-	tsne = TSNE(n_components=2, init='random', random_state=0)
-	X_tsne = tsne.fit_transform(X)
-	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy)
+def compute_tSNE(X, y, epoch, accuracy, num_to_label):
+	for perp in [2,5,30,50,70,100]:
+		tsne = TSNE(n_components=2, init='random', random_state=0)
+		X_tsne = tsne.fit_transform(X)
+		plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, perp=perp, num_to_label=num_to_label)
 
 
 def get_loss(loss_mem, loss_mem_skip):
@@ -466,7 +467,7 @@ class BrainNet:
 
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
-		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage)
+		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=num_to_class)
 
 		plt.figure(figsize=(5.0, 5.0))
 
