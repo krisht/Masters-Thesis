@@ -29,7 +29,7 @@ def norm_op(vector, axis):
 	# return normalize(vector, axis=axis, norm='l2')
 	return vector * 10e4
 
-def plot_embeddin g(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
+def plot_embedding(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     X = (X - x_min) / (x_max - x_min)
     cmap = plt.get_cmap('gist_rainbow')
