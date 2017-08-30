@@ -188,13 +188,13 @@ class BrainNet:
 			file.write('Debug mode: %s\n' % debug)
 			file.write('Restore directory: %s\n' % restore_dir)
 			file.close()
-		with open('temp.txt', 'a+') as file:
-			file.write("In __init__\n\n")
-			for var, val in globals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			for var, val in locals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			file.write("\n\n")
+		# with open('temp.txt', 'a+') as file:
+		# 	file.write("In __init__\n\n")
+		# 	for var, val in globals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	for var, val in locals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	file.write("\n\n")
 
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -320,13 +320,13 @@ class BrainNet:
 		epoch = -1
 		while True:
 			# Started here
-			with open('psutil.out', 'a+') as myfile:
-				myfile.write("Before: " + str(psutil.virtual_memory()) + "\n")
-				myfile.write("Before: " + str(psutil.swap_memory()) + "\n")
+			# with open('psutil.out', 'a+') as myfile:
+			# 	myfile.write("Before: " + str(psutil.virtual_memory()) + "\n")
+			# 	myfile.write("Before: " + str(psutil.swap_memory()) + "\n")
 			epoch += 1
-			with open('psutil.out', 'a+') as myfile:
-				myfile.write("After: " + str(psutil.virtual_memory()) + "\n")
-				myfile.write("After: " + str(psutil.swap_memory()) + "\n\n\n")
+			# with open('psutil.out', 'a+') as myfile:
+			# 	myfile.write("After: " + str(psutil.virtual_memory()) + "\n")
+			# 	myfile.write("After: " + str(psutil.swap_memory()) + "\n\n\n")
 			ii = 0
 			count = 0
 			temp_count = 0
@@ -360,13 +360,13 @@ class BrainNet:
 				if self.DEBUG:
 					print("Epoch: %2d, Iter: %7d, IterSkip: %7d, Loss: %.4f, P_Diff: %.4f, N_diff: %.4f" % (epoch, ii, count, temploss, d1, d2))
 			val_percentage, val_conf_matrix = self.validate(epoch)
-			with open('temp.txt', 'a+') as file:
-				file.write("In train_model\n\n")
-				for var, val in globals().iteritems():
-					file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-				for var, val in locals().iteritems():
-					file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-				file.write("\n\n")
+			# with open('temp.txt', 'a+') as file:
+			# 	file.write("In train_model\n\n")
+			# 	for var, val in globals().iteritems():
+			# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+			# 	for var, val in locals().iteritems():
+			# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+			# 	file.write("\n\n")
 			# Ended here
 			# with open('psutil.out', 'a+') as myfile:
 			# 	myfile.write("After: " + str(psutil.virtual_memory())+"\n")
@@ -424,13 +424,13 @@ class BrainNet:
 					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axis=0))
 					class_list.append(self.artf_num)
 
-		with open('temp.txt', 'a+') as file:
-			file.write("In get_sample\n\n")
-			for var, val in globals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			for var, val in locals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			file.write("\n\n")
+		# with open('temp.txt', 'a+') as file:
+		# 	file.write("In get_sample\n\n")
+		# 	for var, val in globals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	for var, val in locals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	file.write("\n\n")
 
 		return data_list, class_list
 
@@ -472,12 +472,12 @@ class BrainNet:
 		plt.savefig('./%s Results/%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, percentage), bbox_inches='tight')
 		self.count_of_triplets = dict()
 
-		with open('temp.txt', 'a+') as file:
-			file.write("In validate\n\n")
-			for var, val in globals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			for var, val in locals().iteritems():
-				file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			file.write("\n\n")
+		# with open('temp.txt', 'a+') as file:
+		# 	file.write("In validate\n\n")
+		# 	for var, val in globals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	for var, val in locals().iteritems():
+		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
+		# 	file.write("\n\n")
 
 		return percentage, conf_matrix
