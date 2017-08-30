@@ -13,11 +13,37 @@ import tensorflow.contrib.slim as slim
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
+from sklearn.manifold import TSNE
 
 curr_time = datetime.datetime.now()
 
 loss_mem = []
 loss_mem_skip = []
+
+
+def norm_op(vector, axis):
+	# return normalize(vector, axis=axis, norm='l2')
+	return vector * 10e4
+
+def plot_embedding(X, y, epoch, accuracy, title="t-SNE Embedding of DCNN Clustering Network"):
+    x_min, x_max = np.min(X, 0), np.max(X, 0)
+    X = (X - x_min) / (x_max - x_min)
+    cmap = plt.get_cmap('gist_rainbow')
+    color_map = [cmap(1.*i/6) for i in range(6)]
+
+    plt.figure(figsize=(20.0, 20.0))
+    for ii in range(X.shape[0]):
+    	plt.text(X[ii, 0], X[ii, 1], str(y[ii]),
+    		color=color_map[y[ii]], 
+    		fontdict={'weight': 'bold', 'size': 9})
+    plt.xticks([]), plt.yticks([])
+    plt.title(title)
+    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+
+def compute_tSNE(X, y, epoch, accuracy):
+	tsne = TSNE(n_components=2, init='random', random_state=0)
+	X_tsne = tsne.fit_transform(X)
+	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy)
 
 
 def get_loss(loss_mem, loss_mem_skip):
@@ -436,6 +462,8 @@ class BrainNet:
 
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
+		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage)
+
 		plt.figure(figsize=(5.0, 5.0))
 
 		plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center')
@@ -453,8 +481,3 @@ class BrainNet:
 			file.write("\n\n")
 
 		return percentage, conf_matrix
-
-
-def norm_op(vector, axis):
-	# return normalize(vector, axis=axis, norm='l2')
-	return vector * 10e4

@@ -138,3 +138,213 @@ After: svmem(total=16775458816, available=12000374784, percent=28.5, used=440307
 After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
 
 
+Before: svmem(total=16775450624, available=14377603072, percent=14.3, used=2059317248, free=12453044224, active=2077462528, inactive=1894273024, buffers=558837760, cached=1704251392, shared=46657536)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=14377603072, percent=14.3, used=2059317248, free=12453044224, active=2077462528, inactive=1894273024, buffers=558841856, cached=1704247296, shared=46657536)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=14310436864, percent=14.7, used=2102636544, free=7376494592, active=2715561984, inactive=6253154304, buffers=4206923776, cached=3089395712, shared=47165440)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=14310436864, percent=14.7, used=2102636544, free=7376494592, active=2715561984, inactive=6253154304, buffers=4206923776, cached=3089395712, shared=47165440)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=14280904704, percent=14.9, used=2129764352, free=6810050560, active=3056340992, inactive=6471929856, buffers=4601425920, cached=3234209792, shared=46927872)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=14280904704, percent=14.9, used=2129764352, free=6810050560, active=3056340992, inactive=6471929856, buffers=4601425920, cached=3234209792, shared=46927872)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=14270898176, percent=14.9, used=2138025984, free=6277087232, active=3102507008, inactive=6952038400, buffers=4991377408, cached=3368960000, shared=46927872)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=14270898176, percent=14.9, used=2138025984, free=6277087232, active=3102507008, inactive=6952038400, buffers=4991377408, cached=3368960000, shared=46927872)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=13658550272, percent=18.6, used=2748063744, free=5147475968, active=3717922816, inactive=7459512320, buffers=5376471040, cached=3503439872, shared=47181824)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=13658550272, percent=18.6, used=2748063744, free=5147475968, active=3717922816, inactive=7459512320, buffers=5376471040, cached=3503439872, shared=47181824)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=14265495552, percent=15.0, used=2141044736, free=5746384896, active=3125723136, inactive=7452889088, buffers=5382615040, cached=3505405952, shared=46927872)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=14265495552, percent=15.0, used=2141044736, free=5746384896, active=3125723136, inactive=7452889088, buffers=5382615040, cached=3505405952, shared=46927872)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=13656051712, percent=18.6, used=2748522496, free=4624896000, active=3739422720, inactive=7955173376, buffers=5763362816, cached=3638669312, shared=47181824)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=13656051712, percent=18.6, used=2748522496, free=4624896000, active=3739422720, inactive=7955173376, buffers=5763362816, cached=3638669312, shared=47181824)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=12026871808, percent=28.3, used=4301393920, free=2794266624, active=5347520512, inactive=8065523712, buffers=5780123648, cached=3899666432, shared=113909760)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=12026871808, percent=28.3, used=4301393920, free=2794266624, active=5347520512, inactive=8065523712, buffers=5780123648, cached=3899666432, shared=113909760)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11386212352, percent=32.1, used=4935094272, free=1635512320, active=5988179968, inactive=8576692224, buffers=6165245952, cached=4039598080, shared=118702080)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11386212352, percent=32.1, used=4935094272, free=1635512320, active=5988179968, inactive=8576692224, buffers=6165245952, cached=4039598080, shared=118702080)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=12002910208, percent=28.4, used=4322967552, free=2234916864, active=5383974912, inactive=8582381568, buffers=6178291712, cached=4039274496, shared=114425856)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=12002910208, percent=28.4, used=4322967552, free=2234916864, active=5383974912, inactive=8582381568, buffers=6178291712, cached=4039274496, shared=114425856)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11945250816, percent=28.8, used=4378222592, free=1667989504, active=5449072640, inactive=9077075968, buffers=6557286400, cached=4171952128, shared=114466816)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11945250816, percent=28.8, used=4378222592, free=1667989504, active=5449072640, inactive=9077075968, buffers=6557286400, cached=4171952128, shared=114466816)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11276677120, percent=32.8, used=5041012736, free=497422336, active=6116147200, inactive=9570529280, buffers=6930268160, cached=4306747392, shared=118759424)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11276677120, percent=32.8, used=5041012736, free=497422336, active=6116147200, inactive=9570529280, buffers=6930268160, cached=4306747392, shared=118759424)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11913555968, percent=29.0, used=4407848960, free=1132589056, active=5488635904, inactive=9565671424, buffers=6931767296, cached=4303245312, shared=114724864)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11913555968, percent=29.0, used=4407848960, free=1132589056, active=5488635904, inactive=9565671424, buffers=6931767296, cached=4303245312, shared=114724864)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11301728256, percent=32.6, used=5014401024, free=182042624, active=6236229632, inactive=9764495360, buffers=7301431296, cached=4277575680, shared=118456320)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11301728256, percent=32.6, used=5014401024, free=182042624, active=6236229632, inactive=9764495360, buffers=7301431296, cached=4277575680, shared=118456320)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11871670272, percent=29.2, used=4445872128, free=746618880, active=5679484928, inactive=9761017856, buffers=7303413760, cached=4279545856, shared=116428800)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11871670272, percent=29.2, used=4445872128, free=746618880, active=5679484928, inactive=9761017856, buffers=7303413760, cached=4279545856, shared=116428800)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11258167296, percent=32.9, used=5053820928, free=165208064, active=6314647552, inactive=9702383616, buffers=7215009792, cached=4341411840, shared=120311808)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11258167296, percent=32.9, used=5053820928, free=165208064, active=6314647552, inactive=9702383616, buffers=7215009792, cached=4341411840, shared=120311808)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11845951488, percent=29.4, used=4462014464, free=731561984, active=5742505984, inactive=9707483136, buffers=7220297728, cached=4361576448, shared=124268544)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11845951488, percent=29.4, used=4462014464, free=731561984, active=5742505984, inactive=9707483136, buffers=7220297728, cached=4361576448, shared=124268544)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11789742080, percent=29.7, used=4527476736, free=771915776, active=5793439744, inactive=9610555392, buffers=7147831296, cached=4328226816, shared=113418240)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11789742080, percent=29.7, used=4527476736, free=771915776, active=5793439744, inactive=9610555392, buffers=7147831296, cached=4328226816, shared=113418240)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11161497600, percent=33.5, used=5153955840, free=167997440, active=6397784064, inactive=9598660608, buffers=7123714048, cached=4329783296, shared=113745920)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11161497600, percent=33.5, used=5153955840, free=167997440, active=6397784064, inactive=9598660608, buffers=7123714048, cached=4329783296, shared=113745920)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11153379328, percent=33.5, used=5162123264, free=161206272, active=6386962432, inactive=9612988416, buffers=7116173312, cached=4335947776, shared=113696768)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11153379328, percent=33.5, used=5162123264, free=161206272, active=6386962432, inactive=9612988416, buffers=7116173312, cached=4335947776, shared=113696768)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=11527581696, percent=31.3, used=4767547392, free=542134272, active=5991030784, inactive=9622601728, buffers=7079084032, cached=4386684928, shared=133804032)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=11527581696, percent=31.3, used=4767547392, free=542134272, active=5991030784, inactive=9622601728, buffers=7079084032, cached=4386684928, shared=133804032)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=9525190656, percent=43.2, used=6685118464, free=159031296, active=7406694400, inactive=8478195712, buffers=5903634432, cached=4027666432, shared=218841088)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=9525190656, percent=43.2, used=6685118464, free=159031296, active=7406694400, inactive=8478195712, buffers=5903634432, cached=4027666432, shared=218841088)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=8491327488, percent=49.4, used=7711092736, free=168243200, active=7796969472, inactive=8053813248, buffers=5564174336, cached=3331940352, shared=226775040)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=8491327488, percent=49.4, used=7711092736, free=168243200, active=7796969472, inactive=8053813248, buffers=5564174336, cached=3331940352, shared=226775040)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=7768424448, percent=53.7, used=8439877632, free=279302144, active=8320126976, inactive=7224328192, buffers=4964356096, cached=3091914752, shared=220876800)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=7768424448, percent=53.7, used=8439877632, free=279302144, active=8320126976, inactive=7224328192, buffers=4964356096, cached=3091914752, shared=220876800)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=8458752000, percent=49.6, used=7845351424, free=184893440, active=7975636992, inactive=7942713344, buffers=5519880192, cached=3225325568, shared=123957248)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=8458752000, percent=49.6, used=7845351424, free=184893440, active=7975636992, inactive=7942713344, buffers=5519880192, cached=3225325568, shared=123957248)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=7348506624, percent=56.2, used=8934391808, free=174768128, active=8998285312, inactive=6804037632, buffers=4776972288, cached=2889318400, shared=146272256)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=7348506624, percent=56.2, used=8934391808, free=174768128, active=8998285312, inactive=6804037632, buffers=4776972288, cached=2889318400, shared=146272256)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=6631383040, percent=60.5, used=9644888064, free=186769408, active=9764290560, inactive=6099705856, buffers=4244602880, cached=2699190272, shared=152743936)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=6631383040, percent=60.5, used=9644888064, free=186769408, active=9764290560, inactive=6099705856, buffers=4244602880, cached=2699190272, shared=152743936)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=5985714176, percent=64.3, used=10290724864, free=164810752, active=10315730944, inactive=5491302400, buffers=3832246272, cached=2487668736, shared=152760320)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=5985714176, percent=64.3, used=10290724864, free=164810752, active=10315730944, inactive=5491302400, buffers=3832246272, cached=2487668736, shared=152760320)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=5354086400, percent=68.1, used=10922352640, free=167219200, active=10650644480, inactive=4968984576, buffers=3506950144, cached=2178928640, shared=152760320)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=5354086400, percent=68.1, used=10922352640, free=167219200, active=10650644480, inactive=4968984576, buffers=3506950144, cached=2178928640, shared=152760320)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=4583763968, percent=72.7, used=11692457984, free=159694848, active=11280338944, inactive=4160667648, buffers=2969481216, cached=1953816576, shared=152760320)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=4583763968, percent=72.7, used=11692457984, free=159694848, active=11280338944, inactive=4160667648, buffers=2969481216, cached=1953816576, shared=152760320)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=3962068992, percent=76.4, used=12318916608, free=160190464, active=11780386816, inactive=3476168704, buffers=2524418048, cached=1771925504, shared=148213760)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=3962068992, percent=76.4, used=12318916608, free=160190464, active=11780386816, inactive=3476168704, buffers=2524418048, cached=1771925504, shared=148213760)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=3261628416, percent=80.6, used=13018984448, free=165519360, active=12342558720, inactive=2721734656, buffers=1993592832, cached=1597353984, shared=148226048)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=3261628416, percent=80.6, used=13018984448, free=165519360, active=12342558720, inactive=2721734656, buffers=1993592832, cached=1597353984, shared=148226048)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=2575409152, percent=84.6, used=13705543680, free=160845824, active=12870660096, inactive=2021793792, buffers=1527537664, cached=1381523456, shared=148234240)
+Before: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+After: svmem(total=16775450624, available=2575409152, percent=84.6, used=13705543680, free=160845824, active=12870660096, inactive=2021793792, buffers=1527537664, cached=1381523456, shared=148234240)
+After: sswap(total=8096051200, used=0, free=8096051200, percent=0.0, sin=0, sout=0)
+
+
+Before: svmem(total=16775450624, available=1842323456, percent=89.0, used=14445432832, free=186499072, active=13072052224, inactive=1621499904, buffers=1100251136, cached=1043267584, shared=141303808)
+Before: sswap(total=8096051200, used=6975488, free=8089075712, percent=0.1, sin=0, sout=6975488)
+After: svmem(total=16775450624, available=1842323456, percent=89.0, used=14445432832, free=186499072, active=13072052224, inactive=1621499904, buffers=1100251136, cached=1043267584, shared=141303808)
+After: sswap(total=8096051200, used=6975488, free=8089075712, percent=0.1, sin=0, sout=6975488)
+
+
+Before: svmem(total=16775450624, available=1113456640, percent=93.4, used=15174422528, free=178728960, active=13049540608, inactive=1497202688, buffers=532652032, cached=889647104, shared=141312000)
+Before: sswap(total=8096051200, used=6975488, free=8089075712, percent=0.1, sin=0, sout=6975488)
+After: svmem(total=16775450624, available=1113456640, percent=93.4, used=15174422528, free=178728960, active=13049540608, inactive=1497202688, buffers=532652032, cached=889647104, shared=141312000)
+After: sswap(total=8096051200, used=6975488, free=8089075712, percent=0.1, sin=0, sout=6975488)
+
+
