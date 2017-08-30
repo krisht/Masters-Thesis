@@ -2,6 +2,8 @@ from __future__ import print_function
 
 import datetime
 import itertools
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -14,6 +16,8 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
+
+matplotlib.use('Agg')
 
 curr_time = datetime.datetime.now()
 
