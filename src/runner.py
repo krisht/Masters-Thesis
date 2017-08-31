@@ -15,7 +15,7 @@ for run in range(0, 1):
 	# l2_weight = random.choice(l2_weights)
 	# batch_size = random.choice(  batch_sizes)
 
-	batch_size = 100
+	batch_size = 5000
 	alpha = 0.5
 	learning_rate = 1e-5
 	l2_weight = 0.001

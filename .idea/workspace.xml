@@ -2,74 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f9490803-aa0a-4d76-9c34-18b16938ad57" name="Default" comment="Changed file names">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:35.474361 Results/METADATA.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch0_34.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch10_35.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch11_37.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch12_38.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch13_38.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch14_38.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch15_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch16_40.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch17_38.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch18_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch19_38.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch1_35.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch2_40.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch3_35.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch4_37.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch5_37.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch6_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch7_40.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch8_39.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_confusion_matrix_epoch9_38.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_convergence_plot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389_convergence_with_skip_plot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch0_34.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch10_35.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch11_37.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch12_38.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch13_38.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch14_38.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch15_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch16_40.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch17_38.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch18_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch19_38.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch1_35.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch2_40.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch3_35.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch4_37.600%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch5_37.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch6_36.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch7_40.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch8_39.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/2017-08-21 11:35:54.584389triplet_distribution_epoch9_38.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 11:35:54.584389 Results/METADATA.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch0_37.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch1_33.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch2_40.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch3_44.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch4_37.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch5_43.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch6_41.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch7_40.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_confusion_matrix_epoch8_42.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_convergence_plot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603_convergence_with_skip_plot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch0_37.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch1_33.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch2_40.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch3_44.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch4_37.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch5_43.200%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch6_41.800%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch7_40.000%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/2017-08-21 12:10:32.009603triplet_distribution_epoch8_42.400%.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/2017-08-21 12:10:32.009603 Results/METADATA.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BrainNet.py" afterPath="$PROJECT_DIR$/src/BrainNet.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/runner.py" afterPath="$PROJECT_DIR$/src/runner.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="runner.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="runner.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/runner.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+              <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -123,25 +55,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BrainNet.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BrainNet.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="425" column="74" lean-forward="true" selection-start-line="425" selection-start-column="74" selection-end-line="425" selection-end-column="74" />
+            <state relative-caret-position="150">
+              <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <element signature="e#13792#16118#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/temp.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -193,10 +114,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="47" />
-    <option name="y" value="24" />
-    <option name="width" value="1873" />
-    <option name="height" value="1056" />
+    <option name="x" value="983" />
+    <option name="y" value="52" />
+    <option name="width" value="937" />
+    <option name="height" value="1028" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -213,6 +134,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -241,8 +164,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -483,7 +404,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="24" width="1873" height="1056" extended-state="6" />
+    <frame x="983" y="52" width="937" height="1028" extended-state="4" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -493,7 +414,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18526427" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35965848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="MaxCompute Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="MaxCompute Job Explorer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Running Info" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -539,6 +460,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/temp.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/runner.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -555,19 +492,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/temp.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/temp.txt" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -592,7 +521,6 @@
           <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -611,7 +539,6 @@
           <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -650,7 +577,6 @@
           <caret line="366" column="66" lean-forward="true" selection-start-line="366" selection-start-column="66" selection-end-line="366" selection-end-column="66" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -669,7 +595,6 @@
           <caret line="351" column="75" lean-forward="false" selection-start-line="351" selection-start-column="75" selection-end-line="351" selection-end-column="75" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -708,7 +633,6 @@
           <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -722,31 +646,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/temp.txt">
+    <entry file="file://$PROJECT_DIR$/src/temp.txt" />
+    <entry file="file://$PROJECT_DIR$/src/runner.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="48" column="16" lean-forward="false" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="210">
+          <caret line="14" column="43" lean-forward="false" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BrainNet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="425" column="74" lean-forward="true" selection-start-line="425" selection-start-column="74" selection-end-line="425" selection-end-column="74" />
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#13792#16118#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/runner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
