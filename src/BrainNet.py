@@ -16,8 +16,9 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
-
 matplotlib.use('Agg')
+
+plt.rcParams["font.family"] = "FreeSerif"
 
 curr_time = datetime.datetime.now()
 
@@ -39,7 +40,7 @@ def plot_embedding(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embed
     	legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
 
 
-    plt.figure(figsize=(5.0, 5.0), dpi=800)
+    plt.figure(figsize=(4.0, 4.0), dpi=800)
     plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
     plt.legend(handles=legend_entry)
     plt.xticks([]), plt.yticks([])
@@ -55,14 +56,14 @@ def compute_tSNE(X, y, epoch, accuracy, num_to_label):
 
 
 def get_loss(loss_mem, loss_mem_skip):
-	plt.figure(figsize=(20.0, 20.0), dpi=800)
+	plt.figure(figsize=(4.0, 4.0), dpi=800)
 	plt.plot(loss_mem_skip, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
 	plt.savefig('./%s Results/%s_convergence_with_skip_plot.png' % (curr_time, curr_time), bbox_inches='tight')
 
-	plt.figure(figsize=(20.0, 20.0), dpi=800)
+	plt.figure(figsize=(4.0, 4.0), dpi=800)
 	plt.plot(loss_mem, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
@@ -70,28 +71,31 @@ def get_loss(loss_mem, loss_mem_skip):
 	plt.savefig('./%s Results/%s_convergence_plot.png' % (curr_time, curr_time), bbox_inches='tight')
 
 
-def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy=None, epoch=None):
-	plt.figure(figsize=(5.0, 5.0))
-	plt.imshow(cm, interpolation='nearest', cmap=cmap)
-	tick_marks = np.arange(len(classes))
-	plt.xticks(tick_marks, classes, rotation=45)
-	plt.yticks(tick_marks, classes)
+def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy = None, epoch=None):
+    plt.figure(figsize=(4, 4), dpi=800)
+    plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    tick_marks = np.arange(len(classes))
+    plt.xticks(tick_marks, classes, rotation=45)
+    plt.yticks(tick_marks, classes)
 
-	if normalize:
-		cm = np.around(cm.astype('float') / cm.sum(axis=1)[:, np.newaxis], 2)
-		print("Normalized confusion matrix")
-	else:
-		print('Confusion matrix, without normalization')
+    if normalize:
+        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+        print("Normalized confusion matrix")
+    else:
+        print('Confusion matrix, without normalization')
 
-	print(cm)
-	thresh = cm.max() / 2.
-	for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-		plt.text(j, i, cm[i, j], horizontalalignment="center", color="white" if cm[i, j] > thresh else "black")
+    print(cm)
+    thresh = cm.max() / 2.
+    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+        plt.text(j, i, '{0:.2f}'.format(cm[i, j]),
+                 horizontalalignment="center",
+                 verticalalignment="center",                 
+                 color="white" if cm[i, j] > thresh else "black") 
 
-	plt.tight_layout()
-	plt.ylabel('True label')
-	plt.xlabel('Predicted label')
-	plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+    #plt.tight_layout()
+    plt.ylabel('True labels')
+    plt.xlabel('Predicted label')
+    plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 
 class BrainNet:
@@ -108,12 +112,12 @@ class BrainNet:
 
 		self.num_to_class = dict()
 
-		self.num_to_class[0] = 'bckg'
-		self.num_to_class[1] = 'artf'
-		self.num_to_class[2] = 'eybl'
-		self.num_to_class[3] = 'gped'
-		self.num_to_class[4] = 'spsw'
-		self.num_to_class[5] = 'pled'
+		self.num_to_class[0] = 'BCKG'
+		self.num_to_class[1] = 'ARTF'
+		self.num_to_class[2] = 'EYBL'
+		self.num_to_class[3] = 'GPED'
+		self.num_to_class[4] = 'SPSW'
+		self.num_to_class[5] = 'PLED'
 
 		self.count_of_triplets = dict()
 

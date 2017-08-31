@@ -15,7 +15,7 @@ for run in range(0, 1):
 	# l2_weight = random.choice(l2_weights)
 	# batch_size = random.choice(  batch_sizes)
 
-	batch_size = 5000
+	batch_size = 100
 	alpha = 0.5
 	learning_rate = 1e-5
 	l2_weight = 0.001
@@ -23,7 +23,7 @@ for run in range(0, 1):
 
 	print('Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}'.format(run + 1, alpha, learning_rate, l2_weight, batch_size))
 	#path_to_files='/home/krishna/data',
-	net = BrainNet( path_to_files='/home/krishna/data', alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size,
+	net = BrainNet(alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size,
 				   debug=True, train_epoch=20)
 	blah, val_percent, val_conf_matrix = net.train_model()
 
