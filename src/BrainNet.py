@@ -4,7 +4,10 @@ import datetime
 import itertools
 import matplotlib
 matplotlib.use('Agg')
+
 import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "FreeSerif"
+
 import numpy as np
 import os
 import psutil
@@ -16,9 +19,8 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
-matplotlib.use('Agg')
 
-plt.rcParams["font.family"] = "FreeSerif"
+
 
 curr_time = datetime.datetime.now()
 
@@ -30,7 +32,7 @@ def norm_op(vector, axis):
 	# return normalize(vector, axis=axis, norm='l2')
 	return vector * 10e4
 
-def plot_embedding(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
+def plot_embedding(X, y, epoch, accuracy, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     X = (X - x_min) / (x_max - x_min)
     cmap = plt.get_cmap('gist_rainbow')
@@ -45,14 +47,13 @@ def plot_embedding(X, y, epoch, accuracy, perp, num_to_label, title="t-SNE Embed
     plt.legend(handles=legend_entry)
     plt.xticks([]), plt.yticks([])
     plt.title(title)
-    plt.savefig('./%s Results/%s_tSNE_plot_perp%d_epoch%s_%.3f%%.png' % (curr_time, curr_time, perp, epoch, accuracy), bbox_inches='tight')
+    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 def compute_tSNE(X, y, epoch, accuracy, num_to_label):
-	for perp in [2,5,30,50,70,100]:
-		tsne = TSNE(n_components=2, init='random', random_state=0)
-		X_tsne = tsne.fit_transform(X)
-		plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, perp=perp, num_to_label=num_to_label)
-		np.savez('./%s Results/%s_tSNE_plot_perp%d_epoch%s_%.3f%%' % (curr_time, curr_time, perp, epoch, accuracy), X_tsne, y)
+	tsne = TSNE(n_components=2, init='random', random_state=0)
+	X_tsne = tsne.fit_transform(X)
+	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, num_to_label=num_to_label)
+	np.savez('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
 
 
 def get_loss(loss_mem, loss_mem_skip):
@@ -200,13 +201,6 @@ class BrainNet:
 			file.write('Debug mode: %s\n' % debug)
 			file.write('Restore directory: %s\n' % restore_dir)
 			file.close()
-		# with open('temp.txt', 'a+') as file:
-		# 	file.write("In __init__\n\n")
-		# 	for var, val in globals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	for var, val in locals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	file.write("\n\n")
 
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -220,17 +214,14 @@ class BrainNet:
 			neg_dist = tf.reduce_sum(tf.square(tf.subtract(self.anchor_out, self.negative_out)), 1)
 			basic_loss = tf.add(tf.subtract(pos_dist, neg_dist), alpha)
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
-			# print(pos_dist.get_shape())
 			return loss
 
 	def get_triplets(self, size=1):
-		# Begin New Stuff
 		A = []
 		P = []
 		N = []
 
 		for _ in range(size):
-		# End new stuff
 			choices = ['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf']
 			neg_choices = list(choices)
 			choice = random.choice(choices)
@@ -280,11 +271,6 @@ class BrainNet:
 			a = norm_op(a, axis=0)
 			p = norm_op(p, axis=0)
 			n = norm_op(n, axis=0)
-
-			# a = np.expand_dims(a, 0)
-			# p = np.expand_dims(p, 0)
-			# n = np.expand_dims(n, 0)
-		# Begin new stuff
 			A.append(a)
 			P.append(p)
 			N.append(n)
@@ -331,14 +317,7 @@ class BrainNet:
 		val_conf_matrix = 0
 		epoch = -1
 		while True:
-			# Started here
-			# with open('psutil.out', 'a+') as myfile:
-			# 	myfile.write("Before: " + str(psutil.virtual_memory()) + "\n")
-			# 	myfile.write("Before: " + str(psutil.swap_memory()) + "\n")
 			epoch += 1
-			# with open('psutil.out', 'a+') as myfile:
-			# 	myfile.write("After: " + str(psutil.virtual_memory()) + "\n")
-			# 	myfile.write("After: " + str(psutil.swap_memory()) + "\n\n\n")
 			ii = 0
 			count = 0
 			temp_count = 0
@@ -372,18 +351,6 @@ class BrainNet:
 				if self.DEBUG:
 					print("Epoch: %2d, Iter: %7d, IterSkip: %7d, Loss: %.4f, P_Diff: %.4f, N_diff: %.4f" % (epoch, ii, count, temploss, d1, d2))
 			val_percentage, val_conf_matrix = self.validate(epoch)
-			# with open('temp.txt', 'a+') as file:
-			# 	file.write("In train_model\n\n")
-			# 	for var, val in globals().iteritems():
-			# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			# 	for var, val in locals().iteritems():
-			# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-			# 	file.write("\n\n")
-			# Ended here
-			# with open('psutil.out', 'a+') as myfile:
-			# 	myfile.write("After: " + str(psutil.virtual_memory())+"\n")
-			# 	myfile.write("After: " + str(psutil.swap_memory())+"\n\n\n")
-
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
@@ -436,14 +403,6 @@ class BrainNet:
 					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axis=0))
 					class_list.append(self.artf_num)
 
-		# with open('temp.txt', 'a+') as file:
-		# 	file.write("In get_sample\n\n")
-		# 	for var, val in globals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	for var, val in locals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	file.write("\n\n")
-
 		return data_list, class_list
 
 	def validate(self, epoch):
@@ -477,21 +436,6 @@ class BrainNet:
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
 		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class)
-
-		# plt.figure(figsize=(5.0, 5.0))
-
-		# plt.bar(range(len(list(self.count_of_triplets.keys()))), self.count_of_triplets.values(), align='center')
-		# plt.xticks(range(len(self.count_of_triplets)), self.count_of_triplets.keys(), rotation='vertical')
-		# plt.subplots_adjust(bottom=0.30)
-		# plt.savefig('./%s Results/%striplet_distribution_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, percentage), bbox_inches='tight')
 		self.count_of_triplets = dict()
-
-		# with open('temp.txt', 'a+') as file:
-		# 	file.write("In validate\n\n")
-		# 	for var, val in globals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	for var, val in locals().iteritems():
-		# 		file.write("%s\t\t\t:\t\t\t%s\t\t\t:\t\t\t%s\n" % (var, type(val), sys.getsizeof(val)))
-		# 	file.write("\n\n")
 
 		return percentage, conf_matrix
