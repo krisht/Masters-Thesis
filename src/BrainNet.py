@@ -216,10 +216,11 @@ class BrainNet:
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
 
-	def get_triplets(self, size=1000):
+	def get_triplets(self, size=100):
 		A = []
 		P = []
 		N = []
+		print("Getting triplets")
 
 		for _ in range(size):
 			choices = ['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf']
