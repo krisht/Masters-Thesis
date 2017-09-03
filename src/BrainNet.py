@@ -42,12 +42,12 @@ def plot_embedding(X, y, epoch, accuracy, num_to_label, title="t-SNE Embedding o
     	legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
 
 
-    plt.figure(figsize=(4.0, 4.0), dpi=800)
+    plt.figure(figsize=(4.0, 4.0))
     plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
     plt.legend(handles=legend_entry)
     plt.xticks([]), plt.yticks([])
     plt.title(title)
-    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 def compute_tSNE(X, y, epoch, accuracy, num_to_label):
 	tsne = TSNE(n_components=2, init='random', random_state=0)
@@ -57,27 +57,31 @@ def compute_tSNE(X, y, epoch, accuracy, num_to_label):
 
 
 def get_loss(loss_mem, loss_mem_skip):
-	plt.figure(figsize=(4.0, 4.0), dpi=800)
+	plt.figure(figsize=(4.0, 4.0))
 	plt.plot(loss_mem_skip, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
-	plt.savefig('./%s Results/%s_convergence_with_skip_plot.png' % (curr_time, curr_time), bbox_inches='tight')
+	plt.savefig('./%s Results/%s_convergence_with_skip_plot.pdf' % (curr_time, curr_time), bbox_inches='tight')
 
-	plt.figure(figsize=(4.0, 4.0), dpi=800)
+	plt.figure(figsize=(4.0, 4.0))
 	plt.plot(loss_mem, 'ro-')
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
-	plt.savefig('./%s Results/%s_convergence_plot.png' % (curr_time, curr_time), bbox_inches='tight')
+	plt.savefig('./%s Results/%s_convergence_plot.pdf' % (curr_time, curr_time), bbox_inches='tight')
 
 
 def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy = None, epoch=None):
-    plt.figure(figsize=(4, 4), dpi=800)
+    plt.figure(figsize=(4, 4))
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
+    ax = plt.gca()
+    #plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
+    ax.yaxis.set_label_coords(-0.1,1.03)
+    h = ax.set_ylabel('True label', rotation=0, horizontalalignment='left')
 
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
@@ -86,6 +90,7 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
         print('Confusion matrix, without normalization')
 
     print(cm)
+
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, '{0:.2f}'.format(cm[i, j]),
@@ -94,9 +99,9 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
                  color="white" if cm[i, j] > thresh else "black") 
 
     #plt.tight_layout()
-    plt.ylabel('True labels')
     plt.xlabel('Predicted label')
-    plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.png' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+    #plt.show()
+    plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 
 class BrainNet:
