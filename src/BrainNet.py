@@ -28,8 +28,8 @@ loss_mem = []
 loss_mem_skip = []
 
 
-def norm_op(vector, axis):
-	return normalize(vector, axis=axis, norm='l2')
+def norm_op(vector, axisss):
+	return normalize(vector, axis=axisss, norm='l2')
 	#return vector * 10e4
 
 def plot_embedding(X, y, epoch, accuracy, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
@@ -175,7 +175,6 @@ class BrainNet:
 		self.l2_weight = l2_weight
 		self.inference_input = tf.placeholder(tf.float32, shape=input_shape)
 		self.inference_model = self.get_model(self.inference_input, reuse=False)
-		print("HERE")
 		if restore_dir is not None:
 			if self.DEBUG:
 				print("Loading saved data...")
@@ -191,6 +190,7 @@ class BrainNet:
 
 		with open(self.metadata_file, 'w') as file:
 			file.write('DCNN Clustering Network\n')
+			file.write('Normalization on\n')
 			file.write('Time of training: %s\n' % curr_time)
 			file.write('Input shape: %s\n' % input_shape)
 			file.write('Path to files: %s\n' % path_to_files)
@@ -221,7 +221,7 @@ class BrainNet:
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
 
-	def get_triplets(self, size=1):
+	def get_triplets(self, size=100):
 		A = []
 		P = []
 		N = []
@@ -284,10 +284,6 @@ class BrainNet:
 		A = np.asarray(A)
 		P = np.asarray(P)
 		N = np.asarray(N)
-		print(A.shape)
-		print(A)
-		print(np.sum(A, axis=1))
-
 		return A, P, N
 
 	# End new stuff
@@ -544,7 +540,7 @@ class BrainNet:
 						end_points['logits'] = logits
 		return end_points['logits']
 
-	def get_model(self, inputs, reuse=False, use_inception=True):
+	def get_model(self, inputs, reuse=False, use_inception=False):
 		if not use_inception:
 			return self.simple_model(inputs, reuse=reuse)
 		else:
