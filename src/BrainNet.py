@@ -221,7 +221,7 @@ class BrainNet:
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
 
-	def get_triplets(self, size=100):
+	def get_triplets(self, size=1):
 		A = []
 		P = []
 		N = []
