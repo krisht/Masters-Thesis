@@ -475,7 +475,7 @@ class BrainNet:
 					aux_logits = tf.identity(end_points['mixed_17x17x768e'])
 					with tf.variable_scope('aux_logits'):
 						aux_logits = slim.layers.avg_pool2d(aux_logits, kernel_size=5, stride=3, padding='VALID', scope='aux_logits/avg_pool1')
-						aux_logits = slim.layers.conv2d(aux_logits, 128, kernel_size=1, scope='proj', scope='aux_logits/conv1')
+						aux_logits = slim.layers.conv2d(aux_logits, 128, kernel_size=1, scope='aux_logits/proj')
 						# Shape of feature map before the final layer.
 						shape = aux_logits.get_shape()
 						aux_logits = slim.layers.conv2d(aux_logits, 768, shape[1:3], padding='VALID', scope='aux_logits/conv2')
