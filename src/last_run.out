@@ -1,678 +1,1067 @@
-2017-09-07 02:38:14.447593: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
-2017-09-07 02:38:14.447695: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
-2017-09-07 02:38:14.447707: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
-2017-09-07 02:38:19.515045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+2017-09-07 02:46:50.512591: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-07 02:46:50.512682: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-07 02:46:50.512695: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-07 02:46:55.519540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
 name: GeForce GTX TITAN X
 major: 5 minor: 2 memoryClockRate (GHz) 1.076
 pciBusID 0000:04:00.0
 Total memory: 11.92GiB
 Free memory: 11.81GiB
-2017-09-07 02:38:20.306014: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x3beff10 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
-2017-09-07 02:38:20.308120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+2017-09-07 02:46:56.303133: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x4a89cf0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-07 02:46:56.305464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
 name: GeForce GTX TITAN X
 major: 5 minor: 2 memoryClockRate (GHz) 1.076
 pciBusID 0000:08:00.0
 Total memory: 11.92GiB
 Free memory: 11.81GiB
-2017-09-07 02:38:21.099083: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x4ccffe0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
-2017-09-07 02:38:21.102108: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+2017-09-07 02:46:57.108836: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5b696d0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-07 02:46:57.111120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
 name: GeForce GTX TITAN X
 major: 5 minor: 2 memoryClockRate (GHz) 1.076
 pciBusID 0000:85:00.0
 Total memory: 11.92GiB
 Free memory: 11.81GiB
-2017-09-07 02:38:21.901825: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x53350b0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
-2017-09-07 02:38:21.903752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+2017-09-07 02:46:57.919684: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x61ceb00 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-07 02:46:57.921846: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
 name: Tesla K40c
 major: 3 minor: 5 memoryClockRate (GHz) 0.745
 pciBusID 0000:86:00.0
 Total memory: 11.92GiB
 Free memory: 11.85GiB
-2017-09-07 02:38:22.717724: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5338a40 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
-2017-09-07 02:38:22.719981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 4 with properties: 
+2017-09-07 02:46:58.742885: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x61d2490 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-07 02:46:58.745223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 4 with properties: 
 name: GeForce GTX TITAN X
 major: 5 minor: 2 memoryClockRate (GHz) 1.076
 pciBusID 0000:8a:00.0
 Total memory: 11.92GiB
 Free memory: 11.81GiB
-2017-09-07 02:38:22.721262: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
-2017-09-07 02:38:22.721304: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
-2017-09-07 02:38:22.721334: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 4
-2017-09-07 02:38:22.721395: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
-2017-09-07 02:38:22.721415: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
-2017-09-07 02:38:22.721438: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 4
-2017-09-07 02:38:22.721463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
-2017-09-07 02:38:22.721488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
-2017-09-07 02:38:22.721507: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 3
-2017-09-07 02:38:22.722402: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
-2017-09-07 02:38:22.722448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
-2017-09-07 02:38:22.722464: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 2
-2017-09-07 02:38:22.722479: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 4
-2017-09-07 02:38:22.722507: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 0
-2017-09-07 02:38:22.722533: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 1
-2017-09-07 02:38:22.722590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 3
-2017-09-07 02:38:22.722733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 4 
-2017-09-07 02:38:22.722752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N N 
-2017-09-07 02:38:22.722765: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N N 
-2017-09-07 02:38:22.722776: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y N Y 
-2017-09-07 02:38:22.722788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N N Y N 
-2017-09-07 02:38:22.722799: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 4:   N N Y N Y 
-2017-09-07 02:38:22.722826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0)
-2017-09-07 02:38:22.722842: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:08:00.0)
-2017-09-07 02:38:22.722855: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX TITAN X, pci bus id: 0000:85:00.0)
-2017-09-07 02:38:22.722868: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K40c, pci bus id: 0000:86:00.0)
-2017-09-07 02:38:22.722881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:4) -> (device: 4, name: GeForce GTX TITAN X, pci bus id: 0000:8a:00.0)
+2017-09-07 02:46:58.746568: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-07 02:46:58.746599: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-07 02:46:58.746627: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 4
+2017-09-07 02:46:58.746691: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-07 02:46:58.746713: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-07 02:46:58.746739: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 4
+2017-09-07 02:46:58.746765: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-07 02:46:58.746792: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-07 02:46:58.746812: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 3
+2017-09-07 02:46:58.747740: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-07 02:46:58.747791: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-07 02:46:58.747808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 2
+2017-09-07 02:46:58.747823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 4
+2017-09-07 02:46:58.747852: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 0
+2017-09-07 02:46:58.747880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 1
+2017-09-07 02:46:58.747943: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 4 and 3
+2017-09-07 02:46:58.748080: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 4 
+2017-09-07 02:46:58.748101: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N N 
+2017-09-07 02:46:58.748113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N N 
+2017-09-07 02:46:58.748125: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y N Y 
+2017-09-07 02:46:58.748136: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N N Y N 
+2017-09-07 02:46:58.748148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 4:   N N Y N Y 
+2017-09-07 02:46:58.748176: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0)
+2017-09-07 02:46:58.748193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:08:00.0)
+2017-09-07 02:46:58.748223: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX TITAN X, pci bus id: 0000:85:00.0)
+2017-09-07 02:46:58.748252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K40c, pci bus id: 0000:86:00.0)
+2017-09-07 02:46:58.748266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:4) -> (device: 4, name: GeForce GTX TITAN X, pci bus id: 0000:8a:00.0)
 Run: 1, Alpha: 0.5, Learning Rate: 1.00e-05, L2-Weight: 1.00e-03, Batch Size: 5000
 HERE
-Getting triplets
-Epoch:  0, Iter:       1, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:       2, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:       3, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:       4, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:       5, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0040
-Getting triplets
-Epoch:  0, Iter:       6, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:       7, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:       8, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:       9, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:      10, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      11, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0022
-Getting triplets
-Epoch:  0, Iter:      12, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:      13, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:      14, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0043, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      15, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:      16, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0054, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:      17, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0034, N_diff: 0.0072
-Getting triplets
-Epoch:  0, Iter:      18, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0017
-Getting triplets
-Epoch:  0, Iter:      19, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      20, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:      21, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      22, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0017
-Getting triplets
-Epoch:  0, Iter:      23, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0058
-Getting triplets
-Epoch:  0, Iter:      24, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      25, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0028
-Getting triplets
-Epoch:  0, Iter:      26, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:      27, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:      28, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:      29, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      30, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0032
-Getting triplets
-Epoch:  0, Iter:      31, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0046, N_diff: 0.0028
-Getting triplets
-Epoch:  0, Iter:      32, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0018
-Getting triplets
-Epoch:  0, Iter:      33, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0042
-Getting triplets
-Epoch:  0, Iter:      34, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:      35, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0031, N_diff: 0.0054
-Getting triplets
-Epoch:  0, Iter:      36, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      37, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0041
-Getting triplets
-Epoch:  0, Iter:      38, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0046, N_diff: 0.0025
-Getting triplets
-Epoch:  0, Iter:      39, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0027, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:      40, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0017, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:      41, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      42, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0046
-Getting triplets
-Epoch:  0, Iter:      43, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0030
-Getting triplets
-Epoch:  0, Iter:      44, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0062, N_diff: 0.0059
-Getting triplets
-Epoch:  0, Iter:      45, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:      46, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:      47, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0022
-Getting triplets
-Epoch:  0, Iter:      48, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0068
-Getting triplets
-Epoch:  0, Iter:      49, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0036, N_diff: 0.0021
-Getting triplets
-Epoch:  0, Iter:      50, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:      51, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      52, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      53, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0075, N_diff: 0.0035
-Getting triplets
-Epoch:  0, Iter:      54, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:      55, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0023
-Getting triplets
-Epoch:  0, Iter:      56, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0107, N_diff: 0.0082
-Getting triplets
-Epoch:  0, Iter:      57, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:      58, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0032
-Getting triplets
-Epoch:  0, Iter:      59, IterSkip:       0, Loss: 0.4989, P_Diff: 0.0055, N_diff: 0.0343
-Getting triplets
-Epoch:  0, Iter:      60, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      61, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0066
-Getting triplets
-Epoch:  0, Iter:      62, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0038
-Getting triplets
-Epoch:  0, Iter:      63, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0043, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:      64, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:      65, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:      66, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:      67, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0043, N_diff: 0.0104
-Getting triplets
-Epoch:  0, Iter:      68, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0020
-Getting triplets
-Epoch:  0, Iter:      69, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0018
-Getting triplets
-Epoch:  0, Iter:      70, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0034
-Getting triplets
-Epoch:  0, Iter:      71, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:      72, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0115, N_diff: 0.0096
-Getting triplets
-Epoch:  0, Iter:      73, IterSkip:       0, Loss: 0.4997, P_Diff: 0.0003, N_diff: 0.0168
-Getting triplets
-Epoch:  0, Iter:      74, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0050, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:      75, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:      76, IterSkip:       0, Loss: 0.5007, P_Diff: 0.0265, N_diff: 0.0047
-Getting triplets
-Epoch:  0, Iter:      77, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:      78, IterSkip:       0, Loss: 0.5028, P_Diff: 0.1349, N_diff: 0.1240
-Getting triplets
-Epoch:  0, Iter:      79, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0042
-Getting triplets
-Epoch:  0, Iter:      80, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0052, N_diff: 0.0091
-Getting triplets
-Epoch:  0, Iter:      81, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0040, N_diff: 0.0016
-Getting triplets
-Epoch:  0, Iter:      82, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0052, N_diff: 0.0052
-Getting triplets
-Epoch:  0, Iter:      83, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0022
-Getting triplets
-Epoch:  0, Iter:      84, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0012
-Getting triplets
-Epoch:  0, Iter:      85, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:      86, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:      87, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0016
-Getting triplets
-Epoch:  0, Iter:      88, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:      89, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:      90, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:      91, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:      92, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0060
-Getting triplets
-Epoch:  0, Iter:      93, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0053, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:      94, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:      95, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:      96, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0012
-Getting triplets
-Epoch:  0, Iter:      97, IterSkip:       0, Loss: 0.5142, P_Diff: 0.7377, N_diff: 0.7280
-Getting triplets
-Epoch:  0, Iter:      98, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:      99, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     100, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     101, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     102, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     103, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     104, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     105, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0039, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     106, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     107, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     108, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     109, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     110, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     111, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0017
-Getting triplets
-Epoch:  0, Iter:     112, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     113, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     114, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:     115, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     116, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     117, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     118, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     119, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     120, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     121, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     122, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     123, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     124, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     125, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     126, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     127, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     128, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
-Getting triplets
+Epoch:  0, Iter:       1, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:       2, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0008
+Epoch:  0, Iter:       3, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:       4, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:       5, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:       6, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:       7, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:       8, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:       9, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:      10, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0012
+Epoch:  0, Iter:      11, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
+Epoch:  0, Iter:      12, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      13, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0026
+Epoch:  0, Iter:      14, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:      15, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
+Epoch:  0, Iter:      16, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0006
+Epoch:  0, Iter:      17, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0006
+Epoch:  0, Iter:      18, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
+Epoch:  0, Iter:      19, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:      20, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:      21, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0010
+Epoch:  0, Iter:      22, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0026
+Epoch:  0, Iter:      23, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0011
+Epoch:  0, Iter:      24, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0028, N_diff: 0.0026
+Epoch:  0, Iter:      25, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0006
+Epoch:  0, Iter:      26, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0030, N_diff: 0.0016
+Epoch:  0, Iter:      27, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:      28, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:      29, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0024
+Epoch:  0, Iter:      30, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:      31, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:      32, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      33, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:      34, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:      35, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:      36, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0008
+Epoch:  0, Iter:      37, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0002
+Epoch:  0, Iter:      38, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:      39, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0042, N_diff: 0.0007
+Epoch:  0, Iter:      40, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0025
+Epoch:  0, Iter:      41, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:      42, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:      43, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:      44, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      45, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0044, N_diff: 0.0044
+Epoch:  0, Iter:      46, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:      47, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:      48, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0021
+Epoch:  0, Iter:      49, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:      50, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0013
+Epoch:  0, Iter:      51, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0003
+Epoch:  0, Iter:      52, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0001
+Epoch:  0, Iter:      53, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:      54, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0071, N_diff: 0.0017
+Epoch:  0, Iter:      55, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0083, N_diff: 0.0084
+Epoch:  0, Iter:      56, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0006
+Epoch:  0, Iter:      57, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:      58, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0016
+Epoch:  0, Iter:      59, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:      60, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:      61, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:      62, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:      63, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:      64, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:      65, IterSkip:       0, Loss: 0.6073, P_Diff: 0.3276, N_diff: 0.0008
+Epoch:  0, Iter:      66, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:      67, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:      68, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:      69, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:      70, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:      71, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      72, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:      73, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0000
+Epoch:  0, Iter:      74, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:      75, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0005
+Epoch:  0, Iter:      76, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:      77, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0480, N_diff: 0.0480
+Epoch:  0, Iter:      78, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:      79, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:      80, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      81, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0000
+Epoch:  0, Iter:      82, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0022
+Epoch:  0, Iter:      83, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:      84, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:      85, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0037, N_diff: 0.0009
+Epoch:  0, Iter:      86, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0010
+Epoch:  0, Iter:      87, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:      88, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:      89, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:      90, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0008
+Epoch:  0, Iter:      91, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      92, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:      93, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:      94, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:      95, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:      96, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0009
+Epoch:  0, Iter:      97, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:      98, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:      99, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     100, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     101, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0005
+Epoch:  0, Iter:     102, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     103, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     104, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     105, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     106, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     107, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     108, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     109, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     110, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     111, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     112, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:     113, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     114, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     115, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:     116, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     117, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0010
+Epoch:  0, Iter:     118, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     119, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     120, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     121, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     122, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     123, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     124, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     125, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     126, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     127, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     128, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0074, N_diff: 0.0003
 Epoch:  0, Iter:     129, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     130, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     131, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
+Epoch:  0, Iter:     130, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0008
+Epoch:  0, Iter:     131, IterSkip:       0, Loss: 0.5004, P_Diff: 0.0203, N_diff: 0.0003
 Epoch:  0, Iter:     132, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     133, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     134, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     135, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0077, N_diff: 0.0078
-Getting triplets
-Epoch:  0, Iter:     136, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     137, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     138, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     139, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     140, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     141, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     142, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0029, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     143, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     144, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     145, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0018
-Getting triplets
-Epoch:  0, Iter:     146, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     147, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     148, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     149, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     150, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     151, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     152, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     153, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     154, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     155, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     156, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     157, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     158, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     159, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     160, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     161, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     162, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     163, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     164, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     165, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
+Epoch:  0, Iter:     133, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     134, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0044, N_diff: 0.0045
+Epoch:  0, Iter:     135, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     136, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     137, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     138, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     139, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     140, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     141, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     142, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     143, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     144, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     145, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     146, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     147, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     148, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     149, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0006
+Epoch:  0, Iter:     150, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0006
+Epoch:  0, Iter:     151, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     152, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     153, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     154, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     155, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     156, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:     157, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     158, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     159, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     160, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     161, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     162, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     163, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     164, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     165, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
 Epoch:  0, Iter:     166, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     167, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     168, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     169, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     170, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     171, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     172, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     173, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     174, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
-Getting triplets
+Epoch:  0, Iter:     167, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     168, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     169, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     170, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     171, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     172, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     173, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     174, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
 Epoch:  0, Iter:     175, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     176, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0013
-Getting triplets
+Epoch:  0, Iter:     176, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
 Epoch:  0, Iter:     177, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     178, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     179, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     180, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     181, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     182, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
+Epoch:  0, Iter:     178, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0007
+Epoch:  0, Iter:     179, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     180, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     181, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     182, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
 Epoch:  0, Iter:     183, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     184, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     185, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     186, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     187, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:     188, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     189, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     190, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     191, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     192, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     193, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     194, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     195, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     196, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     197, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     198, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     199, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     200, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     201, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     202, IterSkip:       0, Loss: 0.4994, P_Diff: 0.0002, N_diff: 0.0245
-Getting triplets
-Epoch:  0, Iter:     203, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     204, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0022
-Getting triplets
-Epoch:  0, Iter:     205, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     206, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     207, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     208, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0038, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     209, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     210, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     211, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     212, IterSkip:       0, Loss: 0.4996, P_Diff: 0.0001, N_diff: 0.0197
-Getting triplets
-Epoch:  0, Iter:     213, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     214, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0038
-Getting triplets
-Epoch:  0, Iter:     215, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     216, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:     217, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     218, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
-Getting triplets
+Epoch:  0, Iter:     184, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     185, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0020
+Epoch:  0, Iter:     186, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     187, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     188, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
+Epoch:  0, Iter:     189, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     190, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     191, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     192, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     193, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     194, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     195, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     196, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:     197, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     198, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     199, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     200, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     201, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0027, N_diff: 0.0027
+Epoch:  0, Iter:     202, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0015
+Epoch:  0, Iter:     203, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     204, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0005
+Epoch:  0, Iter:     205, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     206, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:     207, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0011
+Epoch:  0, Iter:     208, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     209, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0002
+Epoch:  0, Iter:     210, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     211, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     212, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0016
+Epoch:  0, Iter:     213, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     214, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     215, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     216, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:     217, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     218, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
 Epoch:  0, Iter:     219, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     220, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     221, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0007
-Getting triplets
-Epoch:  0, Iter:     222, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     223, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     224, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     225, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     226, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     227, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
-Getting triplets
+Epoch:  0, Iter:     220, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     221, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     222, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     223, IterSkip:       0, Loss: 0.5013, P_Diff: 0.0366, N_diff: 0.0001
+Epoch:  0, Iter:     224, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     225, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     226, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
+Epoch:  0, Iter:     227, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
 Epoch:  0, Iter:     228, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     229, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0017, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:     230, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     231, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     232, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     233, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     234, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     235, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     236, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     237, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     238, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     239, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     240, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     241, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:     242, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     243, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     244, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     245, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     246, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     247, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     248, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0116, N_diff: 0.0125
-Getting triplets
-Epoch:  0, Iter:     249, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     250, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0019
-Getting triplets
-Epoch:  0, Iter:     251, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     252, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     253, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     254, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     255, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     256, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     257, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:     258, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0035
-Getting triplets
-Epoch:  0, Iter:     259, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:     260, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     261, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     262, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     263, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     264, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0013
-Getting triplets
-Epoch:  0, Iter:     265, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     266, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:     267, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     268, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     269, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     270, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0014
-Getting triplets
-Epoch:  0, Iter:     271, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     272, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0020
-Getting triplets
-Epoch:  0, Iter:     273, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     274, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     275, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     276, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     277, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     278, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     279, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     280, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     281, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     282, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     283, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0009
-Getting triplets
-Epoch:  0, Iter:     284, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     285, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0006
-Getting triplets
-Epoch:  0, Iter:     286, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:     287, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0015
-Getting triplets
-Epoch:  0, Iter:     288, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     289, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0029
-Getting triplets
-Epoch:  0, Iter:     290, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
-Getting triplets
-Epoch:  0, Iter:     291, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     292, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
-Getting triplets
-Epoch:  0, Iter:     293, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0281, N_diff: 0.0305
-Getting triplets
-Epoch:  0, Iter:     294, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
-Getting triplets
-Epoch:  0, Iter:     295, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0011
-Getting triplets
-Epoch:  0, Iter:     296, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     297, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
-Getting triplets
-Epoch:  0, Iter:     298, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
-Getting triplets
-Epoch:  0, Iter:     299, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     300, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0008
-Getting triplets
-Epoch:  0, Iter:     301, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0040, N_diff: 0.0040
-Getting triplets
-Epoch:  0, Iter:     302, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     303, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
-Getting triplets
-Epoch:  0, Iter:     304, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
-Getting triplets
-Epoch:  0, Iter:     305, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0040
-Getting triplets
-Epoch:  0, Iter:     306, It
+Epoch:  0, Iter:     229, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     230, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     231, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
+Epoch:  0, Iter:     232, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     233, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     234, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     235, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0016
+Epoch:  0, Iter:     236, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     237, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     238, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     239, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     240, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     241, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
+Epoch:  0, Iter:     242, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     243, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     244, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     245, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     246, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     247, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     248, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     249, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0009
+Epoch:  0, Iter:     250, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     251, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     252, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0019
+Epoch:  0, Iter:     253, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     254, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     255, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     256, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     257, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0012
+Epoch:  0, Iter:     258, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0001, N_diff: 0.0096
+Epoch:  0, Iter:     259, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     260, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     261, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0007
+Epoch:  0, Iter:     262, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0010
+Epoch:  0, Iter:     263, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     264, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0007
+Epoch:  0, Iter:     265, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     266, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0013
+Epoch:  0, Iter:     267, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     268, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     269, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     270, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     271, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0006
+Epoch:  0, Iter:     272, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     273, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:     274, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0013
+Epoch:  0, Iter:     275, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     276, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     277, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     278, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     279, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0009
+Epoch:  0, Iter:     280, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0016
+Epoch:  0, Iter:     281, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     282, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     283, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0000
+Epoch:  0, Iter:     284, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0001
+Epoch:  0, Iter:     285, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     286, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     287, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     288, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     289, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     290, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     291, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     292, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     293, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0009
+Epoch:  0, Iter:     294, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     295, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     296, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0014
+Epoch:  0, Iter:     297, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     298, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     299, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     300, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0005
+Epoch:  0, Iter:     301, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0001
+Epoch:  0, Iter:     302, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     303, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     304, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0076, N_diff: 0.0078
+Epoch:  0, Iter:     305, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     306, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     307, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     308, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     309, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     310, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     311, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     312, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     313, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0008
+Epoch:  0, Iter:     314, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     315, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     316, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0017
+Epoch:  0, Iter:     317, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     318, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     319, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     320, IterSkip:       0, Loss: 0.4985, P_Diff: 0.0004, N_diff: 0.0390
+Epoch:  0, Iter:     321, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     322, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     323, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0006
+Epoch:  0, Iter:     324, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     325, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     326, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     327, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     328, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     329, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     330, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     331, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0004
+Epoch:  0, Iter:     332, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:     333, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0000
+Epoch:  0, Iter:     334, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     335, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     336, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0013
+Epoch:  0, Iter:     337, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0006
+Epoch:  0, Iter:     338, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     339, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0017
+Epoch:  0, Iter:     340, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     341, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     342, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0013
+Epoch:  0, Iter:     343, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     344, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     345, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     346, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     347, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0016
+Epoch:  0, Iter:     348, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     349, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     350, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     351, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
+Epoch:  0, Iter:     352, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     353, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     354, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     355, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     356, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     357, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     358, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     359, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     360, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     361, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     362, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     363, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     364, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     365, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     366, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     367, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     368, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     369, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0009
+Epoch:  0, Iter:     370, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     371, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     372, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0010
+Epoch:  0, Iter:     373, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     374, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     375, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0033
+Epoch:  0, Iter:     376, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0012
+Epoch:  0, Iter:     377, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0005
+Epoch:  0, Iter:     378, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0006
+Epoch:  0, Iter:     379, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0015
+Epoch:  0, Iter:     380, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0007
+Epoch:  0, Iter:     381, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     382, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     383, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
+Epoch:  0, Iter:     384, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0002
+Epoch:  0, Iter:     385, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     386, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     387, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     388, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0008
+Epoch:  0, Iter:     389, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     390, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     391, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     392, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     393, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     394, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     395, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     396, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0008
+Epoch:  0, Iter:     397, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0009
+Epoch:  0, Iter:     398, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     399, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0011
+Epoch:  0, Iter:     400, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
+Epoch:  0, Iter:     401, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     402, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     403, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     404, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     405, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     406, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     407, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0014
+Epoch:  0, Iter:     408, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     409, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     410, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0006
+Epoch:  0, Iter:     411, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     412, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     413, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
+Epoch:  0, Iter:     414, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0004
+Epoch:  0, Iter:     415, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     416, IterSkip:       0, Loss: 0.5002, P_Diff: 0.0128, N_diff: 0.0013
+Epoch:  0, Iter:     417, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     418, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     419, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     420, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     421, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     422, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0030, N_diff: 0.0002
+Epoch:  0, Iter:     423, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     424, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     425, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     426, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
+Epoch:  0, Iter:     427, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     428, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     429, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     430, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     431, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     432, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     433, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0032, N_diff: 0.0076
+Epoch:  0, Iter:     434, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0000
+Epoch:  0, Iter:     435, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     436, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0007
+Epoch:  0, Iter:     437, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0002
+Epoch:  0, Iter:     438, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     439, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     440, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     441, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     442, IterSkip:       0, Loss: 0.5432, P_Diff: 0.2078, N_diff: 0.0001
+Epoch:  0, Iter:     443, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     444, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0001
+Epoch:  0, Iter:     445, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0007
+Epoch:  0, Iter:     446, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     447, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     448, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     449, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     450, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     451, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     452, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     453, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     454, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     455, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     456, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0002
+Epoch:  0, Iter:     457, IterSkip:       0, Loss: 0.4943, P_Diff: 0.0000, N_diff: 0.0755
+Epoch:  0, Iter:     458, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     459, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     460, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     461, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     462, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:     463, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0013
+Epoch:  0, Iter:     464, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     465, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     466, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     467, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0023
+Epoch:  0, Iter:     468, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     469, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     470, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     471, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     472, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     473, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     474, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     475, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     476, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     477, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     478, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     479, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0018
+Epoch:  0, Iter:     480, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     481, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0049, N_diff: 0.0051
+Epoch:  0, Iter:     482, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     483, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     484, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     485, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     486, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     487, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     488, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     489, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0014
+Epoch:  0, Iter:     490, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     491, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     492, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0005
+Epoch:  0, Iter:     493, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     494, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     495, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     496, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0001
+Epoch:  0, Iter:     497, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     498, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     499, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0008
+Epoch:  0, Iter:     500, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     501, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:     502, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     503, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     504, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     505, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0020
+Epoch:  0, Iter:     506, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0000
+Epoch:  0, Iter:     507, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0025, N_diff: 0.0001
+Epoch:  0, Iter:     508, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     509, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     510, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0014
+Epoch:  0, Iter:     511, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     512, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0006
+Epoch:  0, Iter:     513, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     514, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0045
+Epoch:  0, Iter:     515, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0008
+Epoch:  0, Iter:     516, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     517, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0017
+Epoch:  0, Iter:     518, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     519, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0002
+Epoch:  0, Iter:     520, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     521, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     522, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     523, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0007
+Epoch:  0, Iter:     524, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     525, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     526, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     527, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     528, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
+Epoch:  0, Iter:     529, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     530, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0001
+Epoch:  0, Iter:     531, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     532, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     533, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     534, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     535, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     536, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     537, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0036, N_diff: 0.0005
+Epoch:  0, Iter:     538, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     539, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     540, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     541, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     542, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     543, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0020
+Epoch:  0, Iter:     544, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0019
+Epoch:  0, Iter:     545, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     546, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     547, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0019
+Epoch:  0, Iter:     548, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     549, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     550, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0002
+Epoch:  0, Iter:     551, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     552, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0023, N_diff: 0.0021
+Epoch:  0, Iter:     553, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     554, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     555, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0014
+Epoch:  0, Iter:     556, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     557, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     558, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
+Epoch:  0, Iter:     559, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     560, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     561, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
+Epoch:  0, Iter:     562, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0004
+Epoch:  0, Iter:     563, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     564, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:     565, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     566, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     567, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     568, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     569, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     570, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     571, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     572, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0023
+Epoch:  0, Iter:     573, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0010
+Epoch:  0, Iter:     574, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0101, N_diff: 0.0112
+Epoch:  0, Iter:     575, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     576, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     577, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     578, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     579, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0005
+Epoch:  0, Iter:     580, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     581, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0039
+Epoch:  0, Iter:     582, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     583, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     584, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     585, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     586, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0016
+Epoch:  0, Iter:     587, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     588, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0010
+Epoch:  0, Iter:     589, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     590, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0035
+Epoch:  0, Iter:     591, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0000
+Epoch:  0, Iter:     592, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0004
+Epoch:  0, Iter:     593, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0007
+Epoch:  0, Iter:     594, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0032, N_diff: 0.0044
+Epoch:  0, Iter:     595, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:     596, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0005
+Epoch:  0, Iter:     597, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0008
+Epoch:  0, Iter:     598, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     599, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     600, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     601, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0008
+Epoch:  0, Iter:     602, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     603, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0023, N_diff: 0.0001
+Epoch:  0, Iter:     604, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0042
+Epoch:  0, Iter:     605, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0004
+Epoch:  0, Iter:     606, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0002
+Epoch:  0, Iter:     607, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0010
+Epoch:  0, Iter:     608, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0043
+Epoch:  0, Iter:     609, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0010
+Epoch:  0, Iter:     610, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:     611, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     612, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0036, N_diff: 0.0001
+Epoch:  0, Iter:     613, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     614, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     615, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0012
+Epoch:  0, Iter:     616, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     617, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     618, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0017
+Epoch:  0, Iter:     619, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0005
+Epoch:  0, Iter:     620, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0006
+Epoch:  0, Iter:     621, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0019
+Epoch:  0, Iter:     622, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0012
+Epoch:  0, Iter:     623, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0011
+Epoch:  0, Iter:     624, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0001
+Epoch:  0, Iter:     625, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0015
+Epoch:  0, Iter:     626, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     627, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
+Epoch:  0, Iter:     628, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0007
+Epoch:  0, Iter:     629, IterSkip:       0, Loss: 0.4997, P_Diff: 0.0005, N_diff: 0.0159
+Epoch:  0, Iter:     630, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     631, IterSkip:       0, Loss: 0.5008, P_Diff: 0.0280, N_diff: 0.0007
+Epoch:  0, Iter:     632, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0001
+Epoch:  0, Iter:     633, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0003
+Epoch:  0, Iter:     634, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0006
+Epoch:  0, Iter:     635, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     636, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0027, N_diff: 0.0020
+Epoch:  0, Iter:     637, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0003
+Epoch:  0, Iter:     638, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     639, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0017, N_diff: 0.0004
+Epoch:  0, Iter:     640, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0025, N_diff: 0.0026
+Epoch:  0, Iter:     641, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0002
+Epoch:  0, Iter:     642, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0023, N_diff: 0.0009
+Epoch:  0, Iter:     643, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0006
+Epoch:  0, Iter:     644, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0005
+Epoch:  0, Iter:     645, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     646, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     647, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     648, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
+Epoch:  0, Iter:     649, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     650, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     651, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     652, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     653, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     654, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     655, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0031, N_diff: 0.0013
+Epoch:  0, Iter:     656, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     657, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     658, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     659, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0006
+Epoch:  0, Iter:     660, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0039, N_diff: 0.0040
+Epoch:  0, Iter:     661, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     662, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0006
+Epoch:  0, Iter:     663, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     664, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     665, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     666, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0005
+Epoch:  0, Iter:     667, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0000
+Epoch:  0, Iter:     668, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     669, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     670, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     671, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0015
+Epoch:  0, Iter:     672, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     673, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     674, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     675, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     676, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0024
+Epoch:  0, Iter:     677, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     678, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0007
+Epoch:  0, Iter:     679, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0004
+Epoch:  0, Iter:     680, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     681, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     682, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:     683, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0001
+Epoch:  0, Iter:     684, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     685, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     686, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0002
+Epoch:  0, Iter:     687, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0013
+Epoch:  0, Iter:     688, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0002
+Epoch:  0, Iter:     689, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0000
+Epoch:  0, Iter:     690, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     691, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0028
+Epoch:  0, Iter:     692, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0006
+Epoch:  0, Iter:     693, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     694, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     695, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     696, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0019
+Epoch:  0, Iter:     697, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0004
+Epoch:  0, Iter:     698, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     699, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     700, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     701, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     702, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0009
+Epoch:  0, Iter:     703, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0007
+Epoch:  0, Iter:     704, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     705, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     706, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     707, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     708, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
+Epoch:  0, Iter:     709, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     710, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0000
+Epoch:  0, Iter:     711, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     712, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     713, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0000
+Epoch:  0, Iter:     714, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     715, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     716, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     717, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     718, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0005
+Epoch:  0, Iter:     719, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     720, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0015
+Epoch:  0, Iter:     721, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0010
+Epoch:  0, Iter:     722, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:     723, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0002
+Epoch:  0, Iter:     724, IterSkip:       0, Loss: 0.5000, P_Diff: 0.1245, N_diff: 0.1244
+Epoch:  0, Iter:     725, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     726, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0019
+Epoch:  0, Iter:     727, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     728, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:     729, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     730, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     731, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     732, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     733, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     734, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     735, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0015
+Epoch:  0, Iter:     736, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     737, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0020
+Epoch:  0, Iter:     738, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0023
+Epoch:  0, Iter:     739, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0029
+Epoch:  0, Iter:     740, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0035
+Epoch:  0, Iter:     741, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     742, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     743, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     744, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0011
+Epoch:  0, Iter:     745, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0018
+Epoch:  0, Iter:     746, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     747, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     748, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     749, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     750, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     751, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     752, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     753, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     754, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     755, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     756, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0009
+Epoch:  0, Iter:     757, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     758, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     759, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     760, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0016
+Epoch:  0, Iter:     761, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     762, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     763, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0005
+Epoch:  0, Iter:     764, IterSkip:       0, Loss: 0.4985, P_Diff: 0.0004, N_diff: 0.0390
+Epoch:  0, Iter:     765, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     766, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     767, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0001
+Epoch:  0, Iter:     768, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     769, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     770, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0511, N_diff: 0.0515
+Epoch:  0, Iter:     771, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0039
+Epoch:  0, Iter:     772, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     773, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0015, N_diff: 0.0015
+Epoch:  0, Iter:     774, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0003, N_diff: 0.0073
+Epoch:  0, Iter:     775, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     776, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     777, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0004
+Epoch:  0, Iter:     778, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0003
+Epoch:  0, Iter:     779, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0006
+Epoch:  0, Iter:     780, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0001
+Epoch:  0, Iter:     781, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     782, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0007
+Epoch:  0, Iter:     783, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0006
+Epoch:  0, Iter:     784, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     785, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0016
+Epoch:  0, Iter:     786, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0019
+Epoch:  0, Iter:     787, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0001
+Epoch:  0, Iter:     788, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0008
+Epoch:  0, Iter:     789, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0026, N_diff: 0.0023
+Epoch:  0, Iter:     790, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0002
+Epoch:  0, Iter:     791, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0011
+Epoch:  0, Iter:     792, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0006
+Epoch:  0, Iter:     793, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0008
+Epoch:  0, Iter:     794, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0026, N_diff: 0.0019
+Epoch:  0, Iter:     795, IterSkip:       0, Loss: 0.4908, P_Diff: 0.0019, N_diff: 0.0962
+Epoch:  0, Iter:     796, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     797, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0002, N_diff: 0.0089
+Epoch:  0, Iter:     798, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0027, N_diff: 0.0000
+Epoch:  0, Iter:     799, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0011
+Epoch:  0, Iter:     800, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0009
+Epoch:  0, Iter:     801, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0003
+Epoch:  0, Iter:     802, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0002
+Epoch:  0, Iter:     803, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     804, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0070, N_diff: 0.0002
+Epoch:  0, Iter:     805, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0096, N_diff: 0.0002
+Epoch:  0, Iter:     806, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0001
+Epoch:  0, Iter:     807, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0002
+Epoch:  0, Iter:     808, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     809, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0001
+Epoch:  0, Iter:     810, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0054
+Epoch:  0, Iter:     811, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     812, IterSkip:       0, Loss: 0.5012, P_Diff: 0.0349, N_diff: 0.0001
+Epoch:  0, Iter:     813, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     814, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     815, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     816, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     817, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0004
+Epoch:  0, Iter:     818, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     819, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0033
+Epoch:  0, Iter:     820, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0003
+Epoch:  0, Iter:     821, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0004
+Epoch:  0, Iter:     822, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0001, N_diff: 0.0081
+Epoch:  0, Iter:     823, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     824, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0003
+Epoch:  0, Iter:     825, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     826, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0009
+Epoch:  0, Iter:     827, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     828, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     829, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     830, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0007
+Epoch:  0, Iter:     831, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0107, N_diff: 0.0107
+Epoch:  0, Iter:     832, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     833, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     834, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     835, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     836, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     837, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0001
+Epoch:  0, Iter:     838, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     839, IterSkip:       0, Loss: 0.4988, P_Diff: 0.0001, N_diff: 0.0351
+Epoch:  0, Iter:     840, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     841, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     842, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0000, N_diff: 0.0101
+Epoch:  0, Iter:     843, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     844, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0000
+Epoch:  0, Iter:     845, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     846, IterSkip:       0, Loss: 0.4862, P_Diff: 0.0000, N_diff: 0.1174
+Epoch:  0, Iter:     847, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0000
+Epoch:  0, Iter:     848, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0001
+Epoch:  0, Iter:     849, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0002
+Epoch:  0, Iter:     850, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     851, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0008
+Epoch:  0, Iter:     852, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0016
+Epoch:  0, Iter:     853, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0001
+Epoch:  0, Iter:     854, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0004
+Epoch:  0, Iter:     855, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0081, N_diff: 0.0002
+Epoch:  0, Iter:     856, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     857, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0002
+Epoch:  0, Iter:     858, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0003
+Epoch:  0, Iter:     859, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0058
+Epoch:  0, Iter:     860, IterSkip:       0, Loss: 0.5006, P_Diff: 0.0237, N_diff: 0.0004
+Epoch:  0, Iter:     861, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0005
+Epoch:  0, Iter:     862, IterSkip:       0, Loss: 0.5002, P_Diff: 0.0147, N_diff: 0.0063
+Epoch:  0, Iter:     863, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0004
+Epoch:  0, Iter:     864, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0001
+Epoch:  0, Iter:     865, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0009
+Epoch:  0, Iter:     866, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0044, N_diff: 0.0011
+Epoch:  0, Iter:     867, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0020
+Epoch:  0, Iter:     868, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0024
+Epoch:  0, Iter:     869, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0005
+Epoch:  0, Iter:     870, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0003
+Epoch:  0, Iter:     871, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0003
+Epoch:  0, Iter:     872, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0000, N_diff: 0.0002
+Epoch:  0, Iter:     873, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0008
+Epoch:  0, Iter:     874, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0015
+Epoch:  0, Iter:     875, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0004
+Epoch:  0, Iter:     876, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     877, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0000, N_diff: 0.0078
+Epoch:  0, Iter:     878, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0029
+Epoch:  0, Iter:     879, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0001
+Epoch:  0, Iter:     880, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0011
+Epoch:  0, Iter:     881, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0000
+Epoch:  0, Iter:     882, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0007
+Epoch:  0, Iter:     883, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0010
+Epoch:  0, Iter:     884, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0001
+Epoch:  0, Iter:     885, IterSkip:       0, Loss: 0.4996, P_Diff: 0.0003, N_diff: 0.0206
+Epoch:  0, Iter:     886, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0005
+Epoch:  0, Iter:     887, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0068, N_diff: 0.0003
+Epoch:  0, Iter:     888, IterSkip:       0, Loss: 0.4995, P_Diff: 0.0009, N_diff: 0.0234
+Epoch:  0, Iter:     889, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0076, N_diff: 0.0008
+Epoch:  0, Iter:     890, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0002
+Epoch:  0, Iter:     891, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0023, N_diff: 0.0027
+Epoch:  0, Iter:     892, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0072, N_diff: 0.0004
+Epoch:  0, Iter:     893, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0055, N_diff: 0.0091
+Epoch:  0, Iter:     894, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0068, N_diff: 0.0015
+Epoch:  0, Iter:     895, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0093, N_diff: 0.0083
+Epoch:  0, Iter:     896, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0044, N_diff: 0.0074
+Epoch:  0, Iter:     897, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0038
+Epoch:  0, Iter:     898, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0044
+Epoch:  0, Iter:     899, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0014
+Epoch:  0, Iter:     900, IterSkip:       0, Loss: 0.4996, P_Diff: 0.0034, N_diff: 0.0197
+Epoch:  0, Iter:     901, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0053, N_diff: 0.0060
+Epoch:  0, Iter:     902, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0024
+Epoch:  0, Iter:     903, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0016, N_diff: 0.0035
+Epoch:  0, Iter:     904, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0003, N_diff: 0.0001
+Epoch:  0, Iter:     905, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0049, N_diff: 0.0116
+Epoch:  0, Iter:     906, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0089, N_diff: 0.0015
+Epoch:  0, Iter:     907, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0092, N_diff: 0.0082
+Epoch:  0, Iter:     908, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0005
+Epoch:  0, Iter:     909, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0042, N_diff: 0.0036
+Epoch:  0, Iter:     910, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0019, N_diff: 0.0047
+Epoch:  0, Iter:     911, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0008
+Epoch:  0, Iter:     912, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0058, N_diff: 0.0043
+Epoch:  0, Iter:     913, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0024, N_diff: 0.0029
+Epoch:  0, Iter:     914, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0184, N_diff: 0.0186
+Epoch:  0, Iter:     915, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0009
+Epoch:  0, Iter:     916, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0002
+Epoch:  0, Iter:     917, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0054, N_diff: 0.0006
+Epoch:  0, Iter:     918, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0028, N_diff: 0.0111
+Epoch:  0, Iter:     919, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0018, N_diff: 0.0030
+Epoch:  0, Iter:     920, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0000
+Epoch:  0, Iter:     921, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0142, N_diff: 0.0135
+Epoch:  0, Iter:     922, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0094, N_diff: 0.0092
+Epoch:  0, Iter:     923, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0091, N_diff: 0.0015
+Epoch:  0, Iter:     924, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0036, N_diff: 0.0020
+Epoch:  0, Iter:     925, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0020, N_diff: 0.0125
+Epoch:  0, Iter:     926, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0014
+Epoch:  0, Iter:     927, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0071
+Epoch:  0, Iter:     928, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0012, N_diff: 0.0003
+Epoch:  0, Iter:     929, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0024, N_diff: 0.0040
+Epoch:  0, Iter:     930, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0016
+Epoch:  0, Iter:     931, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0056, N_diff: 0.0003
+Epoch:  0, Iter:     932, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0031, N_diff: 0.0112
+Epoch:  0, Iter:     933, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0037, N_diff: 0.0018
+Epoch:  0, Iter:     934, IterSkip:       0, Loss: 0.4996, P_Diff: 0.0024, N_diff: 0.0203
+Epoch:  0, Iter:     935, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0018, N_diff: 0.0130
+Epoch:  0, Iter:     936, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0032
+Epoch:  0, Iter:     937, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0094, N_diff: 0.0099
+Epoch:  0, Iter:     938, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0011, N_diff: 0.0024
+Epoch:  0, Iter:     939, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0024, N_diff: 0.0020
+Epoch:  0, Iter:     940, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0050, N_diff: 0.0025
+Epoch:  0, Iter:     941, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0186, N_diff: 0.0240
+Epoch:  0, Iter:     942, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0007
+Epoch:  0, Iter:     943, IterSkip:       0, Loss: 0.4990, P_Diff: 0.0018, N_diff: 0.0321
+Epoch:  0, Iter:     944, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0239, N_diff: 0.0250
+Epoch:  0, Iter:     945, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0008
+Epoch:  0, Iter:     946, IterSkip:       0, Loss: 0.5011, P_Diff: 0.0412, N_diff: 0.0249
+Epoch:  0, Iter:     947, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0055, N_diff: 0.0116
+Epoch:  0, Iter:     948, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0017, N_diff: 0.0011
+Epoch:  0, Iter:     949, IterSkip:       0, Loss: 0.4997, P_Diff: 0.0154, N_diff: 0.0227
+Epoch:  0, Iter:     950, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0147, N_diff: 0.0102
+Epoch:  0, Iter:     951, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0047, N_diff: 0.0009
+Epoch:  0, Iter:     952, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0023, N_diff: 0.0001
+Epoch:  0, Iter:     953, IterSkip:       0, Loss: 0.5004, P_Diff: 0.0196, N_diff: 0.0006
+Epoch:  0, Iter:     954, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0010, N_diff: 0.0128
+Epoch:  0, Iter:     955, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0031, N_diff: 0.0040
+Epoch:  0, Iter:     956, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0067
+Epoch:  0, Iter:     957, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0103, N_diff: 0.0011
+Epoch:  0, Iter:     958, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0109, N_diff: 0.0091
+Epoch:  0, Iter:     959, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0022, N_diff: 0.0003
+Epoch:  0, Iter:     960, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0014, N_diff: 0.0005
+Epoch:  0, Iter:     961, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0134, N_diff: 0.0069
+Epoch:  0, Iter:     962, IterSkip:       0, Loss: 0.4994, P_Diff: 0.0006, N_diff: 0.0235
+Epoch:  0, Iter:     963, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0137, N_diff: 0.0121
+Epoch:  0, Iter:     964, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0049, N_diff: 0.0045
+Epoch:  0, Iter:     965, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0007, N_diff: 0.0003
+Epoch:  0, Iter:     966, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0021, N_diff: 0.0064
+Epoch:  0, Iter:     967, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0033, N_diff: 0.0020
+Epoch:  0, Iter:     968, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0026, N_diff: 0.0031
+Epoch:  0, Iter:     969, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0047
+Epoch:  0, Iter:     970, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0002, N_diff: 0.0001
+Epoch:  0, Iter:     971, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0174, N_diff: 0.0185
+Epoch:  0, Iter:     972, IterSkip:       0, Loss: 0.4995, P_Diff: 0.0030, N_diff: 0.0221
+Epoch:  0, Iter:     973, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0009, N_diff: 0.0021
+Epoch:  0, Iter:     974, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0045, N_diff: 0.0164
+Epoch:  0, Iter:     975, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0026, N_diff: 0.0087
+Epoch:  0, Iter:     976, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0006, N_diff: 0.0070
+Epoch:  0, Iter:     977, IterSkip:       0, Loss: 0.4982, P_Diff: 0.0006, N_diff: 0.0423
+Epoch:  0, Iter:     978, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0009
+Epoch:  0, Iter:     979, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0251, N_diff: 0.0257
+Epoch:  0, Iter:     980, IterSkip:       0, Loss: 0.5005, P_Diff: 0.0216, N_diff: 0.0036
+Epoch:  0, Iter:     981, IterSkip:       0, Loss: 0.4965, P_Diff: 0.0023, N_diff: 0.0590
+Epoch:  0, Iter:     982, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0010, N_diff: 0.0007
+Epoch:  0, Iter:     983, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0004, N_diff: 0.0041
+Epoch:  0, Iter:     984, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0041, N_diff: 0.0079
+Epoch:  0, Iter:     985, IterSkip:       0, Loss: 0.5002, P_Diff: 0.0144, N_diff: 0.0019
+Epoch:  0, Iter:     986, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0004
+Epoch:  0, Iter:     987, IterSkip:       0, Loss: 0.4998, P_Diff: 0.0004, N_diff: 0.0130
+Epoch:  0, Iter:     988, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0020, N_diff: 0.0030
+Epoch:  0, Iter:     989, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0008, N_diff: 0.0002
+Epoch:  0, Iter:     990, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0005, N_diff: 0.0006
+Epoch:  0, Iter:     991, IterSkip:       0, Loss: 0.4994, P_Diff: 0.0187, N_diff: 0.0304
+Epoch:  0, Iter:     992, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0031, N_diff: 0.0004
+Epoch:  0, Iter:     993, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     994, IterSkip:       0, Loss: 0.4999, P_Diff: 0.0122, N_diff: 0.0172
+Epoch:  0, Iter:     995, IterSkip:       0, Loss: 0.4846, P_Diff: 0.0011, N_diff: 0.1239
+Epoch:  0, Iter:     996, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0001, N_diff: 0.0003
+Epoch:  0, Iter:     997, IterSkip:       0, Loss: 0.5003, P_Diff: 0.0212, N_diff: 0.0123
+Epoch:  0, Iter:     998, IterSkip:       0, Loss: 0.5001, P_Diff: 0.0218, N_diff: 0.0192
+Epoch:  0, Iter:     999, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0036, N_diff: 0.0013
+Epoch:  0, Iter:    1000, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0013, N_diff: 0.0012
+Epoch:  0, Iter:    1001

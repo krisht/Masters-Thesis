@@ -225,7 +225,6 @@ class BrainNet:
 		A = []
 		P = []
 		N = []
-		print("Getting triplets")
 
 		for _ in range(size):
 			choices = ['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf']
