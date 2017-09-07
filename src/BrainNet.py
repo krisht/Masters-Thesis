@@ -506,7 +506,7 @@ class BrainNet:
 						with tf.variable_scope('branch3x3dbl'):
 							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
-							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3), scope='branch3x3dbl/concatconv1'), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1), scope='branch3x3dbl/concatconv1')])
+							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3), scope='branch3x3dbl/concatconv1'), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1), scope='branch3x3dbl/concatconv2')])
 						with tf.variable_scope('branch_pool'):
 							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
