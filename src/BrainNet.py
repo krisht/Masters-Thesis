@@ -284,6 +284,8 @@ class BrainNet:
 		A = np.asarray(A)
 		P = np.asarray(P)
 		N = np.asarray(N)
+		print(A)
+
 		return A, P, N
 
 	# End new stuff
