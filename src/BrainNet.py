@@ -335,8 +335,8 @@ class BrainNet:
 						# 35 x 35 x 192.
 						net = end_points['conv4']
 				# Inception blocks
-				with slim.arg_scope([slim.layers.conv2d], stride=1, padding='SAME', reuse=reuse):
-					with slim.arg_scope([slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='SAME'):
+				with slim.arg_scope([slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='SAME'):
+					with slim.arg_scope([slim.layers.conv2d], stride=1, padding='SAME', reuse=reuse):
 						# mixed: 35 x 35 x 256.
 						with tf.variable_scope('mixed_35x35x256a'):
 							with tf.variable_scope('branch1x1'):
