@@ -354,10 +354,10 @@ class BrainNet:
 					# mixed_1: 35 x 35 x 288.
 					with tf.variable_scope('mixed_35x35x288a'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 64, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 64, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch5x5'):
-							branch5x5 = slim.layers.conv2d(net, 48, kernel_size=1)
-							branch5x5 = slim.layers.conv2d(branch5x5, 64, kernel_size=5)
+							branch5x5 = slim.layers.conv2d(net, 48, kernel_size=1, scope='branch5x5/conv1')
+							branch5x5 = slim.layers.conv2d(branch5x5, 64, kernel_size=5, scope='branch5x5/conv2')
 						with tf.variable_scope('branch3x3dbl'):
 							branch3x3dbl = slim.layers.conv2d(net, 64, kernel_size=1)
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
