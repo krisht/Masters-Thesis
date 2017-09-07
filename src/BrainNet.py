@@ -338,7 +338,7 @@ class BrainNet:
 					# mixed: 35 x 35 x 256.
 					with tf.variable_scope('mixed_35x35x256a'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 64, kernel_size=1, scope='branch1x1/conv1' reuse=reuse)
+							branch1x1 = slim.layers.conv2d(net, 64, kernel_size=1, scope='branch1x1/conv1', reuse=reuse)
 						with tf.variable_scope('branch5x5'):
 							branch5x5 = slim.layers.conv2d(net, 48, kernel_size=1)
 							branch5x5 = slim.layers.conv2d(branch5x5, 64, kernel_size=5)
