@@ -273,9 +273,9 @@ class BrainNet:
 			else:
 				self.count_of_triplets[key] = 1
 
-			a = norm_op(a, axisss=1)
-			p = norm_op(p, axisss=1)
-			n = norm_op(n, axisss=1)
+			a = norm_op(a, axisss=0)
+			p = norm_op(p, axisss=0)
+			n = norm_op(n, axisss=0)
 			A.append(a)
 			P.append(p)
 			N.append(n)
@@ -284,7 +284,9 @@ class BrainNet:
 		A = np.asarray(A)
 		P = np.asarray(P)
 		N = np.asarray(N)
+		print(A.shape)
 		print(A)
+		print(np.sum(A, axis=1))
 
 		return A, P, N
 
@@ -606,44 +608,44 @@ class BrainNet:
 				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
 
 				if choice == 'bckg':
-					data_list.append(norm_op(np.load(random.choice(self.bckg)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.bckg)), axisss=0))
 					class_list.append(self.bckg_num)
 				elif choice == 'eybl':
-					data_list.append(norm_op(np.load(random.choice(self.eybl)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.eybl)), axisss=0))
 					class_list.append(self.eybl_num)
 				elif choice == 'gped':
-					data_list.append(norm_op(np.load(random.choice(self.gped)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.gped)), axisss=0))
 					class_list.append(self.gped_num)
 				elif choice == 'spsw':
-					data_list.append(norm_op(np.load(random.choice(self.spsw)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.spsw)), axisss=0))
 					class_list.append(self.spsw_num)
 				elif choice == 'pled':
-					data_list.append(norm_op(np.load(random.choice(self.pled)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.pled)), axisss=0))
 					class_list.append(self.pled_num)
 				else:
-					data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=0))
 					class_list.append(self.artf_num)
 		else:
 			for ii in range(0, size):
 				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
 
 				if choice == 'bckg':
-					data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
 					class_list.append(self.bckg_num)
 				elif choice == 'eybl':
-					data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
 					class_list.append(self.eybl_num)
 				elif choice == 'gped':
-					data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
 					class_list.append(self.gped_num)
 				elif choice == 'spsw':
-					data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
 					class_list.append(self.spsw_num)
 				elif choice == 'pled':
-					data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
 					class_list.append(self.pled_num)
 				else:
-					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=1))
+					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
 					class_list.append(self.artf_num)
 
 		return data_list, class_list
