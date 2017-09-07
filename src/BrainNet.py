@@ -315,7 +315,7 @@ class BrainNet:
 		end_points = {}
 		with tf.name_scope(scope, 'inception_v3', [inputs]):
 			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight)):
-				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='VALID', reuse=reuse):
+				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.max_pool2d], stride=1, padding='VALID', reuse=reuse):
 					# 299 x 299 x 3
 					inputs = tf.expand_dims(inputs, dim=3)
 					end_points['conv0'] = slim.layers.conv2d(inputs, 32, kernel_size=3, stride=2, scope='conv0')
@@ -334,7 +334,7 @@ class BrainNet:
 					# 35 x 35 x 192.
 					net = end_points['conv4']
 				# Inception blocks
-				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='SAME', reuse=reuse):
+				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.max_pool2d], stride=1, padding='SAME', reuse=reuse):
 					# mixed: 35 x 35 x 256.
 					with tf.variable_scope('mixed_35x35x256a'):
 						with tf.variable_scope('branch1x1'):
@@ -347,7 +347,7 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, scope='wtf0')
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, scope='wtf0')
 							branch_pool = slim.layers.conv2d(branch_pool, 32, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch5x5, branch3x3dbl, branch_pool])
 						end_points['mixed_35x35x256a'] = net
@@ -363,7 +363,7 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 64, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch5x5, branch3x3dbl, branch_pool])
 						end_points['mixed_35x35x288a'] = net
@@ -379,7 +379,7 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 64, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch5x5, branch3x3dbl, branch_pool])
 						end_points['mixed_35x35x288b'] = net
@@ -410,7 +410,7 @@ class BrainNet:
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(7, 1))
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768b'] = net
@@ -429,7 +429,7 @@ class BrainNet:
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768c'] = net
@@ -448,7 +448,7 @@ class BrainNet:
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768d'] = net
@@ -467,14 +467,14 @@ class BrainNet:
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(7, 1))
 							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3)
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768e'] = net
 					# Auxiliary Head logits
 					aux_logits = tf.identity(end_points['mixed_17x17x768e'])
 					with tf.variable_scope('aux_logits'):
-						aux_logits = slim.layers.avg_pool2d(aux_logits, kernel_size=5, stride=3,
+						aux_logits = slim.layers.max_pool2d(aux_logits, kernel_size=5, stride=3,
 																			padding='VALID')
 						aux_logits = slim.layers.conv2d(aux_logits, 128, kernel_size=1, scope='proj')
 						# Shape of feature map before the final layer.
@@ -509,7 +509,7 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3)
 							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, scope='wtf')
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, scope='wtf')
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
 						end_points['mixed_8x8x2048a'] = net
@@ -525,14 +525,14 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3)
 							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, scope='wtf2')
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, scope='wtf2')
 							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
 						end_points['mixed_8x8x2048b'] = net
 					# Final pooling and prediction
 					with tf.variable_scope('logits'):
 						shape = net.get_shape()
-						net = slim.layers.avg_pool2d(net, shape[1:3], padding='VALID', scope='pool')
+						net = slim.layers.max_pool2d(net, shape[1:3], padding='VALID', scope='pool')
 						# 1 x 1 x 2048
 						#net = slim.layers.dropout(net, dropout_keep_prob, scope='dropout')
 						net = slim.layers.flatten(net, scope='flatten')
