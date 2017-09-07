@@ -545,7 +545,7 @@ class BrainNet:
 		if not use_inception:
 			return self.simple_model(inputs, reuse=reuse)
 		else:
-			return self.inception_v3(inputs, dropout_keep_prob=1.0, reuse=reuse)
+			return self.inception_v3(inputs, reuse=reuse)
 
 	def train_model(self, outdir=None):
 		loss = self.triplet_loss(alpha=self.alpha)
