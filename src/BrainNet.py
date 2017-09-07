@@ -29,8 +29,8 @@ loss_mem_skip = []
 
 
 def norm_op(vector, axis):
-	# return normalize(vector, axis=axis, norm='l2')
-	return vector * 10e4
+	return normalize(vector, axis=axis, norm='l2')
+	#return vector * 10e4
 
 def plot_embedding(X, y, epoch, accuracy, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
     x_min, x_max = np.min(X, 0), np.max(X, 0)

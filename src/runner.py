@@ -17,7 +17,7 @@ for run in range(0, 1):
 
 	batch_size = 5000
 	alpha = 0.5
-	learning_rate = 1e-5
+	learning_rate = 0.0001
 	l2_weight = 0.001
 	validation_size = 500
 
