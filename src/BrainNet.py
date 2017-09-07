@@ -341,7 +341,7 @@ class BrainNet:
 					branch1x1 = slim.layers.conv2d(net, 64, kernel_size=1)
 					#	with tf.variable_scope('branch5x5'):
 					branch5x5 = slim.layers.conv2d(net, 48, kernel_size=1)
-							branch5x5 = slim.layers.conv2d(branch5x5, 64, kernel_size=5)
+					branch5x5 = slim.layers.conv2d(branch5x5, 64, kernel_size=5)
 					#	with tf.variable_scope('branch3x3dbl'):
 					branch3x3dbl = slim.layers.conv2d(net, 64, kernel_size=1)
 					branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
