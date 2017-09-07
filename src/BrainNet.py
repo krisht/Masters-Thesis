@@ -58,14 +58,14 @@ def compute_tSNE(X, y, epoch, accuracy, num_to_label):
 
 def get_loss(loss_mem, loss_mem_skip):
 	plt.figure(figsize=(4.0, 4.0))
-	plt.plot(loss_mem_skip, 'r--')
+	plt.plot(loss_mem_skip, 'ro-', markersize=2)
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
 	plt.savefig('./%s Results/%s_convergence_with_skip_plot.pdf' % (curr_time, curr_time), bbox_inches='tight')
 
 	plt.figure(figsize=(4.0, 4.0))
-	plt.plot(loss_mem, 'r--')
+	plt.plot(loss_mem, 'ro-', markersize=2)
 	plt.xlabel("1000 Iterations")
 	plt.ylabel("Average Loss in 1000 Iterations")
 	plt.title("Iterations vs. Average Loss")
