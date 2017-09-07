@@ -313,8 +313,8 @@ class BrainNet:
 
 	def inception_v3(self, inputs, dropout_keep_prob=0.8, reuse=False, scope=''):
 		end_points = {}
-		with tf.name_scope(scope, 'inception_v3', [inputs], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
-			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout]):
+		with tf.name_scope(scope, 'inception_v3', [inputs], reuse=reuse):
+			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight)):
 				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='VALID'):
 					# 299 x 299 x 3
 					inputs = tf.expand_dims(inputs, dim=3)
@@ -540,7 +540,7 @@ class BrainNet:
 						logits = slim.layers.fully_connected(net, self.num_output, weights_regularizer=None, activation_fn=None, scope='logits')
 						# 1000
 						end_points['logits'] = logits
-				return logits
+		return end_points['logits']
 
 	def get_model(self, inputs, reuse=False, use_inception=True):
 		if not use_inception:
