@@ -316,24 +316,23 @@ class BrainNet:
 		with tf.name_scope(scope, 'inception_v3', [inputs]):
 			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
 				with slim.arg_scope([slim.layers.conv2d], stride=1, padding='VALID', reuse=reuse):
-					with slim.arg_scope([slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='VALID'):
-						# 299 x 299 x 3
-						inputs = tf.expand_dims(inputs, dim=3)
-						end_points['conv0'] = slim.layers.conv2d(inputs, 32, kernel_size=3, stride=2, scope='conv0')
-						# 149 x 149 x 32
-						end_points['conv1'] = slim.layers.conv2d(end_points['conv0'], 32, kernel_size=3, scope='conv1')
-						# 147 x 147 x 32
-						end_points['conv2'] = slim.layers.conv2d(end_points['conv1'], 64, kernel_size=3, padding='SAME', scope='conv2')
-						# 147 x 147 x 64
-						#end_points['pool1'] = slim.layers.max_pool2d(end_points['conv2'], kernel_size=3, stride=2, scope='pool1')
-						# 73 x 73 x 64
-						end_points['conv3'] = slim.layers.conv2d(end_points['conv2'], 80, kernel_size=1, scope='conv3')
-						# 73 x 73 x 80.
-						end_points['conv4'] = slim.layers.conv2d(end_points['conv3'], 192, kernel_size=3, scope='conv4')
-						# 71 x 71 x 192.
-						#end_points['pool2'] = slim.layers.max_pool2d(end_points['conv4'], kernel_size=3, stride=2, scope='pool2')
-						# 35 x 35 x 192.
-						net = end_points['conv4']
+					# 299 x 299 x 3
+					inputs = tf.expand_dims(inputs, dim=3)
+					end_points['conv0'] = slim.layers.conv2d(inputs, 32, kernel_size=3, stride=2, scope='conv0')
+					# 149 x 149 x 32
+					end_points['conv1'] = slim.layers.conv2d(end_points['conv0'], 32, kernel_size=3, scope='conv1')
+					# 147 x 147 x 32
+					end_points['conv2'] = slim.layers.conv2d(end_points['conv1'], 64, kernel_size=3, padding='SAME', scope='conv2')
+					# 147 x 147 x 64
+					#end_points['pool1'] = slim.layers.max_pool2d(end_points['conv2'], kernel_size=3, stride=2, scope='pool1')
+					# 73 x 73 x 64
+					end_points['conv3'] = slim.layers.conv2d(end_points['conv2'], 80, kernel_size=1, scope='conv3')
+					# 73 x 73 x 80.
+					end_points['conv4'] = slim.layers.conv2d(end_points['conv3'], 192, kernel_size=3, scope='conv4')
+					# 71 x 71 x 192.
+					#end_points['pool2'] = slim.layers.max_pool2d(end_points['conv4'], kernel_size=3, stride=2, scope='pool2')
+					# 35 x 35 x 192.
+					net = end_points['conv4']
 				# Inception blocks
 				with slim.arg_scope([slim.layers.conv2d], stride=1, padding='SAME', reuse=reuse):
 					# mixed: 35 x 35 x 256.
