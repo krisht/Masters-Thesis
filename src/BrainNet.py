@@ -533,7 +533,7 @@ class BrainNet:
 					# Final pooling and prediction
 					with tf.variable_scope('logits'):
 						shape = net.get_shape()
-						net = slim.layers.avg_pool2d(net, shape[1:3], , stride=1, padding='VALID', scope='pool')
+						net = slim.layers.avg_pool2d(net, shape[1:3], stride=1, padding='VALID', scope='pool')
 						# 1 x 1 x 2048
 						#net = slim.layers.dropout(net, dropout_keep_prob, scope='dropout')
 						net = slim.layers.flatten(net, scope='flatten')
