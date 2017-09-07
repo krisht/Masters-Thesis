@@ -386,147 +386,146 @@ class BrainNet:
 					# mixed_3: 17 x 17 x 768.
 					with tf.variable_scope('mixed_17x17x768a'):
 						with tf.variable_scope('branch3x3'):
-							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=3, stride=2, padding='VALID')
+							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=3, stride=2, padding='VALID', scope='branch3x3/conv1')
 						with tf.variable_scope('branch3x3dbl'):
-							branch3x3dbl = slim.layers.conv2d(net, 64, kernel_size=1)
-							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
-							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3, stride=2, padding='VALID')
+							branch3x3dbl = slim.layers.conv2d(net, 64, kernel_size=1, scope='branch3x3dbl/conv1')
+							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3, scope='branch3x3dbl/conv2')
+							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3, stride=2, padding='VALID', scope='branch3x3dbl/conv3')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, stride=2, padding='VALID')
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, stride=2, padding='VALID', scope='branch_pool/max_pool1')
 						net = tf.concat(axis=3, values=[branch3x3, branch3x3dbl, branch_pool])
 						end_points['mixed_17x17x768a'] = net
 					# mixed4: 17 x 17 x 768.
 					with tf.variable_scope('mixed_17x17x768b'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch7x7'):
-							branch7x7 = slim.layers.conv2d(net, 128, kernel_size=1)
-							branch7x7 = slim.layers.conv2d(branch7x7, 128, kernel_size=(1, 7))
-							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1))
+							branch7x7 = slim.layers.conv2d(net, 128, kernel_size=1, scope='branch7x7/conv1')
+							branch7x7 = slim.layers.conv2d(branch7x7, 128, kernel_size=(1, 7), scope='branch7x7/conv2')
+							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1), scope='branch7x7/conv3')
 						with tf.variable_scope('branch7x7dbl'):
 							branch7x7dbl = slim.layers.conv2d(net, 128, kernel_size=1)
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(1, 7))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(7, 1), scope='branch7x7dbl/conv1')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(1, 7), scope='branch7x7dbl/conv2')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 128, kernel_size=(7, 1), scope='branch7x7dbl/conv3')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7), scope='branch7x7dbl/conv4')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768b'] = net
 					# mixed_5: 17 x 17 x 768.
 					with tf.variable_scope('mixed_17x17x768c'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch7x7'):
-							branch7x7 = slim.layers.conv2d(net, 160, kernel_size=1)
-							branch7x7 = slim.layers.conv2d(branch7x7, 160, kernel_size=(1, 7))
-							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1))
+							branch7x7 = slim.layers.conv2d(net, 160, kernel_size=1, scope='branch7x7/conv1')
+							branch7x7 = slim.layers.conv2d(branch7x7, 160, kernel_size=(1, 7), scope='branch7x7/conv2')
+							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1), scope='branch7x7/conv3')
 						with tf.variable_scope('branch7x7dbl'):
-							branch7x7dbl = slim.layers.conv2d(net, 160, kernel_size=1)
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(1, 7))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
+							branch7x7dbl = slim.layers.conv2d(net, 160, kernel_size=1, scope='branch7x7dbl/conv1')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1), scope='branch7x7dbl/conv2')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(1, 7), scope='branch7x7dbl/conv3')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1), scope='branch7x7dbl/conv4')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7), scope='branch7x7dbl/conv5')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv2')
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768c'] = net
 					# mixed_6: 17 x 17 x 768.
 					with tf.variable_scope('mixed_17x17x768d'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch7x7'):
-							branch7x7 = slim.layers.conv2d(net, 160, kernel_size=1)
-							branch7x7 = slim.layers.conv2d(branch7x7, 160, kernel_size=(1, 7))
-							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1))
+							branch7x7 = slim.layers.conv2d(net, 160, kernel_size=1, scope='branch7x7/conv1')
+							branch7x7 = slim.layers.conv2d(branch7x7, 160, kernel_size=(1, 7), scope='branch7x7/conv2')
+							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1), scope='branch7x7/conv3')
 						with tf.variable_scope('branch7x7dbl'):
-							branch7x7dbl = slim.layers.conv2d(net, 160, kernel_size=1)
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(1, 7))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
+							branch7x7dbl = slim.layers.conv2d(net, 160, kernel_size=1, scope='branch7x7dbl/conv1')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1), scope='branch7x7dbl/conv2')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(1, 7), scope='branch7x7dbl/conv3')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 160, kernel_size=(7, 1), scope='branch7x7dbl/conv4')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7), scope='branch7x7dbl/conv5')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768d'] = net
 					# mixed_7: 17 x 17 x 768.
 					with tf.variable_scope('mixed_17x17x768e'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch7x7'):
-							branch7x7 = slim.layers.conv2d(net, 192, kernel_size=1)
-							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(1, 7))
-							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1))
+							branch7x7 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch7x7/conv1')
+							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(1, 7), scope='branch7x7/conv2')
+							branch7x7 = slim.layers.conv2d(branch7x7, 192, kernel_size=(7, 1), scope='branch7x7/conv3')
 						with tf.variable_scope('branch7x7dbl'):
-							branch7x7dbl = slim.layers.conv2d(net, 192, kernel_size=1)
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(7, 1))
-							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7))
+							branch7x7dbl = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch7x7dbl/conv1')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(7, 1), scope='branch7x7dbl/conv2')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7), scope='branch7x7dbl/conv3')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(7, 1), scope='branch7x7dbl/conv4')
+							branch7x7dbl = slim.layers.conv2d(branch7x7dbl, 192, kernel_size=(1, 7), scope='branch7x7dbl/conv5')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
 						net = tf.concat(axis=3, values=[branch1x1, branch7x7, branch7x7dbl, branch_pool])
 						end_points['mixed_17x17x768e'] = net
 					# Auxiliary Head logits
 					aux_logits = tf.identity(end_points['mixed_17x17x768e'])
 					with tf.variable_scope('aux_logits'):
-						aux_logits = slim.layers.avg_pool2d(aux_logits, kernel_size=5, stride=3,
-																			padding='VALID')
-						aux_logits = slim.layers.conv2d(aux_logits, 128, kernel_size=1, scope='proj')
+						aux_logits = slim.layers.avg_pool2d(aux_logits, kernel_size=5, stride=3, padding='VALID', scope='aux_logits/avg_pool1')
+						aux_logits = slim.layers.conv2d(aux_logits, 128, kernel_size=1, scope='proj', scope='aux_logits/conv1')
 						# Shape of feature map before the final layer.
 						shape = aux_logits.get_shape()
-						aux_logits = slim.layers.conv2d(aux_logits, 768, shape[1:3], padding='VALID')
-						aux_logits = slim.layers.flatten(aux_logits)
-						aux_logits = slim.layers.fully_connected(aux_logits, self.num_output, activation_fn=None)
+						aux_logits = slim.layers.conv2d(aux_logits, 768, shape[1:3], padding='VALID', scope='aux_logits/conv2')
+						aux_logits = slim.layers.flatten(aux_logits, scope='aux_logits/flatten')
+						aux_logits = slim.layers.fully_connected(aux_logits, self.num_output, activation_fn=None, scope='aux_logits/fc1')
 						end_points['aux_logits'] = aux_logits
 
 					with tf.variable_scope('mixed_17x17x1280a'):
 						with tf.variable_scope('branch3x3'):
-							branch3x3 = slim.layers.conv2d(net, 192, kernel_size=1)
-							branch3x3 = slim.layers.conv2d(branch3x3, 320, kernel_size=3, stride=2, padding='VALID')
+							branch3x3 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch3x3/conv1')
+							branch3x3 = slim.layers.conv2d(branch3x3, 320, kernel_size=3, stride=2, padding='VALID', scope='branch3x3/conv2')
 						with tf.variable_scope('branch7x7x3'):
-							branch7x7x3 = slim.layers.conv2d(net, 192, kernel_size=1)
-							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=(1, 7))
-							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=(7, 1))
-							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=3, stride=2, padding='VALID')
+							branch7x7x3 = slim.layers.conv2d(net, 192, kernel_size=1, scope='branch7x7x3/conv1')
+							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=(1, 7), scope='branch7x7x3/conv2')
+							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=(7, 1), scope='branch7x7x3/conv3')
+							branch7x7x3 = slim.layers.conv2d(branch7x7x3, 192, kernel_size=3, stride=2, padding='VALID', scope='branch7x7x3/conv4')
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, stride=2, padding='VALID')
+							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, stride=2, padding='VALID', scope='branch_pool/max_pool1')
 						net = tf.concat(axis=3, values=[branch3x3, branch7x7x3, branch_pool])
 						end_points['mixed_17x17x1280a'] = net
 					# mixed_9: 8 x 8 x 2048.
 					with tf.variable_scope('mixed_8x8x2048a'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch3x3'):
-							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1)
+							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1, scope='branch3x3/conv1')
 							branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch3x3dbl'):
-							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1)
-							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3)
+							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
+							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
 							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
 						net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
 						end_points['mixed_8x8x2048a'] = net
 					# mixed_10: 8 x 8 x 2048.
 					with tf.variable_scope('mixed_8x8x2048b'):
 						with tf.variable_scope('branch1x1'):
-							branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1)
+							branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch3x3'):
-							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1)
+							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1, scope='branch1x1/conv2')
 							branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch3x3dbl'):
-							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1)
-							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3)
+							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
+							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
 							branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1))])
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME')
-							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
+							branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
 						net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
 						end_points['mixed_8x8x2048b'] = net
 					# Final pooling and prediction
