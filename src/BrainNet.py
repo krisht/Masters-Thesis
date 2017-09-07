@@ -315,7 +315,7 @@ class BrainNet:
 		end_points = {}
 		with tf.name_scope(scope, 'inception_v3', [inputs]):
 			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight)):
-				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.max_pool2d], stride=1, padding='VALID', reuse=reuse):
+				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d], stride=1, padding='VALID', reuse=reuse):
 					# 299 x 299 x 3
 					inputs = tf.expand_dims(inputs, dim=3)
 					end_points['conv0'] = slim.layers.conv2d(inputs, 32, kernel_size=3, stride=2, scope='conv0')
@@ -334,7 +334,7 @@ class BrainNet:
 					# 35 x 35 x 192.
 					net = end_points['conv4']
 				# Inception blocks
-				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.max_pool2d], stride=1, padding='SAME'):
+				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d], stride=1, padding='SAME'):
 					# mixed: 35 x 35 x 256.
 					#with tf.variable_scope('mixed_35x35x256a'):
 					#	with tf.variable_scope('branch1x1'):
