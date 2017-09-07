@@ -313,11 +313,11 @@ class BrainNet:
 
 	def inception_v3(self, inputs, dropout_keep_prob=0.8, reuse=False, scope=''):
 		end_points = {}
-		inputs = tf.expand_dims(inputs, dim=3)
-		with tf.name_scope(scope, 'inception_v3', [inputs]):
-			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
+		with tf.name_scope(scope, 'inception_v3', [inputs], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
+			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout]):
 				with slim.arg_scope([slim.layers.conv2d, slim.layers.max_pool2d, slim.layers.avg_pool2d], stride=1, padding='VALID'):
 					# 299 x 299 x 3
+					inputs = tf.expand_dims(inputs, dim=3)
 					end_points['conv0'] = slim.layers.conv2d(inputs, 32, kernel_size=3, stride=2, scope='conv0')
 					# 149 x 149 x 32
 					end_points['conv1'] = slim.layers.conv2d(end_points['conv0'], 32, kernel_size=3, scope='conv1')
