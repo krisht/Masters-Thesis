@@ -502,7 +502,7 @@ class BrainNet:
 							branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1, scope='branch1x1/conv1')
 						with tf.variable_scope('branch3x3'):
 							branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1, scope='branch3x3/conv1')
-							branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3)), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1))])
+							branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3), scope='branch3x3/concatconv1'), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1), scope='branch3x3/concatconv2')])
 						with tf.variable_scope('branch3x3dbl'):
 							branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
