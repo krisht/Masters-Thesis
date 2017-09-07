@@ -311,7 +311,7 @@ class BrainNet:
 			net = slim.layers.fully_connected(net, self.num_output, weights_regularizer=None, scope='output')
 			return net
 
-	def inception_v3(inputs, dropout_keep_prob=0.8, reuse=False, scope=''):
+	def inception_v3(self, inputs, dropout_keep_prob=0.8, reuse=False, scope=''):
 		end_points = {}
 		with tf.name_scope(scope, 'inception_v3', [inputs]):
 			with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected, slim.layers.batch_norm, slim.layers.dropout], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
