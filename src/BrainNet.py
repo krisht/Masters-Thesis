@@ -347,7 +347,7 @@ class BrainNet:
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 							branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 96, kernel_size=3)
 						with tf.variable_scope('branch_pool'):
-							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3)
+							branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, scope='wtf0')
 							branch_pool = slim.layers.conv2d(branch_pool, 32, kernel_size=1)
 						net = tf.concat(axis=3, values=[branch1x1, branch5x5, branch3x3dbl, branch_pool])
 						end_points['mixed_35x35x256a'] = net
