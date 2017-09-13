@@ -667,9 +667,18 @@ class BrainNet:
 
 	def validate(self, epoch):
 		inputs, classes = self.get_sample(size=100, validation=False )#True)
+		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[0:1000]})
+		a, b = 1000, 2000
+		print(len(inputs))
+		while b < len(inputs):
+			vector_input = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[a:b]})
+			if(len(vector_input) == 0):
+				break
+			vector_inputs = np.concatenate((vector_inputs, vector_input), axis=0)
+			a=b
+			b+=1000
 
-		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
-		print(type(vector_inputs))
+		print(vector_inputs.shape)
 		del inputs
 
 		tempClassifier = neighbors.KNeighborsClassifier(31)
