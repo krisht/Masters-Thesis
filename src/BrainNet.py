@@ -622,32 +622,52 @@ class BrainNet:
 					data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=0))
 					class_list.append(self.artf_num)
 		else:
-			for ii in range(0, size):
-				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
+			for x in self.bckg_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.bckg_num)
+			for x in self.eybl_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.eybl_num)
+			for x in self.gped_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.gped_num)
+			for x in self.spsw_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.spsw_num)
+			for x in self.pled_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.pled_num)
+			for x in self.artf_val:
+				data_list.append(norm_op(np.load(x), axisss=0))
+				class_list.append(self.artf_num)
 
-				if choice == 'bckg':
-					data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
-					class_list.append(self.bckg_num)
-				elif choice == 'eybl':
-					data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
-					class_list.append(self.eybl_num)
-				elif choice == 'gped':
-					data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
-					class_list.append(self.gped_num)
-				elif choice == 'spsw':
-					data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
-					class_list.append(self.spsw_num)
-				elif choice == 'pled':
-					data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
-					class_list.append(self.pled_num)
-				else:
-					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
-					class_list.append(self.artf_num)
+			# for ii in range(0, size):
+			# 	choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
+
+			# 	if choice == 'bckg':
+			# 		data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
+			# 		class_list.append(self.bckg_num)
+			# 	elif choice == 'eybl':
+			# 		data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
+			# 		class_list.append(self.eybl_num)
+			# 	elif choice == 'gped':
+			# 		data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
+			# 		class_list.append(self.gped_num)
+			# 	elif choice == 'spsw':
+			# 		data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
+			# 		class_list.append(self.spsw_num)
+			# 	elif choice == 'pled':
+			# 		data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
+			# 		class_list.append(self.pled_num)
+			# 	else:
+			# 		data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
+			# 		class_list.append(self.artf_num)
 
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=1000, validation=True)
+		inputs, classes = self.get_sample(size=1000000, validation=True)
+
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 		del inputs
 
