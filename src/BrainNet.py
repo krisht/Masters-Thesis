@@ -221,7 +221,7 @@ class BrainNet:
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
 
-	def get_triplets(self, size=100):
+	def get_triplets(self, size=1):#100):
 		A = []
 		P = []
 		N = []
@@ -666,9 +666,10 @@ class BrainNet:
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=1000000, validation=True)
+		inputs, classes = self.get_sample(size=100, validation=True)
 
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
+		print(type(vector_inputs))
 		del inputs
 
 		tempClassifier = neighbors.KNeighborsClassifier(31)
