@@ -666,7 +666,7 @@ class BrainNet:
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=100, validation=True)
+		inputs, classes = self.get_sample(size=100, validation=False )#True)
 
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 		print(type(vector_inputs))
