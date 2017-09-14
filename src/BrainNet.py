@@ -207,8 +207,6 @@ class BrainNet:
 			file.write('Restore directory: %s\n' % restore_dir)
 			file.close()
 
-		print("Done with init")
-
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
 		self.positive = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -281,7 +279,6 @@ class BrainNet:
 			A.append(a)
 			P.append(p)
 			N.append(n)
-		print("returning triplets")
 
 		A = np.asarray(A)
 		P = np.asarray(P)
@@ -553,7 +550,6 @@ class BrainNet:
 		self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
 		self.optim = self.optimizer.minimize(loss=loss)
 		self.sess.run(tf.global_variables_initializer())
-		print("it's here")
 		count = 0
 		ii = 0
 		val_percentage = 0
@@ -592,13 +588,12 @@ class BrainNet:
 				d2 = np.linalg.norm(n - a)
 
 				if self.DEBUG:
-					print("Epoch: %2d, Iter: %7d, IterSkip: %7d, Loss: %.4f, P_Diff: %.4f, N_diff: %.4f" % (epoch, ii, count, temploss, d1, d2))
+					print("Epoch: %2d, Iter: %7d, Loss: %.4f, P_Diff: %.4f, N_diff: %.4f" % (epoch, ii, temploss, d1, d2))
 			val_percentage, val_conf_matrix = self.validate(epoch)
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
 	def get_sample(self, size=1, prob_selection=0.1, validation=False):
-		print("Getting sample")
 		data_list = []
 		class_list = []
 
