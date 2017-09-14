@@ -595,7 +595,7 @@ class BrainNet:
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
-	def get_sample(self, size=1, validation=False):
+	def get_sample(self, size=1, prob_selection=0.5, validation=False):
 		data_list = []
 		class_list = []
 
@@ -623,23 +623,29 @@ class BrainNet:
 					class_list.append(self.artf_num)
 		else:
 			for x in self.bckg_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.bckg_num)
+				if random.random() < prob_selection: 
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.bckg_num)
 			for x in self.eybl_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.eybl_num)
+				if random.random() < prob_selection:
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.eybl_num)
 			for x in self.gped_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.gped_num)
+				if random.random() < prob_selection:
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.gped_num)
 			for x in self.spsw_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.spsw_num)
+				if random.random() < prob_selection:
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.spsw_num)
 			for x in self.pled_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.pled_num)
+				if random.random() < prob_selection:
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.pled_num)
 			for x in self.artf_val:
-				data_list.append(norm_op(np.load(x), axisss=0))
-				class_list.append(self.artf_num)
+				if random.random() < prob_selection: 
+					data_list.append(norm_op(np.load(x), axisss=0))
+					class_list.append(self.artf_num)
 
 			# for ii in range(0, size):
 			# 	choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
