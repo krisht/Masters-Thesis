@@ -666,11 +666,11 @@ class BrainNet:
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=100, validation=False )#True)
+		inputs, classes = self.get_sample(size=10000, validation=False )#True)
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[0:1000]})
 		a, b = 1000, 2000
 		print(len(inputs))
-		while b < len(inputs):
+		while b < len(inputs)+1000:
 			vector_input = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[a:b]})
 			if(len(vector_input) == 0):
 				break
