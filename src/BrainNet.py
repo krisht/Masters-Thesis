@@ -281,7 +281,7 @@ class BrainNet:
 			A.append(a)
 			P.append(p)
 			N.append(n)
-
+		print("returning triplets")
 
 		A = np.asarray(A)
 		P = np.asarray(P)
@@ -550,11 +550,10 @@ class BrainNet:
 
 	def train_model(self, outdir=None):
 		loss = self.triplet_loss(alpha=self.alpha)
-		print("It fucked up here")
 		self.optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
 		self.optim = self.optimizer.minimize(loss=loss)
 		self.sess.run(tf.global_variables_initializer())
-
+		print("it's here")
 		count = 0
 		ii = 0
 		val_percentage = 0
@@ -598,7 +597,7 @@ class BrainNet:
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
-	def get_sample(self, size=1, prob_selection=0.05, validation=False):
+	def get_sample(self, size=1, prob_selection=0.1, validation=False):
 		print("Getting sample")
 		data_list = []
 		class_list = []
@@ -679,7 +678,6 @@ class BrainNet:
 		inputs, classes = self.get_sample(size=10000, validation=True)
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[0:1000]})
 		a, b = 1000, 2000
-		
 		while b < len(inputs)+1000:
 			vector_input = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs[a:b]})
 			if(len(vector_input) == 0):
