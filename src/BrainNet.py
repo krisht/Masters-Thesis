@@ -593,7 +593,7 @@ class BrainNet:
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
-	def get_sample(self, size=1, prob_selection=0.1, validation=False):
+	def get_sample(self, size=1, prob_selection=0.005, validation=False):
 		data_list = []
 		class_list = []
 
