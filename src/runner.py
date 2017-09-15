@@ -28,3 +28,4 @@ for run in range(0, 1):
 	blah, val_percent, val_conf_matrix = net.train_model()
 
 	print('Validation Percentage: {:2.2f}\nConfusion Matrix:\n{}'.format(val_percent, val_conf_matrix))
+

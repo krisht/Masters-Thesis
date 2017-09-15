@@ -680,3 +680,5 @@ class BrainNet:
 		self.count_of_triplets = dict()
 
 		return percentage, conf_matrix
+
+
