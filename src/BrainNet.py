@@ -6,7 +6,7 @@ import matplotlib
 import os
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,4"
 
 matplotlib.use('Agg')
 
@@ -226,7 +226,7 @@ class BrainNet:
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
 
-	def get_triplets(self, size=100):
+	def get_triplets(self, size=10):
 		A = []
 		P = []
 		N = []
