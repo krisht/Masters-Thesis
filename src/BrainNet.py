@@ -213,8 +213,12 @@ class BrainNet:
 			file.close()
 
 	def distance_metric(self, a, b):
-		numerator = tf.tensordot(a, b, axes =0)
-		print(numerator)
+		print(a)
+		print(b)
+		distance = tf.tensordot(a,b,axes=1)
+		print(distance)
+		distance = tf.tensordot(a, b, axes = 2)
+		print(distance)
 		return tf.square(tf.subtract(a, b))
 
 
