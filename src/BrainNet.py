@@ -226,7 +226,7 @@ class BrainNet:
 		self.positive_out = self.get_model(self.positive, reuse=True)
 		self.negative_out = self.get_model(self.negative, reuse=True)
 		with tf.variable_scope('triplet_loss'):
-			pos_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.positive_out), 1)
+			pos_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.positive_out), 1) # Added modularized 
 			neg_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.negative_out), 1)
 			basic_loss = tf.add(tf.subtract(pos_dist, neg_dist), alpha)
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
