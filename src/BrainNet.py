@@ -212,6 +212,12 @@ class BrainNet:
 			file.write('Restore directory: %s\n' % restore_dir)
 			file.close()
 
+	def distance_metric(self, a, b):
+		numerator = tf.tensordot(a, b, axes =0)
+		print(numerator)
+		return tf.square(tf.subtract(a, b))
+
+
 	def triplet_loss(self, alpha):
 		self.anchor = tf.placeholder(tf.float32, shape=self.input_shape)
 		self.positive = tf.placeholder(tf.float32, shape=self.input_shape)
@@ -220,8 +226,8 @@ class BrainNet:
 		self.positive_out = self.get_model(self.positive, reuse=True)
 		self.negative_out = self.get_model(self.negative, reuse=True)
 		with tf.variable_scope('triplet_loss'):
-			pos_dist = tf.reduce_sum(tf.square(tf.subtract(self.anchor_out, self.positive_out)), 1)
-			neg_dist = tf.reduce_sum(tf.square(tf.subtract(self.anchor_out, self.negative_out)), 1)
+			pos_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.positive_out), 1)
+			neg_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.negative_out), 1)
 			basic_loss = tf.add(tf.subtract(pos_dist, neg_dist), alpha)
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
 			return loss
