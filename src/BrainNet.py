@@ -234,7 +234,6 @@ class BrainNet:
 			neg_dist = self.distance_metric(self.anchor_out, self.negative_out, metric='euclidean')
 			basic_loss = tf.add(tf.subtract(pos_dist, neg_dist), alpha)
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
-			print(loss)
 			return loss
 
 	def get_triplets(self, size=10):
@@ -668,7 +667,7 @@ class BrainNet:
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 		del inputs
 
-		tempClassifier = neighbors.KNeighborsClassifier(31)
+		tempClassifier = neighbors.KNeighborsClassifier(31, metric = cosine_metric)
 		tempClassifier.fit(vector_inputs, classes)
 
 		val_inputs, val_classes = self.get_sample(size=self.validation_size)
@@ -698,4 +697,5 @@ class BrainNet:
 
 		return percentage, conf_matrix
 
-
+def cosine_metric(x, y, metric = 'cosine'):
+	return scipy.spatial.distance.cosine(x,y)
