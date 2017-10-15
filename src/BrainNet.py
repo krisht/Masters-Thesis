@@ -24,6 +24,7 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
+from scipy.spatial.distance import cosine as cos_metric
 
 
 
@@ -697,5 +698,5 @@ class BrainNet:
 
 		return percentage, conf_matrix
 
-def cosine_metric(x, y, metric = 'cosine'):
-	return scipy.spatial.distance.cosine(x,y)
+def cosine_metric(x, y):
+	return cos_metric(x,y)
