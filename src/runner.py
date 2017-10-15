@@ -23,7 +23,7 @@ for run in range(0, 1):
 
 	print('Run: {:d}, Alpha: {:1.1f}, Learning Rate: {:3.2e}, L2-Weight: {:3.2e}, Batch Size: {:d}'.format(run + 1, alpha, learning_rate, l2_weight, batch_size))
 	#path_to_files='/home/krishna/data',
-	net = BrainNet(path_to_files='/home/krishna/data', alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size,
+	net = BrainNet(path_to_files='/media/krishna/DATA', alpha=alpha, validation_size=validation_size, learning_rate=learning_rate, l2_weight=l2_weight, batch_size=batch_size,
 				   debug=True, train_epoch=20)
 	blah, val_percent, val_conf_matrix = net.train_model()
 

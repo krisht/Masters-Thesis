@@ -212,14 +212,14 @@ class BrainNet:
 			file.write('Restore directory: %s\n' % restore_dir)
 			file.close()
 
-	def distance_metric(self, a, b):
-		print(a)
-		print(b)
-		distance = tf.tensordot(a,b,axes=1)
-		print(distance)
-		distance = tf.tensordot(a, b, axes = 2)
-		print(distance)
-		return tf.square(tf.subtract(a, b))
+	def distance_metric(self, a, b, metric='cosine'):
+		if metric == 'cosine':
+			num = tf.reduce_sum(a*b, 1)
+			denom = tf.sqrt(tf.reduce_sum(a*a,1))*tf.sqrt(tf.reduce_sum(b*b, 1))
+			result = 1 - (self.num/self.denom)
+			return result
+		elif metric=='euclidean':
+			return tf.reduce_sum(tf.square(tf.subtract(a, b)), 1)
 
 
 	def triplet_loss(self, alpha):
@@ -230,10 +230,11 @@ class BrainNet:
 		self.positive_out = self.get_model(self.positive, reuse=True)
 		self.negative_out = self.get_model(self.negative, reuse=True)
 		with tf.variable_scope('triplet_loss'):
-			pos_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.positive_out), 1) # Added modularized 
-			neg_dist = tf.reduce_sum(self.distance_metric(self.anchor_out, self.negative_out), 1)
+			pos_dist = self.distance_metric(self.anchor_out, self.positive_out, metric='euclidean') 
+			neg_dist = self.distance_metric(self.anchor_out, self.negative_out, metric='euclidean')
 			basic_loss = tf.add(tf.subtract(pos_dist, neg_dist), alpha)
 			loss = tf.reduce_mean(tf.maximum(basic_loss, 0.0), 0)
+			print(loss)
 			return loss
 
 	def get_triplets(self, size=10):
