@@ -642,7 +642,7 @@ class BrainNet:
 						class_list.append(self.artf_num)
 				elif with_seizure == True:
 					success = False
-					the_file = None
+					the_file = ''
 					class_num = None
 					while not success:
 						if choice == 'bckg': 
@@ -664,17 +664,17 @@ class BrainNet:
 							the_filie = random.choice(self.artf_val)
 							class_num = self.artf_num
 
-						the_file_stripped = 'session' + re.search('session(.+?)_', the_file).group(1) + '_'
+						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
 						if the_file_stripped in self.files_with_seizures:
 							success = True
 
-					data_list.append(norm_op(np.load(the_file), axisss=0))
+					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
 					class_list.append(class_num)
 
 				elif with_seizure == False:
 					success = False
-					the_file = None
+					the_file = ''
 					class_num = None
 					while not success:
 						if choice == 'bckg': 
@@ -696,12 +696,12 @@ class BrainNet:
 							the_filie = random.choice(self.artf_val)
 							class_num = self.artf_num
 
-						the_file_stripped = 'session' + re.search('session(.+?)_', the_file).group(1) + '_'
+						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
 						if the_file_stripped in self.files_without_seizures:
 							success = True
 
-					data_list.append(norm_op(np.load(the_file), axisss=0))
+					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
 					class_list.append(class_num)
 		return data_list, class_list
 
