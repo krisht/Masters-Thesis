@@ -180,7 +180,7 @@ class BrainNet:
 
 		total_set = (files_with_spsw | files_with_gped | files_with_pled | files_with_bckg | files_with_artf | files_with_eybl)
 		self.files_without_seizures = total_set - files_with_spsw - files_with_pled - files_with_gped
-		self.files_with_seizures = total_set - files_without_seizures
+		self.files_with_seizures = total_set - self.files_without_seizures
 
 		self.sess = tf.Session()
 		self.num_classes = num_classes
