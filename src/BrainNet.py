@@ -789,9 +789,9 @@ class BrainNet:
 		conf_matrix_without_seizure = confusion_matrix(val_classes_without_seizure, pred_class_without_seizure, labels=class_labels_without_seizure)
 		np.set_printoptions(precision=2)
 
-		np.save('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_without_seizure), conf_matrix_without_seizure, with_seizure=False, title = "Confusion Matrix on Files without Seizure")
+		np.save('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_without_seizure), conf_matrix_without_seizure)
 
-		plot_confusion_matrix(conf_matrix_without_seizure, classes=class_labels_without_seizure, epoch=epoch, accuracy=percentage_without_seizure)
+		plot_confusion_matrix(conf_matrix_without_seizure, classes=class_labels_without_seizure, epoch=epoch, accuracy=percentage_without_seizure, with_seizure=False, title = "Confusion Matrix on Files without Seizure")
 
 		#compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage_without_seizure, num_to_label=self.num_to_class)
 
