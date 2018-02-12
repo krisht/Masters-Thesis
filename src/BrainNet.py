@@ -24,9 +24,6 @@ from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
-from scipy.spatial.distance import cosine as cos_metric
-
-
 
 curr_time = datetime.datetime.now()
 
@@ -38,29 +35,33 @@ def norm_op(vector, axisss):
 	return normalize(vector, axis=axisss, norm='l2')
 	#return vector * 10e4
 
-def plot_embedding(X, y, epoch, accuracy, num_to_label, title="t-SNE Embedding of DCNN Clustering Network"):
-    x_min, x_max = np.min(X, 0), np.max(X, 0)
-    X = (X - x_min) / (x_max - x_min)
-    cmap = plt.get_cmap('gist_rainbow')
-    color_map = [cmap(1.*i/6) for i in range(6)]
-    legend_entry = []
-    for ii, c in enumerate(color_map):
-    	legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
+def plot_embedding(X, y, epoch, accuracy, num_to_label, title):
+	x_min, x_max = np.min(X, 0), np.max(X, 0)
+	X = (X - x_min) / (x_max - x_min)
+	cmap = plt.get_cmap('gist_rainbow')
+	color_map = [cmap(1.*i/6) for i in range(6)]
+	legend_entry = []
+	for ii, c in enumerate(color_map):
+		legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
 
 
-    plt.figure(figsize=(4.0, 4.0))
-    plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
-    plt.legend(handles=legend_entry)
-    plt.xticks([]), plt.yticks([])
-    plt.title(title)
-    plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+	plt.figure(figsize=(4.0, 4.0))
+	plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
+	plt.legend(handles=legend_entry)
+	plt.xticks([]), plt.yticks([])
+	plt.title(title)
+	plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
-def compute_tSNE(X, y, epoch, accuracy, num_to_label):
+def compute_tSNE(X, y, epoch, accuracy, num_to_label, with_seizure=None, title="t-SNE Embedding of DCNN Clustering Network"):
 	tsne = TSNE(n_components=2, init='random', random_state=0)
 	X_tsne = tsne.fit_transform(X)
-	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, num_to_label=num_to_label)
-	np.savez('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
-
+	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, num_to_label=num_to_label, title=title)
+	if with_seizure is None:
+		np.savez('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
+	elif with_seizure == True:
+		np.savez('./%s Results/%s_tSNE_plot_with_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
+	elif with_seizure == False:
+		np.savez('./%s Results/%s_tSNE_plot_without_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
 
 def get_loss(loss_mem, loss_mem_skip):
 	plt.figure(figsize=(4.0, 4.0))
@@ -78,42 +79,43 @@ def get_loss(loss_mem, loss_mem_skip):
 	plt.savefig('./%s Results/%s_convergence_plot.pdf' % (curr_time, curr_time), bbox_inches='tight')
 
 
-def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy = None, epoch=None):
-    plt.figure(figsize=(4, 4))
-    plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    ax = plt.gca()
-    #plt.colorbar()
-    tick_marks = np.arange(len(classes))
-    plt.xticks(tick_marks, classes, rotation=45)
-    plt.yticks(tick_marks, classes)
-    ax.yaxis.set_label_coords(-0.1,1.03)
-    h = ax.set_ylabel('True label', rotation=0, horizontalalignment='left')
+def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy = None, epoch=None, with_seizure=None, title = "Confusion Matrix on All Data"):
+	plt.figure(figsize=(4, 4))
+	plt.imshow(cm, interpolation='nearest', cmap=cmap)
+	ax = plt.gca()
+	#plt.colorbar()
+	tick_marks = np.arange(len(classes))
+	plt.xticks(tick_marks, classes, rotation=45)
+	plt.yticks(tick_marks, classes)
+	ax.yaxis.set_label_coords(-0.1,1.03)
+	h = ax.set_ylabel('True label', rotation=0, horizontalalignment='left')
 
-    if normalize:
-        cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
-        print("Normalized confusion matrix")
-    else:
-        print('Confusion matrix, without normalization')
+	if normalize:
+		cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+		print("Normalized confusion matrix")
+	else:
+		print('Confusion matrix, without normalization')
 
-    print(cm)
+	print(cm)
 
-    thresh = cm.max() / 2.
-    for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
-        plt.text(j, i, '{0:.2f}'.format(cm[i, j]),
-                 horizontalalignment="center",
-                 verticalalignment="center",                 
-                 color="white" if cm[i, j] > thresh else "black") 
+	thresh = cm.max() / 2.
+	for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
+		plt.text(j, i, '{0:.2f}'.format(cm[i, j]), horizontalalignment="center", verticalalignment="center", color="white" if cm[i, j] > thresh else "black") 
 
-    #plt.tight_layout()
-    plt.xlabel('Predicted label')
-    #plt.show()
-    plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+	#plt.tight_layout()
+	plt.xlabel('Predicted label')
+	plt.title(title)
+	#plt.show()
+	if with_seizure is None:
+		plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+	elif with_seizure == True:
+		plt.savefig('./%s Results/%s_confusion_matrix_with_seizure_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+	elif with_seizure == False:
+		plt.savefig('./%s Results/%s_confusion_matrix_without_seizure_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 
 class BrainNet:
-	def __init__(self, input_shape=[None, 71, 125], path_to_files='/media/krishna/DATA',
-				 l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3,
-				 batch_size=100, train_epoch=5, keep_prob=None, debug=True, restore_dir=None):
+	def __init__(self, input_shape=[None, 71, 125], path_to_files='/media/krishna/DATA', l2_weight=0.05, num_output=64, num_classes=6, alpha=.5, validation_size=500, learning_rate=1e-3, batch_size=100, train_epoch=5, keep_prob=None, debug=True, restore_dir=None):
 		self.bckg_num = 0
 		self.artf_num = 1
 		self.eybl_num = 2
@@ -167,6 +169,17 @@ class BrainNet:
 			self.pled_val = np.asarray([s.replace('/media/krishna/DATA', self.path_to_files) for s in self.pled_val])
 			self.gped_val = np.asarray([s.replace('/media/krishna/DATA', self.path_to_files) for s in self.gped_val])
 			self.eybl_val = np.asarray([s.replace('/media/krishna/DATA', self.path_to_files) for s in self.eybl_val])
+
+		files_with_spsw = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.spsw_val])
+		files_with_gped = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.gped_val])
+		files_with_pled = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.pled_val])
+		files_with_bckg = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.bckg_val])
+		files_with_artf = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.artf_val])
+		files_with_eybl = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.eybl_val])
+
+		total_set = (files_with_spsw | files_with_gped | files_with_pled | files_with_bckg | files_with_artf | files_with_eybl)
+		self.files_without_seizures = total_set - files_with_spsw - files_with_pled - files_with_gped
+		self.files_with_seizures = total_set - files_without_seizures
 
 		self.sess = tf.Session()
 		self.num_classes = num_classes
@@ -305,9 +318,7 @@ class BrainNet:
 	# End new stuff
 	# 
 	def simple_model(self, inputs, reuse=False):
-		with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected],
-							weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True),
-							weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
+		with slim.arg_scope([slim.layers.conv2d, slim.layers.fully_connected], weights_initializer=tf.contrib.layers.xavier_initializer(uniform=True), weights_regularizer=slim.l2_regularizer(self.l2_weight), reuse=reuse):
 			net = tf.expand_dims(inputs, dim=3)
 			net = slim.layers.conv2d(net, num_outputs=32, kernel_size=5, scope='conv1', trainable=True)
 			net = slim.layers.max_pool2d(net, kernel_size=5, scope='maxpool1')
@@ -511,39 +522,6 @@ class BrainNet:
 							branch_pool = slim.layers.max_pool2d(net, kernel_size=3, stride=2, padding='VALID', scope='branch_pool/max_pool1')
 						net = tf.concat(axis=3, values=[branch3x3, branch7x7x3, branch_pool])
 						end_points['mixed_17x17x1280a'] = net
-					# mixed_9: 8 x 8 x 2048.
-					# with tf.variable_scope('mixed_8x8x2048a'):
-					# 	with tf.variable_scope('branch1x1'):
-					# 		branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1, scope='branch1x1/conv1')
-					# 	with tf.variable_scope('branch3x3'):
-					# 		branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1, scope='branch3x3/conv1')
-					# 		branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3), scope='branch3x3/concatconv1'), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1), scope='branch3x3/concatconv2')])
-					# 	with tf.variable_scope('branch3x3dbl'):
-					# 		branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
-					# 		branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
-					# 		branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3), scope='branch3x3dbl/concatconv1'), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1), scope='branch3x3dbl/concatconv2')])
-					# 	with tf.variable_scope('branch_pool'):
-					# 		branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
-					# 		branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
-					# 	net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
-					# 	end_points['mixed_8x8x2048a'] = net
-					# mixed_10: 8 x 8 x 2048.
-					# with tf.variable_scope('mixed_8x8x2048b'):
-					# 	with tf.variable_scope('branch1x1'):
-					# 		branch1x1 = slim.layers.conv2d(net, 320, kernel_size=1, scope='branch1x1/conv1')
-					# 	with tf.variable_scope('branch3x3'):
-					# 		branch3x3 = slim.layers.conv2d(net, 384, kernel_size=1, scope='branch1x1/conv2')
-					# 		branch3x3 = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3, 384, kernel_size=(1, 3), scope='branch3x3/concatconv1'), slim.layers.conv2d(branch3x3, 384, kernel_size=(3, 1), scope='branch3x3/concatconv2')])
-					# 	with tf.variable_scope('branch3x3dbl'):
-					# 		branch3x3dbl = slim.layers.conv2d(net, 448, kernel_size=1, scope='branch3x3dbl/conv1')
-					# 		branch3x3dbl = slim.layers.conv2d(branch3x3dbl, 384, kernel_size=3, scope='branch3x3dbl/conv2')
-					# 		branch3x3dbl = tf.concat(axis=3, values=[slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(1, 3), scope='branch3x3dbl/concatconv1'), slim.layers.conv2d(branch3x3dbl, 384, kernel_size=(3, 1), scope='branch3x3dbl/concatconv2')])
-					# 	with tf.variable_scope('branch_pool'):
-					# 		branch_pool = slim.layers.avg_pool2d(net, kernel_size=3, stride=1, padding='SAME', scope='branch_pool/avg_pool1')
-					# 		branch_pool = slim.layers.conv2d(branch_pool, 192, kernel_size=1, scope='branch_pool/conv1')
-					# 	net = tf.concat(axis=3, values=[branch1x1, branch3x3, branch3x3dbl, branch_pool])
-					# 	end_points['mixed_8x8x2048b'] = net
-					# Final pooling and prediction
 					with tf.variable_scope('logits'):
 						shape = net.get_shape()
 						net = slim.layers.avg_pool2d(net, shape[1:3], stride=1, padding='VALID', scope='pool')
@@ -612,7 +590,7 @@ class BrainNet:
 		self.sess.close()
 		return epoch, val_percentage, val_conf_matrix
 
-	def get_sample(self, size=1, validation=False):
+	def get_sample(self, size=1, validation=False, with_seizure=None):
 		data_list = []
 		class_list = []
 
@@ -642,34 +620,99 @@ class BrainNet:
 			for ii in range(0, size):
 				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
 
-				if choice == 'bckg':
-					data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
-					class_list.append(self.bckg_num)
-				elif choice == 'eybl':
-					data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
-					class_list.append(self.eybl_num)
-				elif choice == 'gped':
-					data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
-					class_list.append(self.gped_num)
-				elif choice == 'spsw':
-					data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
-					class_list.append(self.spsw_num)
-				elif choice == 'pled':
-					data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
-					class_list.append(self.pled_num)
-				else:
-					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
-					class_list.append(self.artf_num)
+				if with_seizure is None: 
+					if choice == 'bckg':
+						data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
+						class_list.append(self.bckg_num)
+					elif choice == 'eybl':
+						data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
+						class_list.append(self.eybl_num)
+					elif choice == 'gped':
+						data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
+						class_list.append(self.gped_num)
+					elif choice == 'spsw':
+						data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
+						class_list.append(self.spsw_num)
+					elif choice == 'pled':
+						data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
+						class_list.append(self.pled_num)
+					else:
+						data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
+						class_list.append(self.artf_num)
+				elif with_seizure == True:
+					success = False
+					the_file = None
+					class_num = None
+					while not success:
+						if choice == 'bckg': 
+							the_file = random.choice(self.bckg_val)
+							class_num = self.bckg_num
+						elif choice == 'eybl':
+							the_file = random.choice(self.eybl_val)
+							class_num = self.eybl_num
+						elif choice == 'gped':
+							the_file = random.choice(self.gped_val)
+							class_num = self.gped_num
+						elif choice == 'spsw': 
+							the_file = random.choice(self.spsw_val)
+							class_num = self.spsw_num
+						elif choice == 'pled':
+							the_file = random.choice(self.pled_val)
+							class_num = self.pled_num
+						else: 
+							the_filie = random.choice(self.artf_val)
+							class_num = self.artf_num
 
+						the_file_stripped = 'session' + re.search('session(.+?)_', the_file).group(1) + '_'
+
+						if the_file_stripped in self.files_with_seizures:
+							success = True
+
+					data_list.append(norm_op(np.load(the_file), axisss=0))
+					class_list.append(class_num)
+
+				elif with_seizure == False:
+					success = False
+					the_file = None
+					class_num = None
+					while not success:
+						if choice == 'bckg': 
+							the_file = random.choice(self.bckg_val)
+							class_num = self.bckg_num
+						elif choice == 'eybl':
+							the_file = random.choice(self.eybl_val)
+							class_num = self.eybl_num
+						elif choice == 'gped':
+							the_file = random.choice(self.gped_val)
+							class_num = self.gped_num
+						elif choice == 'spsw': 
+							the_file = random.choice(self.spsw_val)
+							class_num = self.spsw_num
+						elif choice == 'pled':
+							the_file = random.choice(self.pled_val)
+							class_num = self.pled_num
+						else: 
+							the_filie = random.choice(self.artf_val)
+							class_num = self.artf_num
+
+						the_file_stripped = 'session' + re.search('session(.+?)_', the_file).group(1) + '_'
+
+						if the_file_stripped in self.files_without_seizures:
+							success = True
+
+					data_list.append(norm_op(np.load(the_file), axisss=0))
+					class_list.append(class_num)
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=1000, validation=True)
+		inputs, classes = self.get_sample(size=100, validation=True)
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 		del inputs
 
-		tempClassifier = neighbors.KNeighborsClassifier(31, metric = cosine_metric)
+		tempClassifier = neighbors.KNeighborsClassifier(31)
 		tempClassifier.fit(vector_inputs, classes)
+
+		# All data (Files with Seizures & Files without Seizures)
 
 		val_inputs, val_classes = self.get_sample(size=self.validation_size)
 		vector_val_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs})
@@ -694,9 +737,61 @@ class BrainNet:
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
 		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class)
+
+		# Files with Seizures
+		
+		val_inputs, val_classes = self.get_sample(size=self.validation_size, validation=True, with_seizure=True)
+		vector_val_inputs = self.sess.run(self.inference_model, feed_dict = {self.inference_model: val_inputs})
+		del val_inputs
+
+
+		pred_class = tempClassifier.predict(vector_val_inputs)
+
+		percentage = len([i for i, j in zip(val_classes, pred_class) if i == j]) * 100.0 / self.validation_size
+
+		if self.DEBUG:
+			print("Seizure File Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
+
+		val_classes = list(map(lambda x: self.num_to_class[x], val_classes))
+		pred_class = list(map(lambda x: self.num_to_class[x], pred_class))
+		class_labels = [0, 1, 2, 3, 4, 5]
+		class_labels = list(map(lambda x: self.num_to_class[x], class_labels))
+		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
+		np.set_printoptions(precision=2)
+
+		np.save('./%s Results/%s_confusion_matrix_with_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage), conf_matrix)
+
+		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage, with_seizure=True, title="Confusion Matrix on Files with Seizures")
+
+		compute_tSNE(vector_val_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class, title="t-SNE Embedding of DCNN Clustering Network on Files with Seizures")
+
+		# Files without Seizures
+		
+		val_inputs, val_classes = self.get_sample(size=self.validation_size, validation=True, with_seizure=False)
+		vector_val_inputs = self.sess.run(self.inference_model, feed_dict = {self.inference_model: val_inputs})
+		del val_inputs
+
+
+		pred_class = tempClassifier.predict(vector_val_inputs)
+
+		percentage = len([i for i, j in zip(val_classes, pred_class) if i == j]) * 100.0 / self.validation_size
+
+		if self.DEBUG:
+			print("Seizure File Validation Results: %.3f%% of of %d correct" % (percentage, self.validation_size))
+
+		val_classes = list(map(lambda x: self.num_to_class[x], val_classes))
+		pred_class = list(map(lambda x: self.num_to_class[x], pred_class))
+		class_labels = [0, 1, 2, 3, 4, 5]
+		class_labels = list(map(lambda x: self.num_to_class[x], class_labels))
+		conf_matrix = confusion_matrix(val_classes, pred_class, labels=class_labels)
+		np.set_printoptions(precision=2)
+
+		np.save('./%s Results/%s_confusion_matrix_without_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage), conf_matrix)
+
+		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage, with_seizure=False, title="Confusion Matrix on Files without Seizures")
+
+		compute_tSNE(vector_val_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class, title="t-SNE Embedding of DCNN Clustering Network on Files without Seizures")
+
 		self.count_of_triplets = dict()
 
 		return percentage, conf_matrix
-
-def cosine_metric(x, y):
-	return cos_metric(x,y)
