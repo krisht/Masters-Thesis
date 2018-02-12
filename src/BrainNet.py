@@ -661,8 +661,10 @@ class BrainNet:
 							the_file = random.choice(self.pled_val)
 							class_num = self.pled_num
 						else: 
-							the_filie = random.choice(self.artf_val)
+							the_file = random.choice(self.artf_val)
 							class_num = self.artf_num
+
+						print(the_file)
 
 						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
@@ -693,8 +695,10 @@ class BrainNet:
 							the_file = random.choice(self.pled_val)
 							class_num = self.pled_num
 						else: 
-							the_filie = random.choice(self.artf_val)
+							the_file = random.choice(self.artf_val)
 							class_num = self.artf_num
+
+						print(the_file)
 
 						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
