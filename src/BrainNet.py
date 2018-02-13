@@ -210,7 +210,7 @@ class BrainNet:
 
 		with open(self.metadata_file, 'w') as file:
 			file.write('DCNN Clustering Network\n')
-			file.write('Normalization on\n')
+			#file.write('Normalization on\n')
 			file.write('Time of training: %s\n' % curr_time)
 			file.write('Input shape: %s\n' % input_shape)
 			file.write('Path to files: %s\n' % path_to_files)
