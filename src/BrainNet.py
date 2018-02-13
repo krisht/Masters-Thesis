@@ -33,8 +33,8 @@ loss_mem_skip = []
 
 
 def norm_op(vector, axisss):
-	return normalize(vector, axis=axisss, norm='l2')
-	#return vector * 10e4
+	#return normalize(vector, axis=axisss, norm='l2')
+	return vector * 10e4
 
 def plot_embedding(X, y, epoch, accuracy, num_to_label, title):
 	x_min, x_max = np.min(X, 0), np.max(X, 0)
@@ -710,7 +710,7 @@ class BrainNet:
 		return data_list, class_list
 
 	def validate(self, epoch):
-		inputs, classes = self.get_sample(size=100, validation=True)
+		inputs, classes = self.get_sample(size=self.validation_size, validation=True)
 		vector_inputs = self.sess.run(self.inference_model, feed_dict={self.inference_input: inputs})
 		del inputs
 
