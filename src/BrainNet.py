@@ -171,12 +171,12 @@ class BrainNet:
 			self.gped_val = np.asarray([s.replace('/media/krishna/DATA', self.path_to_files) for s in self.gped_val])
 			self.eybl_val = np.asarray([s.replace('/media/krishna/DATA', self.path_to_files) for s in self.eybl_val])
 
-		files_with_spsw = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.spsw_val])
-		files_with_gped = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.gped_val])
-		files_with_pled = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.pled_val])
-		files_with_bckg = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.bckg_val])
-		files_with_artf = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.artf_val])
-		files_with_eybl = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.eybl_val])
+		files_with_spsw = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.spsw])
+		files_with_gped = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.gped])
+		files_with_pled = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.pled])
+		files_with_bckg = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.bckg])
+		files_with_artf = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.artf])
+		files_with_eybl = set(['session' + re.search('session(.+?)_', a).group(1) + '_' for a in self.eybl])
 
 		total_set = (files_with_spsw | files_with_gped | files_with_pled | files_with_bckg | files_with_artf | files_with_eybl)
 		self.files_without_seizures = total_set - files_with_spsw - files_with_pled - files_with_gped
@@ -599,46 +599,24 @@ class BrainNet:
 			for ii in range(0, size):
 				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
 
-				if choice == 'bckg':
-					data_list.append(norm_op(np.load(random.choice(self.bckg)), axisss=0))
-					class_list.append(self.bckg_num)
-				elif choice == 'eybl':
-					data_list.append(norm_op(np.load(random.choice(self.eybl)), axisss=0))
-					class_list.append(self.eybl_num)
-				elif choice == 'gped':
-					data_list.append(norm_op(np.load(random.choice(self.gped)), axisss=0))
-					class_list.append(self.gped_num)
-				elif choice == 'spsw':
-					data_list.append(norm_op(np.load(random.choice(self.spsw)), axisss=0))
-					class_list.append(self.spsw_num)
-				elif choice == 'pled':
-					data_list.append(norm_op(np.load(random.choice(self.pled)), axisss=0))
-					class_list.append(self.pled_num)
-				else:
-					data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=0))
-					class_list.append(self.artf_num)
-		else:
-			for ii in range(0, size):
-				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
-
 				if with_seizure is None: 
 					if choice == 'bckg':
-						data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
+						data_list.append(norm_op(np.load(random.choice(self.bckg)), axisss=0))
 						class_list.append(self.bckg_num)
 					elif choice == 'eybl':
-						data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
+						data_list.append(norm_op(np.load(random.choice(self.eybl)), axisss=0))
 						class_list.append(self.eybl_num)
 					elif choice == 'gped':
-						data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
+						data_list.append(norm_op(np.load(random.choice(self.gped)), axisss=0))
 						class_list.append(self.gped_num)
 					elif choice == 'spsw':
-						data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
+						data_list.append(norm_op(np.load(random.choice(self.spsw)), axisss=0))
 						class_list.append(self.spsw_num)
-					elif choice == 'pled':
-						data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
+					elif choice == 'pled'
+						data_list.append(norm_op(np.load(random.choice(self.pled)), axisss=0))
 						class_list.append(self.pled_num)
 					else:
-						data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
+						data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=0))
 						class_list.append(self.artf_num)
 				elif with_seizure == True:
 					success = False
@@ -646,22 +624,22 @@ class BrainNet:
 					class_num = None
 					while not success:
 						if choice == 'bckg': 
-							the_file = random.choice(self.bckg_val)
+							the_file = random.choice(self.bckg)
 							class_num = self.bckg_num
 						elif choice == 'eybl':
-							the_file = random.choice(self.eybl_val)
+							the_file = random.choice(self.eybl)
 							class_num = self.eybl_num
 						elif choice == 'gped':
-							the_file = random.choice(self.gped_val)
+							the_file = random.choice(self.gped)
 							class_num = self.gped_num
 						elif choice == 'spsw': 
-							the_file = random.choice(self.spsw_val)
+							the_file = random.choice(self.spsw)
 							class_num = self.spsw_num
 						elif choice == 'pled':
-							the_file = random.choice(self.pled_val)
+							the_file = random.choice(self.pled)
 							class_num = self.pled_num
 						else: 
-							the_file = random.choice(self.artf_val)
+							the_file = random.choice(self.artf)
 							class_num = self.artf_num
 
 						print(the_file)
@@ -680,22 +658,22 @@ class BrainNet:
 					class_num = None
 					while not success:
 						if choice == 'bckg': 
-							the_file = random.choice(self.bckg_val)
+							the_file = random.choice(self.bckg)
 							class_num = self.bckg_num
 						elif choice == 'eybl':
-							the_file = random.choice(self.eybl_val)
+							the_file = random.choice(self.eybl)
 							class_num = self.eybl_num
 						elif choice == 'gped':
-							the_file = random.choice(self.gped_val)
+							the_file = random.choice(self.gped)
 							class_num = self.gped_num
 						elif choice == 'spsw': 
-							the_file = random.choice(self.spsw_val)
+							the_file = random.choice(self.spsw)
 							class_num = self.spsw_num
 						elif choice == 'pled':
-							the_file = random.choice(self.pled_val)
+							the_file = random.choice(self.pled)
 							class_num = self.pled_num
 						else: 
-							the_file = random.choice(self.artf_val)
+							the_file = random.choice(self.artf)
 							class_num = self.artf_num
 
 						print(the_file)
@@ -707,6 +685,28 @@ class BrainNet:
 
 					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
 					class_list.append(class_num)
+		else:
+			for ii in range(0, size):
+				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
+
+				if choice == 'bckg':
+					data_list.append(norm_op(np.load(random.choice(self.bckg_val)), axisss=0))
+					class_list.append(self.bckg_num)
+				elif choice == 'eybl':
+					data_list.append(norm_op(np.load(random.choice(self.eybl_val)), axisss=0))
+					class_list.append(self.eybl_num)
+				elif choice == 'gped':
+					data_list.append(norm_op(np.load(random.choice(self.gped_val)), axisss=0))
+					class_list.append(self.gped_num)
+				elif choice == 'spsw':
+					data_list.append(norm_op(np.load(random.choice(self.spsw_val)), axisss=0))
+					class_list.append(self.spsw_num)
+				elif choice == 'pled':
+					data_list.append(norm_op(np.load(random.choice(self.pled_val)), axisss=0))
+					class_list.append(self.pled_num)
+				else:
+					data_list.append(norm_op(np.load(random.choice(self.artf_val)), axisss=0))
+					class_list.append(self.artf_num)
 		return data_list, class_list
 
 	def validate(self, epoch):
@@ -763,7 +763,7 @@ class BrainNet:
 		conf_matrix_seizure = confusion_matrix(val_classes_seizure, pred_class_seizure, labels=class_labels_seizure)
 		np.set_printoptions(precision=2)
 
-		np.save('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_seizure), conf_matrix_seizure)
+		np.save('./%s Results/%s_confusion_matrix_with_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_seizure), conf_matrix_seizure)
 
 		plot_confusion_matrix(conf_matrix_seizure, classes=class_labels_seizure, epoch=epoch, accuracy=percentage_seizure, with_seizure=True, title = "Confusion Matrix on Files with Seizure")
 
@@ -789,7 +789,7 @@ class BrainNet:
 		conf_matrix_without_seizure = confusion_matrix(val_classes_without_seizure, pred_class_without_seizure, labels=class_labels_without_seizure)
 		np.set_printoptions(precision=2)
 
-		np.save('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_without_seizure), conf_matrix_without_seizure)
+		np.save('./%s Results/%s_confusion_matrix_without_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_without_seizure), conf_matrix_without_seizure)
 
 		plot_confusion_matrix(conf_matrix_without_seizure, classes=class_labels_without_seizure, epoch=epoch, accuracy=percentage_without_seizure, with_seizure=False, title = "Confusion Matrix on Files without Seizure")
 
