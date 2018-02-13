@@ -612,7 +612,7 @@ class BrainNet:
 					elif choice == 'spsw':
 						data_list.append(norm_op(np.load(random.choice(self.spsw)), axisss=0))
 						class_list.append(self.spsw_num)
-					elif choice == 'pled'
+					elif choice == 'pled':
 						data_list.append(norm_op(np.load(random.choice(self.pled)), axisss=0))
 						class_list.append(self.pled_num)
 					else:
