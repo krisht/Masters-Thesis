@@ -1,6 +1,5 @@
 DCNN Clustering Network
-Normalization on
-Time of training: 2018-02-13 01:04:22.426561
+Time of training: 2018-02-13 12:52:45.965639
 Input shape: [None, 71, 125]
 Path to files: /home/krishna/data
 L2 Regularization Weight: 0.001
