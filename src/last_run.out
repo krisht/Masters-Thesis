@@ -1,0 +1,32 @@
+2018-02-16 00:20:46.595565: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-02-16 00:20:46.595674: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-02-16 00:20:46.595687: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-02-16 00:20:51.525497: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:04:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2018-02-16 00:20:51.924907: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x43aae60 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-02-16 00:20:51.926490: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX TITAN X
+major: 5 minor: 2 memoryClockRate (GHz) 1.076
+pciBusID 0000:08:00.0
+Total memory: 11.92GiB
+Free memory: 11.81GiB
+2018-02-16 00:20:51.927020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2018-02-16 00:20:51.927050: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2018-02-16 00:20:51.927065: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2018-02-16 00:20:51.927089: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX TITAN X, pci bus id: 0000:04:00.0)
+2018-02-16 00:20:51.927106: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX TITAN X, pci bus id: 0000:08:00.0)
+Run: 1, Alpha: 0.5, Learning Rate: 1.00e-04, L2-Weight: 1.00e-03, Batch Size: 5000
+set(['session32_', 'session157_', 'session178_', 'session154_', 'session287_', 'session138_', 'session9_', 'session166_', 'session179_', 'session83_', 'session234_', 'session29_', 'session130_', 'session213_', 'session144_', 'session146_', 'session222_', 'session304_', 'session297_', 'session112_', 'session229_', 'session127_', 'session33_', 'session180_', 'session120_', 'session54_', 'session245_', 'session76_', 'session28_', 'session94_', 'session205_', 'session262_', 'session12_', 'session53_', 'session235_', 'session305_', 'session85_', 'session258_', 'session274_', 'session147_', 'session291_', 'session137_', 'session10_', 'session299_', 'session148_', 'session152_', 'session285_', 'session34_', 'session119_', 'session255_', 'session200_', 'session91_', 'session99_', 'session302_', 'session249_', 'session132_', 'session232_', 'session125_', 'session141_', 'session19_', 'session284_', 'session149_', 'session261_', 'session11_', 'session139_', 'session155_', 'session92_', 'session203_', 'session185_', 'session248_', 'session59_', 'session264_', 'session296_', 'session118_', 'session233_', 'session199_', 'session36_', 'session150_', 'session288_', 'session24_', 'session246_', 'session57_', 'session197_', 'session283_', 'session300_', 'session87_', 'session230_', 'session39_', 'session226_', 'session277_', 'session142_', 'session206_', 'session136_', 'session48_', 'session27_', 'session80_', 'session116_', 'session143_', 'session50_', 'session241_', 'session298_', 'session282_', 'session140_', 'session279_', 'session46_', 'session270_', 'session225_', 'session301_', 'session201_', 'session254_', 'session123_', 'session227_', 'session133_', 'session231_', 'session281_', 'session30_', 'session228_', 'session89_', 'session181_', 'session256_', 'session244_', 'session55_', 'session81_', 'session73_', 'session78_', 'session219_', 'session295_', 'session115_', 'session131_', 'session168_', 'session306_', 'session259_', 'session289_', 'session95_', 'session220_', 'session31_', 'session49_', 'session129_', 'session25_', 'session135_', 'session247_', 'session79_', 'session17_', 'session237_', 'session216_', 'session280_', 'session2_', 'session14_', 'session212_', 'session269_', 'session121_', 'session114_', 'session276_', 'session96_', 'session207_'])
+set(['session164_', 'session84_', 'session267_', 'session113_', 'session117_', 'session134_', 'session238_', 'session126_', 'session268_', 'session45_', 'session250_', 'session65_', 'session252_', 'session47_', 'session278_', 'session218_', 'session224_', 'session263_', 'session236_', 'session271_', 'session272_', 'session75_', 'session257_', 'session64_', 'session40_', 'session52_', 'session243_', 'session162_', 'session1_', 'session198_', 'session211_', 'session93_', 'session208_', 'session13_', 'session273_', 'session58_', 'session97_', 'session66_', 'session151_', 'session165_', 'session104_', 'session88_', 'session153_', 'session187_', 'session63_', 'session196_', 'session215_', 'session56_', 'session275_', 'session77_', 'session167_', 'session37_', 'session35_', 'session253_', 'session60_', 'session86_', 'session223_', 'session44_', 'session90_', 'session74_', 'session242_', 'session161_', 'session217_', 'session82_', 'session145_', 'session209_', 'session0_', 'session292_', 'session210_', 'session260_', 'session156_', 'session214_', 'session38_', 'session221_'])
+Epoch:  0, Iter:       1, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0095, N_diff: 0.0137
+Epoch:  0, Iter:       2, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0107, N_diff: 0.0081
+Epoch:  0, Iter:       3, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0076, N_diff: 0.0200
+Epoch:  0, Iter:       4, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0219, N_diff: 0.0158
+Epoch:  0, Iter:       5, IterSkip:       0, Loss: 0.5102, P_Diff: 0.3197, N_diff: 0.0167
+Epoch:  0, Iter:       6, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0071, N_diff: 0.0131
+Epoch:  0, Iter:       7, IterSkip:       0, Loss: 0.5000, P_Diff: 0.0046, N_diff: 0.0104
+Epoch:  0, It
