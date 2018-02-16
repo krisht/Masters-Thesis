@@ -50,7 +50,7 @@ def plot_embedding(X, y, epoch, accuracy, num_to_label, title):
 	plt.scatter(X[:,0], X[:, 1], c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=2)
 	plt.legend(handles=legend_entry)
 	plt.xticks([]), plt.yticks([])
-	plt.title(title)
+	#plt.title(title)
 	plt.savefig('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 def compute_tSNE(X, y, epoch, accuracy, num_to_label, with_seizure=None, title="t-SNE Embedding of DCNN Clustering Network"):
@@ -59,10 +59,12 @@ def compute_tSNE(X, y, epoch, accuracy, num_to_label, with_seizure=None, title="
 	plot_embedding(X_tsne, y, epoch=epoch, accuracy=accuracy, num_to_label=num_to_label, title=title)
 	if with_seizure is None:
 		np.savez('./%s Results/%s_tSNE_plot_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
-	elif with_seizure == True:
+	elif with_seizure == 1:
 		np.savez('./%s Results/%s_tSNE_plot_with_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
-	elif with_seizure == False:
+	elif with_seizure == 0:
 		np.savez('./%s Results/%s_tSNE_plot_without_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
+	elif with_seizure == 2:
+		np.savez('./%s Results/%s_tSNE_plot_with_only_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, accuracy), X_tsne, y)
 
 def get_loss(loss_mem, loss_mem_skip):
 	plt.figure(figsize=(4.0, 4.0))
@@ -93,6 +95,7 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
 
 	if normalize:
 		cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+		cm = np.nan_to_num(cm)
 		print("Normalized confusion matrix")
 	else:
 		print('Confusion matrix, without normalization')
@@ -105,14 +108,16 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
 
 	#plt.tight_layout()
 	plt.xlabel('Predicted label')
-	plt.title(title)
+	#plt.title(title)
 	#plt.show()
 	if with_seizure is None:
 		plt.savefig('./%s Results/%s_confusion_matrix_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
-	elif with_seizure == True:
+	elif with_seizure == 1:
 		plt.savefig('./%s Results/%s_confusion_matrix_with_seizure_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
-	elif with_seizure == False:
+	elif with_seizure == 0:
 		plt.savefig('./%s Results/%s_confusion_matrix_without_seizure_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
+	elif with_seizure == 2:
+		plt.savefig('./%s Results/%s_confusion_matrix_with_only_seizure_epoch%s_%.3f%%.pdf' % (curr_time, curr_time, epoch, accuracy), bbox_inches='tight')
 
 
 class BrainNet:
@@ -181,6 +186,9 @@ class BrainNet:
 		total_set = (files_with_spsw | files_with_gped | files_with_pled | files_with_bckg | files_with_artf | files_with_eybl)
 		self.files_without_seizures = total_set - files_with_spsw - files_with_pled - files_with_gped
 		self.files_with_seizures = total_set - self.files_without_seizures
+
+		print(self.files_with_seizures)
+		print(self.files_without_seizures)
 
 		self.sess = tf.Session()
 		self.num_classes = num_classes
@@ -597,9 +605,8 @@ class BrainNet:
 
 		if not validation:
 			for ii in range(0, size):
-				choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
-
-				if with_seizure is None: 
+				if with_seizure is None:
+					choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf']) 
 					if choice == 'bckg':
 						data_list.append(norm_op(np.load(random.choice(self.bckg)), axisss=0))
 						class_list.append(self.bckg_num)
@@ -618,7 +625,8 @@ class BrainNet:
 					else:
 						data_list.append(norm_op(np.load(random.choice(self.artf)), axisss=0))
 						class_list.append(self.artf_num)
-				elif with_seizure == True:
+				elif with_seizure == 2:
+					choice = random.choice(['gped', 'spsw', 'pled'])
 					success = False
 					the_file = ''
 					class_num = None
@@ -641,18 +649,18 @@ class BrainNet:
 						else: 
 							the_file = random.choice(self.artf)
 							class_num = self.artf_num
-
-						print(the_file)
 
 						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
 						if the_file_stripped in self.files_with_seizures:
 							success = True
 
+						#print(the_file, the_file_stripped, the_file_stripped in self.files_with_seizures)
+
 					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
 					class_list.append(class_num)
-
-				elif with_seizure == False:
+				elif with_seizure == 1:
+					choice = random.choice(['bckg', 'eybl', 'gped', 'spsw', 'pled', 'artf'])
 					success = False
 					the_file = ''
 					class_num = None
@@ -676,12 +684,49 @@ class BrainNet:
 							the_file = random.choice(self.artf)
 							class_num = self.artf_num
 
-						print(the_file)
+						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
+
+						if the_file_stripped in self.files_with_seizures:
+							success = True
+
+						#print(the_file, the_file_stripped, the_file_stripped in self.files_with_seizures)
+
+					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
+					class_list.append(class_num)
+
+				elif with_seizure == 0:
+					choice = random.choice(['bckg', 'eybl', 'artf'])
+					success = False
+					the_file = ''
+					class_num = None
+					while not success:
+						if choice == 'bckg': 
+							the_file = random.choice(self.bckg)
+							class_num = self.bckg_num
+						elif choice == 'eybl':
+							the_file = random.choice(self.eybl)
+							class_num = self.eybl_num
+						elif choice == 'gped':
+							the_file = random.choice(self.gped)
+							class_num = self.gped_num
+						elif choice == 'spsw': 
+							the_file = random.choice(self.spsw)
+							class_num = self.spsw_num
+						elif choice == 'pled':
+							the_file = random.choice(self.pled)
+							class_num = self.pled_num
+						else: 
+							the_file = random.choice(self.artf)
+							class_num = self.artf_num
+
+						#print(the_file)
 
 						the_file_stripped = 'session' + re.search('session(.+?)_', str(the_file)).group(1) + '_'
 
 						if the_file_stripped in self.files_without_seizures:
 							success = True
+
+						#print(the_file, the_file_stripped, the_file_stripped in self.files_without_seizures)
 
 					data_list.append(norm_op(np.load(str(the_file)), axisss=0))
 					class_list.append(class_num)
@@ -741,11 +786,13 @@ class BrainNet:
 
 		plot_confusion_matrix(conf_matrix, classes=class_labels, epoch=epoch, accuracy=percentage)
 
+		print("All data: %s" % set(val_classes))
+
 		compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage, num_to_label=self.num_to_class)
 
 		# Files with Seizures
 		
-		val_inputs_seizure, val_classes_seizure = self.get_sample(size=self.validation_size)
+		val_inputs_seizure, val_classes_seizure = self.get_sample(size=self.validation_size, with_seizure = 1)
 		vector_val_inputs_seizure = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs_seizure})
 		del val_inputs_seizure
 
@@ -765,13 +812,44 @@ class BrainNet:
 
 		np.save('./%s Results/%s_confusion_matrix_with_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_seizure), conf_matrix_seizure)
 
-		plot_confusion_matrix(conf_matrix_seizure, classes=class_labels_seizure, epoch=epoch, accuracy=percentage_seizure, with_seizure=True, title = "Confusion Matrix on Files with Seizure")
+		plot_confusion_matrix(conf_matrix_seizure, classes=class_labels_seizure, epoch=epoch, accuracy=percentage_seizure, with_seizure=1, title = "Confusion Matrix on Files with Seizure")
+
+		print("With Seizure data: %s" % set(val_classes_seizure))
+
+		#compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage_seizure, num_to_label=self.num_to_class)
+		
+		# ONLY Seizures
+		
+		val_inputs_only_seizure, val_classes_only_seizure = self.get_sample(size=self.validation_size, with_seizure = 2)
+		vector_val_inputs_only_seizure = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs_only_seizure})
+		del val_inputs_only_seizure
+
+		pred_class_only_seizure = tempClassifier.predict(vector_val_inputs_only_seizure)
+
+		percentage_only_seizure = len([i for i, j in zip(val_classes_only_seizure, pred_class_only_seizure) if i == j]) * 100.0 / self.validation_size
+
+		if self.DEBUG:
+			print("Validation Results: %.3f%% of of %d correct" % (percentage_only_seizure, self.validation_size))
+
+		val_classes_only_seizure = list(map(lambda x: self.num_to_class[x], val_classes_only_seizure))
+		pred_class_only_seizure = list(map(lambda x: self.num_to_class[x], pred_class_only_seizure))
+		class_labels_only_seizure = [0, 1, 2, 3, 4, 5]
+		class_labels_only_seizure = list(map(lambda x: self.num_to_class[x], class_labels_only_seizure))
+		conf_matrix_only_seizure = confusion_matrix(val_classes_only_seizure, pred_class_only_seizure, labels=class_labels_seizure)
+		np.set_printoptions(precision=2)
+
+		np.save('./%s Results/%s_confusion_matrix_with_only_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_only_seizure), conf_matrix_only_seizure)
+
+		plot_confusion_matrix(conf_matrix_only_seizure, classes=class_labels_only_seizure, epoch=epoch, accuracy=percentage_only_seizure, with_seizure=1, title = "Confusion Matrix on Files with Seizure")
+
+		print("With only Seizure data: %s" % set(val_classes_only_seizure))
 
 		#compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage_seizure, num_to_label=self.num_to_class)
 
+
 		# Files without Seizures
 		
-		val_inputs_without_seizure, val_classes_without_seizure = self.get_sample(size=self.validation_size)
+		val_inputs_without_seizure, val_classes_without_seizure = self.get_sample(size=self.validation_size, with_seizure=0)
 		vector_val_inputs_without_seizure = self.sess.run(self.inference_model, feed_dict={self.inference_input: val_inputs_without_seizure})
 		del val_inputs_without_seizure
 
@@ -791,7 +869,9 @@ class BrainNet:
 
 		np.save('./%s Results/%s_confusion_matrix_without_seizure_epoch%s_%.3f%%' % (curr_time, curr_time, epoch, percentage_without_seizure), conf_matrix_without_seizure)
 
-		plot_confusion_matrix(conf_matrix_without_seizure, classes=class_labels_without_seizure, epoch=epoch, accuracy=percentage_without_seizure, with_seizure=False, title = "Confusion Matrix on Files without Seizure")
+		plot_confusion_matrix(conf_matrix_without_seizure, classes=class_labels_without_seizure, epoch=epoch, accuracy=percentage_without_seizure, with_seizure=0, title = "Confusion Matrix on Files without Seizure")
+
+		print("Without Seizure data: %s" % set(val_classes_without_seizure))
 
 		#compute_tSNE(vector_inputs, classes, epoch=epoch, accuracy=percentage_without_seizure, num_to_label=self.num_to_class)
 

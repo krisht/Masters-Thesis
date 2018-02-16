@@ -1,3 +1,5 @@
+#!/usr/bin/env python2.7
+
 import random
 import tensorflow as tf
 from sklearn.svm import SVC
@@ -15,7 +17,7 @@ for run in range(0, 1):
 	# l2_weight = random.choice(l2_weights)
 	# batch_size = random.choice(  batch_sizes)
 
-	batch_size = 5000
+	batch_size = 10
 	alpha = 0.5
 	learning_rate = 0.0001
 	l2_weight = 0.001
