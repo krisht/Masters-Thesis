@@ -26,7 +26,7 @@ def plot_embedding(X, y,  num_to_label, file_name, title="t-SNE Embedding of DCN
     for ii, c in enumerate(color_map):
         legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
  
- 
+ 	
     plt.figure()
     plt.scatter(X[:,0], X[:, 1], marker='o', c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=40, edgecolor='black',linewidth='0.6')
     plt.legend(handles=legend_entry, loc=8,  bbox_to_anchor=(0.5, -0.3), ncol=3)
