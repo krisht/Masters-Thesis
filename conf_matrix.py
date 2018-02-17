@@ -27,7 +27,6 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
     plt.figure(figsize=(4, 4))
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     ax = plt.gca()
-    #plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
     plt.yticks(tick_marks, classes)
@@ -37,23 +36,15 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         cm = np.nan_to_num(cm)
-       # print("Normalized confusion matrix")
     else:
     	pass
-        #print('Confusion matrix, without normalization')
-
-    #print(cm)
 
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
         plt.text(j, i, '{0:.2f}'.format(cm[i, j]), horizontalalignment="center", verticalalignment="center", color="white" if cm[i, j] > thresh else "black") 
 
-    #plt.tight_layout()
     plt.xlabel('Predicted label')
-    #plt.title(title)
-    #plt.show()
     plt.savefig(file_name, bbox_inches='tight')
-    #print(file_name)
     plt.close()
 
 
@@ -72,5 +63,3 @@ if __name__ == '__main__':
 		dcnnconf_labels = ['BCKG', 'ARTF', 'EYBL', 'GPED', 'SPSW', 'PLED']
 		file_name = f.replace('.npy', '.pdf')
 		plot_confusion_matrix(dcnnconf, dcnnconf_labels, file_name=file_name)
-		# sys.stdout.write("\r{0}".format((float(ii)/len(l))*100))
-		# sys.stdout.flush()

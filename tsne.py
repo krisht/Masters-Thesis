@@ -20,7 +20,7 @@ plt.rcParams['legend.numpoints'] = 1
 def plot_embedding(X, y,  num_to_label, file_name, title="t-SNE Embedding of DCNN Clustering Network"):
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     X = (X - x_min) / (x_max - x_min)
-    cmap = plt.get_cmap('gist_rainbow')
+    cmap = plt.get_cmap('Set1')
     color_map = [cmap(1.*i/6) for i in range(6)]
     legend_entry = []
     for ii, c in enumerate(color_map):
