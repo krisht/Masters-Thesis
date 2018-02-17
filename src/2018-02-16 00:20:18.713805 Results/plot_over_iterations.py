@@ -10,7 +10,7 @@ import sys
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 font = {'family' : 'FreeSerif',
-        'size'   : 14}
+        'size'   : 18}
 #plt.rc('text', usetex=True)
 matplotlib.rc('font', **font)
 plt.rcParams['legend.handlelength'] = 1
