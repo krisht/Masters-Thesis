@@ -21,7 +21,7 @@ def plot_embedding(X, y,  num_to_label, file_name, title="t-SNE Embedding of DCN
     x_min, x_max = np.min(X, 0), np.max(X, 0)
     X = (X - x_min) / (x_max - x_min)
     cmap = plt.get_cmap('tab10')
-    color_map = [cmap(1.*i/10) for i in range(6)]
+    color_map = [cmap(1.*i/10) for i in range(np.max(y)+1)]
     legend_entry = []
     for ii, c in enumerate(color_map):
         legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_label[ii]))
@@ -49,6 +49,10 @@ num_to_class[3] = 'GPED'
 num_to_class[4] = 'SPSW'
 num_to_class[5] = 'PLED'
 
+bool_to_class = dict()
+bool_to_class[0] = 'Noise'
+bool_to_class[1] = 'Signal'
+
 
 if __name__ == '__main__':
 	folder = sys.argv[1]
@@ -71,7 +75,10 @@ if __name__ == '__main__':
 		a = np.load(f)
 		X = a['arr_0']
 		labels = a['arr_1']
+		boolean_labels = np.asarray([1 if x > 2 else 0 for x in list(labels)])
 		file_name = f.replace('.npz', '.pdf')
 		plot_embedding(X, labels, num_to_class, file_name)
+		new_file_name = f.replace('.npz', '_pooled.pdf')
+		plot_embedding(X, boolean_labels, bool_to_class, new_file_name)
 		sys.stdout.write("\r{0}".format((float(ii)/len(l))*100))
 		sys.stdout.flush()
