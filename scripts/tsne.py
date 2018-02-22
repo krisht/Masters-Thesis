@@ -80,5 +80,5 @@ if __name__ == '__main__':
 		plot_embedding(X, labels, num_to_class, file_name)
 		new_file_name = f.replace('.npz', '_pooled.pdf')
 		plot_embedding(X, boolean_labels, bool_to_class, new_file_name)
-		sys.stdout.write("\r{0}".format((float(ii)/len(l))*100))
+		sys.stdout.write("\r{0}".format((float(ii+1)/len(l))*100))
 		sys.stdout.flush()
