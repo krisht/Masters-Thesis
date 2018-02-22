@@ -47,13 +47,13 @@ if __name__== '__main__':
 	with_seizures = glob.glob(sys.argv[1] + '/*confusion_matrix_with_seizure_epoch*.pdf')
 	with_only_seizures = glob.glob(sys.argv[1] + '/*confusion_matrix_with_only_seizure_epoch*.pdf')
 
-	without_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in without_seizures]
+	without_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in without_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
-	with_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_seizures]
+	with_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
-	with_only_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_only_seizures]
+	with_only_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_only_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
-	overall = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in overall]
+	overall = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in overall if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
 	results = []
 
@@ -75,7 +75,7 @@ if __name__== '__main__':
 	x = results[:,0]
 	y = results[:, 1:]
 
-	N = 15
+	N = 30
 
 	w = np.ones((N, 1))/N
 
