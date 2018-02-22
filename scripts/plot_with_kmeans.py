@@ -2,7 +2,7 @@
 
 from sklearn.cluster import KMeans, AffinityPropagation, SpectralClustering, MiniBatchKMeans
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import LinearSVC
+from sklearn.svm import LinearSVC, NuSVC
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
@@ -12,13 +12,16 @@ from sklearn.mixture import GaussianMixture
 from sklearn.cluster import Birch
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, ExtraTreesClassifier
+
+
 from sklearn.neural_network import MLPClassifier
 def show_plot(X, y, num_to_class, clf):
 	clf.fit(X, y)
 	x_min, x_max = X[:, 0].min()-1, X[:, 0].max()+1
 	y_min, y_max = X[:, 1].min()-1, X[:, 1].max()+1
 
-	h = .5
+	h = .05
 	xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 	Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
 	Z = Z.reshape(xx.shape)
@@ -60,4 +63,5 @@ if __name__=='__main__':
 	bool_to_class[1] = 'Signal'
 
 	#show_plot(X, y, num_to_class, KNeighborsClassifier(31))
-	show_plot(X, y, num_to_class, MLPClassifier())
+	show_plot(X, y, num_to_class, AdaBoostClassifier())
+	show_plot(X, bool_y, bool_to_class, AdaBoostClassifier())

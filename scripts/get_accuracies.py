@@ -75,11 +75,13 @@ if __name__== '__main__':
 	x = results[:,0]
 	y = results[:, 1:]
 
-	N = 5
+	N = 15
 
 	w = np.ones((N, 1))/N
 
 	y = signal.convolve2d(y, w, 'valid')
+
+	print(y[-1,:])
 
 
 	line_plot(y, num_to_class, 'averages_over_time.pdf')

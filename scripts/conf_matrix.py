@@ -12,19 +12,22 @@ import os
 import psutil
 import random
 import sys
+import re
+from tqdm import tqdm
 #import tensorflow as tf
 #import tensorflow.contrib.slim as slim
 from sklearn import neighbors
 from sklearn.metrics import confusion_matrix
 from sklearn.preprocessing import normalize
 from sklearn.manifold import TSNE
+from skimage.measure import block_reduce
 matplotlib.use('Agg')
 
 plt.rcParams["font.family"] = "FreeSerif"
 
 curr_time = datetime.datetime.now()
-def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accuracy = None, epoch=None, with_seizure=None, file_name=None, title = "Confusion Matrix on All Data"):
-    plt.figure(figsize=(4, 4))
+def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, size=(4,4), file_name=None):
+    plt.figure(figsize=size)
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
     ax = plt.gca()
     tick_marks = np.arange(len(classes))
@@ -33,11 +36,15 @@ def plot_confusion_matrix(cm, classes, normalize=True, cmap=plt.cm.Greys, accura
     ax.yaxis.set_label_coords(-0.1,1.03)
     h = ax.set_ylabel('True label', rotation=0, horizontalalignment='left')
 
+    accuracy = np.trace(cm, dtype=np.float32)*100/np.sum(cm, dtype=np.float32)
+
     if normalize:
         cm = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
         cm = np.nan_to_num(cm)
     else:
     	pass
+
+    file_name = re.sub("\d+\.\d+%", "%.3f%%" % accuracy, file_name)
 
     thresh = cm.max() / 2.
     for i, j in itertools.product(range(cm.shape[0]), range(cm.shape[1])):
@@ -58,8 +65,12 @@ if __name__ == '__main__':
 				l = l + [os.path.join(dirpath, f)]
 
 	ii = 0
-	for ii, f in enumerate(l):
+	for ii, f in tqdm(enumerate(l)):
 		dcnnconf = np.load(f)
 		dcnnconf_labels = ['BCKG', 'ARTF', 'EYBL', 'GPED', 'SPSW', 'PLED']
 		file_name = f.replace('.npy', '.pdf')
 		plot_confusion_matrix(dcnnconf, dcnnconf_labels, file_name=file_name)
+		dcnnconf_labels = ['Noise', 'Signal']
+		file_name = f.replace('.npy', '_pooled.pdf')
+		dcnnconf = block_reduce(dcnnconf, (3,3), np.sum)
+		plot_confusion_matrix(dcnnconf, dcnnconf_labels, file_name=file_name, size=(2,2))
