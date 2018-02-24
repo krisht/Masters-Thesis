@@ -4,8 +4,16 @@ from sklearn.cluster import KMeans, AffinityPropagation, SpectralClustering, Min
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import LinearSVC, NuSVC
 import numpy as np
-import matplotlib.pyplot as plt
 import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+font = {'family' : 'FreeSerif',
+        'size'   : 18}
+plt.rc('text', usetex=True)
+matplotlib.rc('font', **font)
+plt.rcParams['legend.handlelength'] = 1
+plt.rcParams['legend.handleheight'] = 1.125
+plt.rcParams['legend.numpoints'] = 1
 import sys
 from sklearn.linear_model import LogisticRegression
 from sklearn.mixture import GaussianMixture
@@ -16,12 +24,12 @@ from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, ExtraTreesCl
 
 
 from sklearn.neural_network import MLPClassifier
-def show_plot(X, y, num_to_class, clf):
+def show_plot(X, y, num_to_class, clf, save=True, file_name='plot.pdf'):
 	clf.fit(X, y)
 	x_min, x_max = X[:, 0].min()-1, X[:, 0].max()+1
 	y_min, y_max = X[:, 1].min()-1, X[:, 1].max()+1
 
-	h = .05
+	h = .04
 	xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
 	Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
 	Z = Z.reshape(xx.shape)
@@ -30,17 +38,23 @@ def show_plot(X, y, num_to_class, clf):
 	color_map = [cmap(1.*i/10) for i in range(len(set(y)))]
 	legend_entry = []
 	for ii, c in enumerate(color_map):
-	    legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_class[ii]))
+		legend_entry.append(matplotlib.patches.Patch(color=c, label=num_to_class[ii]))
 
 
-	plt.figure(1)
-	plt.clf()
+	plt.figure()
 	plt.imshow(Z, interpolation='nearest', extent=(xx.min(), xx.max(), yy.min(), yy.max()), cmap=plt.cm.Pastel1, aspect='auto', origin='lower')
-	plt.legend(handles=legend_entry, loc=8,  bbox_to_anchor=(0.5, -0.2), ncol=3)
 	plt.scatter(X[:, 0], X[:, 1], marker='o', c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=40, edgecolor='k', linewidth='0.6')
+	plt.legend(handles=legend_entry, loc=8,  bbox_to_anchor=(0.5, -0.2), ncol=2)
+	ax = plt.gca()
+	ax.yaxis.set_major_formatter(matplotlib.ticker.NullFormatter())
+	ax.xaxis.set_major_formatter(matplotlib.ticker.NullFormatter())    
+	ax.set_aspect('auto')
 	plt.xlim(x_min, x_max)
 	plt.ylim(y_min, y_max)
-	plt.show()
+	if not save:
+		plt.show()
+	else:
+		plt.savefig(file_name,  bbox_inches='tight')
 
 
 if __name__=='__main__':
@@ -63,5 +77,5 @@ if __name__=='__main__':
 	bool_to_class[1] = 'Signal'
 
 	#show_plot(X, y, num_to_class, KNeighborsClassifier(31))
-	show_plot(X, y, num_to_class, AdaBoostClassifier())
-	show_plot(X, bool_y, bool_to_class, AdaBoostClassifier())
+	#show_plot(X, y, num_to_class, KNeighborsClassifier(31))
+	show_plot(X, bool_y, bool_to_class, KNeighborsClassifier(40))

@@ -11,7 +11,7 @@ from scipy import signal
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 font = {'family' : 'FreeSerif',
-        'size'   : 18}
+		'size'   : 18}
 #plt.rc('text', usetex=True)
 matplotlib.rc('font', **font)
 plt.rcParams['legend.handlelength'] = 1
@@ -20,25 +20,25 @@ plt.rcParams['legend.numpoints'] = 1
 
 
 def line_plot(y, num_to_label, file_name, title="t-SNE Embedding of DCNN Clustering Network"):
-    #x_min, x_max = np.min(x, 0), np.max(x, 0)
-    #x = x * 5    
-    entries = []
-    x = np.asarray(range(len(y)))
-    x_min, x_max = np.min(x, 0), np.max(x, 0)
-    x = x * 5
+	#x_min, x_max = np.min(x, 0), np.max(x, 0)
+	#x = x * 5	
+	entries = []
+	x = np.asarray(range(len(y)))
+	x_min, x_max = np.min(x, 0), np.max(x, 0)
+	x = x * 5
 
-    plt.figure(figsize=(6, 4))
-    for ii in range(y.shape[1]):
-    	#print(ii)plt.figure(figsize=(4, 4))
-    	entries = entries + [plt.plot(x, y[:, ii], marker='o', color = plt.cm.tab10(ii), label=num_to_label[ii])]
-    plt.legend(ncol=2, loc=8, bbox_to_anchor=(0.45, -0.55))
-    #plt.legend(handles=entries, loc=8,  bbox_to_anchor=(0.5, -0.3), ncol=3)
-    ax = plt.gca()
-    plt.ylabel('Accuracy (%)')
-    plt.xlabel('1000 Iterations')
-    plt.title('Accuracies Over Time')
-    plt.savefig(file_name, bbox_inches='tight')
-    plt.close()
+	plt.figure(figsize=(6, 4))
+	for ii in range(y.shape[1]):
+		#print(ii)plt.figure(figsize=(4, 4))
+		entries = entries + [plt.plot(x, y[:, ii], marker='o', color = plt.cm.tab10(ii), label=num_to_label[ii])]
+	plt.legend(ncol=2, loc=8, bbox_to_anchor=(0.45, -0.55))
+	#plt.legend(handles=entries, loc=8,  bbox_to_anchor=(0.5, -0.3), ncol=3)
+	ax = plt.gca()
+	plt.ylabel('Accuracy (%)')
+	plt.xlabel('1000 Iterations')
+	plt.title('Accuracies Over Time')
+	plt.savefig(file_name, bbox_inches='tight')
+	plt.close()
 
 if __name__== '__main__':
 
@@ -49,11 +49,18 @@ if __name__== '__main__':
 
 	without_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in without_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
+	print('Without Seizures:', sorted(without_seizures, key=lambda x:x[1])[-1])
+
 	with_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
 
+	print('With Seizures:',sorted(with_seizures, key=lambda x:x[1])[-1])
+
 	with_only_seizures = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in with_only_seizures if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
+	print('With only seizures:',sorted(with_only_seizures, key=lambda x:x[1])[-1])
 
 	overall = [(int(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(1)),  float(re.search('epoch(.+?)_(.+?)%.pdf', str(f)).group(2))) for f in overall if re.search('epoch(.+?)_(.+?)%.pdf', str(f))]
+
+	print('Overall:', sorted(overall, key=lambda x:x[1])[-1])
 
 	results = []
 

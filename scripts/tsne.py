@@ -6,6 +6,7 @@ import matplotlib
 import glob
 import os
 import sys
+from tqdm import tqdm
 
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -29,7 +30,7 @@ def plot_embedding(X, y,  num_to_label, file_name, title="t-SNE Embedding of DCN
  	
     plt.figure()
     plt.scatter(X[:,0], X[:, 1], marker='o', c=y, cmap=matplotlib.colors.ListedColormap(color_map), s=40, edgecolor='black',linewidth='0.6')
-    plt.legend(handles=legend_entry, loc=8,  bbox_to_anchor=(0.5, -0.3), ncol=3)
+    plt.legend(handles=legend_entry, loc=8,  bbox_to_anchor=(0.5, -0.2), ncol=3)
     ax = plt.gca()
     ax.yaxis.set_major_formatter(matplotlib.ticker.NullFormatter())
     ax.xaxis.set_major_formatter(matplotlib.ticker.NullFormatter())    
@@ -70,8 +71,7 @@ if __name__ == '__main__':
 			if '.npz' in f and 'SNE' in f:
 				l = l + [os.path.join(dirpath, f)]
 
-	ii = 0
-	for ii, f in enumerate(l):
+	for f in tqdm(l):
 		a = np.load(f)
 		X = a['arr_0']
 		labels = a['arr_1']
@@ -80,5 +80,3 @@ if __name__ == '__main__':
 		plot_embedding(X, labels, num_to_class, file_name)
 		new_file_name = f.replace('.npz', '_pooled.pdf')
 		plot_embedding(X, boolean_labels, bool_to_class, new_file_name)
-		sys.stdout.write("\r{0}".format((float(ii+1)/len(l))*100))
-		sys.stdout.flush()

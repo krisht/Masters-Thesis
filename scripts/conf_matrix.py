@@ -65,7 +65,7 @@ if __name__ == '__main__':
 				l = l + [os.path.join(dirpath, f)]
 
 	ii = 0
-	for ii, f in tqdm(enumerate(l)):
+	for f in tqdm(l):
 		dcnnconf = np.load(f)
 		dcnnconf_labels = ['BCKG', 'ARTF', 'EYBL', 'GPED', 'SPSW', 'PLED']
 		file_name = f.replace('.npy', '.pdf')
