@@ -1,0 +1,39 @@
+\BOOKMARK [0][-]{Doc-Start}{Title Page}{}% 1
+\BOOKMARK [0][-]{section*.1}{Signature Page}{}% 2
+\BOOKMARK [0][-]{section*.2}{Acknowledgements}{}% 3
+\BOOKMARK [0][-]{chapter*.4}{List of Figures}{}% 4
+\BOOKMARK [0][-]{chapter*.5}{List of Tables}{}% 5
+\BOOKMARK [0][-]{chapter*.6}{List of Abbreviations \046 Symbols}{}% 6
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 7
+\BOOKMARK [0][-]{chapter.2}{Background}{}% 8
+\BOOKMARK [1][-]{section.2.1}{ Machine Learning}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.1.1}{Supervised Learning}{section.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.1.2}{Unsupervised Learning}{section.2.1}% 11
+\BOOKMARK [2][-]{subsection.2.1.3}{Parametric Modeling and Optimization}{section.2.1}% 12
+\BOOKMARK [2][-]{subsection.2.1.4}{Bias-Variance Trade-off}{section.2.1}% 13
+\BOOKMARK [1][-]{section.2.2}{Neural Networks \046 Deep Learning}{chapter.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.1}{Motivation for Neural Networks}{section.2.2}% 15
+\BOOKMARK [2][-]{subsection.2.2.2}{Fully Connected Feed-Forward Networks}{section.2.2}% 16
+\BOOKMARK [2][-]{subsection.2.2.3}{Convolutional Neural Networks}{section.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.2.4}{Pooling}{section.2.2}% 18
+\BOOKMARK [2][-]{subsection.2.2.5}{Dropout}{section.2.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.6}{Activation Functions}{section.2.2}% 20
+\BOOKMARK [1][-]{section.2.3}{Basics About EEG Signals}{chapter.2}% 21
+\BOOKMARK [0][-]{chapter.3}{Related Work}{}% 22
+\BOOKMARK [0][-]{chapter.4}{Data \046 Resources}{}% 23
+\BOOKMARK [1][-]{section.4.1}{Data}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.2}{Resources}{chapter.4}% 25
+\BOOKMARK [0][-]{chapter.5}{Experiment \046 Results}{}% 26
+\BOOKMARK [1][-]{section.5.1}{Initial Experiments}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.1.1}{Hyperparameter Selection}{section.5.1}% 28
+\BOOKMARK [2][-]{subsection.5.1.2}{Measuring Performance}{section.5.1}% 29
+\BOOKMARK [2][-]{subsection.5.1.3}{Error in Dataset Organization}{section.5.1}% 30
+\BOOKMARK [1][-]{section.5.2}{DCNN with Triplet Loss}{chapter.5}% 31
+\BOOKMARK [2][-]{subsection.5.2.1}{Hyperparameter Selection}{section.5.2}% 32
+\BOOKMARK [2][-]{subsection.5.2.2}{Measuring Performance}{section.5.2}% 33
+\BOOKMARK [2][-]{subsection.5.2.3}{Comparison with a DCNN Classifier}{section.5.2}% 34
+\BOOKMARK [2][-]{subsection.5.2.4}{Binary Classification Using the Latent Space}{section.5.2}% 35
+\BOOKMARK [1][-]{section.5.3}{Analysis on Seizure-Like \046 Noise-Like Files}{chapter.5}% 36
+\BOOKMARK [0][-]{chapter.6}{Summary \046 Future Work}{}% 37
+\BOOKMARK [0][-]{chapter.7}{References}{}% 38
+\BOOKMARK [0][-]{appendix.A}{Code Sample}{}% 39

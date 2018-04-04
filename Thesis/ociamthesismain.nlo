@@ -1,0 +1,15 @@
+\nomenclatureentry{aEEG@[{EEG}]\begingroup Electroencephalography\nomeqref {1.0}|nompageref}{1}
+\nomenclatureentry{aEKG@[{EKG}]\begingroup Electrocardiogram\nomeqref {1.0}|nompageref}{1}
+\nomenclatureentry{aMEG@[{MEG}]\begingroup Magnetoencephalography\nomeqref {1.0}|nompageref}{1}
+\nomenclatureentry{aMRI@[{MRI}]\begingroup Magnetic Resonance Imaging\nomeqref {1.0}|nompageref}{1}
+\nomenclatureentry{aEMR@[{EMR}]\begingroup Electronic Medical Records\nomeqref {1.0}|nompageref}{1}
+\nomenclatureentry{aSGD@[{SGD}]\begingroup Stochastic Gradient Descent\nomeqref {2.2}|nompageref}{8}
+\nomenclatureentry{aANN@[{ANN}]\begingroup Artificial Neural Network\nomeqref {2.6}|nompageref}{12}
+\nomenclatureentry{aFC@[{FC}]\begingroup Fully Connected Neural Network\nomeqref {2.6}|nompageref}{15}
+\nomenclatureentry{aCNN@[{CNN}]\begingroup Convolutional Neural Network\nomeqref {2.7}|nompageref}{17}
+\nomenclatureentry{aDCNN@[{DCNN}]\begingroup Deep Convolutional Neural Networks\nomeqref {2.7}|nompageref}{19}
+\nomenclatureentry{aReLU@[{ReLU}]\begingroup Rectified Linear Units\nomeqref {2.9}|nompageref}{21}
+\nomenclatureentry{aEDF+@[{EDF+}]\begingroup European Data Format\nomeqref {4.0}|nompageref}{27}
+\nomenclatureentry{aPSD@[{PSD}]\begingroup Power Spectral Density\nomeqref {4.0}|nompageref}{27}
+\nomenclatureentry{aSTFT@[{STFT}]\begingroup Short Term Fourier Transform\nomeqref {4.0}|nompageref}{28}
+\nomenclatureentry{at-SNE@[{t-SNE}]\begingroup t-Distributed Stochastic Neighbor Embedding\nomeqref {5.0}|nompageref}{39}

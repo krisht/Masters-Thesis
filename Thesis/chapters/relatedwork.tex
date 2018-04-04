@@ -1,0 +1,52 @@
+\chapter{Related Work}
+\label{relwork}
+
+Deep metric learning is the task of using deep learning to learn a similarity metric using distance as a measure of similarity. Deep feature embedding learning is the task using deep learning to learn a set of features that aptly describes the original data and representing it in a vector space. Both of these tasks have been attempted many times before in a variety of different fields. 
+
+\citet{facenet} used a DCNN trained with a triplet loss function to create an embedding space for facial recognition and facial similarity search. This model was trained to minimize the distance between an anchor and a positive and maximize the distance between an anchor and a negative. Mathematically,
+
+\begin{equation}
+  || f(x_{i}^{a} \ | \ \boldsymbol{\theta}) - f(x_{i}^{p} \ | \ \boldsymbol{\theta})||^2 + \alpha < || f(x_i^a \ | \ \boldsymbol{\theta}) - f(x_i^n \ | \ \boldsymbol{\theta}) ||^2
+\end{equation}
+
+\noindent
+where $ \mathbf{\hat{y}} = f(X \ | \ \boldsymbol{\theta}) \in \mathbb{R}^d $ represents the computational graph, $a$ is the anchor, $p$ is the positive which is the same class as the anchor, $n$ is the negative which is not the same class as the anchor and $ \alpha$ is the margin parameter, a hyperparameter expressing the minimum distance between different clusters. Thus, the objective function becomes:  
+
+\begin{equation}
+  J = \sum_{i=1}^{N} \left[
+  \norm{f(x_{i}^{a} \ | \ \boldsymbol{\theta}) - f(x_{i}^{p} \ | \ \boldsymbol{\theta})}^2
+  - \norm{f(x_i^a \ | \ \boldsymbol{\theta}) - f(x_i^n \ | \ \boldsymbol{\theta}) }^2 + \alpha\right].
+\end{equation}
+
+\noindent
+\citet{facenet} achieved $99.63\%$ accuracy on the Labeled Faces in the Wild dataset and a $95.12\%$ accuracy on the YouTube Faces DB dataset and it cut the error rate by $30\%$ compared to the previous state-of-the-art published by \citet{sun2014deeply}.
+
+\citet{lifted_structure_embedding} provide a way of learning metrics through the use of what they describe as lifted structured feature embedding. Similar to \citet{facenet}, an input is fed into a neural network to produce a feature embedding. However, this scheme considers both the local and global structure of the embedding space. As opposed to triplet approach, this method does not require partitioning data into tuples in any manner. \citet{lifted_structure_embedding} find all the possible edges in a given mini-batch and describe whether they are similar or not using the Euclidean distance on the resulting embeddings and try to minimize a loss function based on those edges. They mathematically describe their loss function as the following: 
+
+\begin{equation}
+  \label{eq:lifted_structure_loss}
+  \begin{gathered}
+\tilde{J}_{i,j} = log \bigg( \sum_{(i,k) \in \mathcal{N}} \exp\{ \alpha - D_{i,k} \} + \sum_{(j,l) \in \mathcal{N}} \exp\{\alpha - D_{j, l}\} \bigg) + D_{i, j}
+\\
+J = \frac{1}{2 |\mathcal{P}|} \sum_{(i,j) \in \mathcal{P}} \max \Big( 0, \tilde{J}_{i,j}\Big)^2
+  \end{gathered}
+\end{equation}
+
+\noindent
+where $D_{i,k} = || f(\mathbf{X}_i) - f(\mathbf{X}_j)||^2$, $\alpha$ is the margin parameter, $\mathcal{P}$ is the set of positive pairs, $\mathcal{N}$ is the set of negative pairs, and $f$ is the network that produces the embeddings. This method achieved state of the art performance on standard datasets such as CUB200-2011, Cars196 and Stanford online products. However, this method represents a computational trade-off that may not necessary.
+
+More ways of clustering raw data in the deep learning literature as those seen in \citet{jule, distknn, imgsimilarity} and \citet{errorprop}. However, little work has been done in trying to apply these methods to medical data to understand it better. 
+
+
+% \citet{huang2015exclusive}
+
+\citet{mlprepresentation} proposed Med2Vec which both learned distributed representations for medical codes and visits from a large EHR dataset, and also allowed for meaningful inerpretations which were confirmed by clinicians using a two-layer pereptron. They use information such as demographics, diagnosis information and prescription information to learn representations. Although the work done by \citet{mlprepresentation} works towards building a latent space for EMRs,  the model that they use is overly simplistic. Furthermore, it does not extract information directly from raw data. Hence, there is potential for loss of information.
+
+\citet{goeg2015clustering} proposed a method for clustering models based on Systematized Nomenclature of Medicine - Clinical Terms (SNOMED CT) and used semantic similariy and aggregation techniques to hierarchically cluster EMRs. Similar to the work proposed by \citet{mlprepresentation}, their work relies on notes that were manually gathered by medical professionals and not the direct source of data itself. 
+
+\citet{choi2016learning} proposed a method for learning low-dimensional representations of a wide range of concepts in medicine using claims data, which is more widely available to the public than annotations by medical professionals. They define  ``medical relatedness'' and  ``medical conceptual similarity'' by using current standards in medicine as established by the NDF-RT and the hierarchical ICD9 groups from CCS. They qualitatively evaluate their system and show that the top 5 neighbors for each input, sans duplicates, are medically related. Although their system works well, it still suffers from the same pitfall as the ones shown above. 
+
+In fact, many more papers have attempted to cluster medical data and they have succeeded. However, they all seem to use only human annotations as input to their systems instead of both human annotations \textit{and} raw data. It is evident that there is a motion towards finding representations of medical records and medical data, however, the ways that are currently utilized are insubstantial due to the fact that they are using the analysis of data provided by medical professionals. Hence, this paper tries to fill this void by attempting to cluster raw EEG data in order to improve current methods of clustering EMRs. 
+
+% \citet{yang2017frequency}
+

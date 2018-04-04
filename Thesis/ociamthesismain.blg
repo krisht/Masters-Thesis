@@ -1,0 +1,93 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ociamthesismain.aux
+A level-1 auxiliary file: chapters/approval.aux
+A level-1 auxiliary file: chapters/acknowlegements.aux
+A level-1 auxiliary file: chapters/abstract.aux
+A level-1 auxiliary file: chapters/introduction.aux
+A level-1 auxiliary file: chapters/background.aux
+A level-1 auxiliary file: chapters/relatedwork.aux
+A level-1 auxiliary file: chapters/data.aux
+A level-1 auxiliary file: chapters/experimentation.aux
+A level-1 auxiliary file: chapters/conclusions.aux
+The style file: IEEEtranN.bst
+A level-1 auxiliary file: chapters/appendix1.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: chapters/refs.bib.bib
+-- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Warning--empty journal in piccone
+Warning--empty journal in lecun1998mnist
+Warning--empty journal in cybersecurity
+Warning--empty journal in 3d_conf_for_alzheimers
+Warning--empty journal in driverless_cars
+Warning--empty journal in decreasing_learning_rate
+Warning--empty journal in kingma2014adam
+Warning--empty journal in acoustic_modeling_speech
+Warning--empty journal in neural_translation
+Warning--empty journal in atari_deep_reinforcement_learning
+Warning--empty journal in receptive_field
+Warning--empty journal in dropout
+Warning--empty journal in sun2014deeply
+Warning--empty journal in lifted_structure_embedding
+Warning--empty journal in distknn
+Warning--empty journal in errorprop
+Warning--empty journal in tuh
+Warning--empty journal in tensorflow
+Warning--empty journal in tfslim
+Warning--empty journal in autodiff
+Warning--empty booktitle in inception
+Warning--empty journal in magnetloss
+
+Done.
+You've used 51 entries,
+            4855 wiz_defined-function locations,
+            1215 strings with 17978 characters,
+and the built_in function-call counts, 43281 in all, are:
+= -- 3601
+> -- 1623
+< -- 260
++ -- 784
+- -- 390
+* -- 2494
+:= -- 6493
+add.period$ -- 109
+call.type$ -- 51
+change.case$ -- 102
+chr.to.int$ -- 617
+cite$ -- 75
+duplicate$ -- 2853
+empty$ -- 3100
+format.name$ -- 498
+if$ -- 9674
+int.to.chr$ -- 2
+int.to.str$ -- 52
+missing$ -- 488
+newline$ -- 197
+num.names$ -- 147
+pop$ -- 1423
+preamble$ -- 1
+purify$ -- 51
+quote$ -- 2
+skip$ -- 3068
+stack$ -- 0
+substring$ -- 1501
+swap$ -- 1988
+text.length$ -- 49
+text.prefix$ -- 0
+top$ -- 6
+type$ -- 792
+warning$ -- 22
+while$ -- 190
+width$ -- 0
+write$ -- 578
+(There were 22 warnings)

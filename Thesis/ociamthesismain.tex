@@ -1,0 +1,154 @@
+\documentclass[12pt, letterpaper, oneside]{ociamthesis}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{booktabs}
+\usepackage[labelfont=bf]{caption}
+\captionsetup[table]{position=top}
+\usepackage{csquotes}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage[noabbrev, nameinlink]{cleveref}
+\creflabelformat{equation}{#2\textup{#1}#3}
+\usepackage{indentfirst}
+\usepackage{listings}
+\usepackage[numbers, comma, sort&compress]{natbib}
+\usepackage{nomencl}
+\usepackage{physics}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{etoolbox}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+\usepackage{movie15}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{blindtext}
+
+\makeatletter
+\patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
+\patchcmd{\ttlh@hang}{\noindent}{}{}{}
+\makeatother
+
+\newcommand\hr{\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par}
+
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{silence}
+\WarningFilter{latex}{Text page}
+
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows, shapes.geometric}
+
+\setlength{\nomlabelwidth}{2cm}
+
+\renewcommand{\nomname}{List of Abbreviations \& Symbols}
+
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\renewcommand{\arraystretch}{1.2}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\hypersetup{
+    pdftitle={Learning a Latent Space for EEGs with Computational Graphs},
+    pdfauthor={Radhakrishnan Thiyagarajan},
+    pdfsubject={EEG embeddings for signals}, 
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black
+}
+
+\titleformat{\chapter}[display]
+  {\Huge\bfseries}
+  {}
+  {0pt}
+  {\thechapter.\ }
+
+\titleformat{name=\chapter,numberless}[display]
+  {\Huge\bfseries}
+  {}
+  {0pt}
+  {}   
+\titlespacing{\chapter}{0pt}{-70pt}{40pt}
+
+\crefname{lstlisting}{listing}{listings}
+\Crefname{lstlisting}{Listing}{Listings}
+
+\title{Learning a Latent Space for EEGs with Computational Graphs}   
+
+\author{Radhakrishnan Thiyagarajan}
+\college{Albert Nerken Schoool of Engineering}
+
+\renewcommand{\submittedtext}{A thesis submitted in partial fulfillment \\ of the requirements for the degree of}
+\degree{Master of Engineering}
+\degreedate{April 4, 2018}
+
+\makenomenclature
+
+\begin{document}
+\baselineskip=18pt plus1pt
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\pagenumbering{gobble}
+
+\maketitle
+
+
+\addcontentsline{toc}{chapter}{Title Page}
+
+\phantomsection
+\include{chapters/approval}
+\addcontentsline{toc}{chapter}{Signature Page}
+
+\phantomsection
+\include{chapters/acknowlegements}
+
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\include{chapters/abstract}
+
+\begin{romanpages}
+								
+	\tableofcontents
+	\listoffigures
+	\listoftables
+								
+								
+	\printnomenclature
+	\addcontentsline{toc}{chapter}{List of Abbreviations \& Symbols}
+								
+								
+\end{romanpages}
+
+\pagenumbering{arabic}
+
+\doublespacing
+
+\include{chapters/introduction}
+\include{chapters/background}
+\include{chapters/relatedwork}
+\include{chapters/data}
+\include{chapters/experimentation}
+\include{chapters/conclusions}
+
+\renewcommand\bibname{References}
+\bibliographystyle{IEEEtranN}
+
+\bibliography{chapters/refs.bib}
+
+\appendix
+\include{chapters/appendix1}
+
+\end{document}
+

@@ -1,0 +1,9 @@
+\chapter{Future Work}
+
+We demonstrated a method to learn embeddings for EEG signals in an end-to-end fashion. While our system is able to accurately classify the known labels in the TUH dataset, we intend to analyze it for outliers detection and one-shot learning on classes available in the training set. Since our proof-of-concept network is small, it is possible that a more expressive network could obtain better results.
+
+We intend to do an in depth comparison between the baseline embeddings space (i.e features produced by the penultimate layer) and the experimental one. Each is predicted by functions with identical forms for different parameters. Therefore a comparison between the two embedding spaces speaks directly to the training method for selecting the parameters.
+
+As the TUH corpus also includes physician notes, we would like to investigate ways to incorporate these notes into a cohort retrieval scheme. This could be done by learning a similar embedding for the text data and then performing a clustering on a joint embedded space. Another possible area for investigation would be to leverage an adaptive density discrimination technique \citet{magnetloss} to shape clusters in the EEG embedding space using the annotations as side information. 
+
+Finally, it is possible that these ideas can be extended to other types of raw medical data such as MRIs and X-Rays.
