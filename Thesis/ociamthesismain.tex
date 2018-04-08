@@ -31,6 +31,15 @@
 \usepackage{movie15}
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{blindtext}
+\usepackage{fancyhdr}
+
+
+\pagestyle{plain}
+\rhead{}
+%\fancyhead[R]{\leftmark}
+%\fancyfoot[C]{\thepage}
+ 
+
 
 \makeatletter
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
@@ -48,7 +57,7 @@
 
 \setlength{\nomlabelwidth}{2cm}
 
-\renewcommand{\nomname}{List of Abbreviations \& Symbols}
+\renewcommand{\nomname}{List of Abbreviations}
 
 \newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
 \renewcommand{\arraystretch}{1.2}
@@ -134,6 +143,11 @@
 \pagenumbering{arabic}
 
 \doublespacing
+
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{\leftmark}
+\rhead{\thepage}
 
 \include{chapters/introduction}
 \include{chapters/background}

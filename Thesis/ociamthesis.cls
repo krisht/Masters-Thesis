@@ -24,6 +24,8 @@
   \parbox[#1]{.5\textwidth}{\center#3}\par
 }
 
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
 % The year and term the thesis is submitted 
 \def\degreedate#1{\gdef\@degreedate{#1}}
 % The full (unabbreviated) name of the degree
@@ -197,3 +199,10 @@
 \newenvironment{romanpages}
 {\cleardoublepage\setcounter{page}{1}\renewcommand{\thepage}{\roman{page}}}
 {\cleardoublepage\renewcommand{\thepage}{\arabic{page}}\setcounter{page}{1}}
+
+\usepackage{fancyhdr}
+\lhead[\rm\thepage]{\fancyplain}{}{\sl{\rightmark}}
+\rhead[\fancyplain{}{\sl{\leftmark}}]{\rm\thepage}
+\chead{}\lfoot{}\rfoot{}\cfoot{}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}

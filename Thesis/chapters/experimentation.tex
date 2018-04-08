@@ -1,4 +1,4 @@
-\chapter{Experiment \& Results}
+\chapter{Experiment and Results}
 \label{expres}
 
 After a considerable amount of research in clustering and metric learning, we chose triplet loss as our method of approaching the problem. Triplet loss is a  well-established, simple and effective when it comes to learning a latent space. Other methods such as the one proposed by \citet{lifted_structure_embedding} were overly complicated, especially given the size of our dataset. Triplet loss was relatively easy to implement given how we organized the transformed data and so, a network trained on triplet loss was the natural choice for this experiment. 
@@ -160,7 +160,7 @@ Although our network has done quite well on a rather noisy dataset, a thorough e
 	\setlength\itemsep{1mm}
 	\item sessions without sessions without seizure-like signals
 	\item sessions with seizure-like signals
-	\item sessions with seizure-like signals considering only seizure-like signals
+  	\item sessions with seizure-like signals considering only seizure-like signals
 \end{itemize}
    
 We were able to separate the different signals based on their original session and what types of signals existed in that session. Everytime we computed a confusion matrix for validating the network on the stratified sampled dataset, we also computed a confusion matrix for a stratified sampled subset of the dataset for each of the above categories. In doing so, we obtained the following results. 

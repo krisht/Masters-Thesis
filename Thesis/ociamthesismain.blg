@@ -49,45 +49,45 @@ Warning--empty booktitle in inception
 Warning--empty journal in magnetloss
 
 Done.
-You've used 51 entries,
+You've used 50 entries,
             4855 wiz_defined-function locations,
-            1215 strings with 17978 characters,
-and the built_in function-call counts, 43281 in all, are:
-= -- 3601
+            1211 strings with 17894 characters,
+and the built_in function-call counts, 42900 in all, are:
+= -- 3567
 > -- 1623
 < -- 260
-+ -- 784
++ -- 782
 - -- 390
-* -- 2494
-:= -- 6493
-add.period$ -- 109
-call.type$ -- 51
-change.case$ -- 102
-chr.to.int$ -- 617
-cite$ -- 75
-duplicate$ -- 2853
-empty$ -- 3100
+* -- 2477
+:= -- 6438
+add.period$ -- 107
+call.type$ -- 50
+change.case$ -- 100
+chr.to.int$ -- 616
+cite$ -- 73
+duplicate$ -- 2821
+empty$ -- 3060
 format.name$ -- 498
-if$ -- 9674
+if$ -- 9589
 int.to.chr$ -- 2
-int.to.str$ -- 52
-missing$ -- 488
-newline$ -- 197
+int.to.str$ -- 51
+missing$ -- 482
+newline$ -- 192
 num.names$ -- 147
-pop$ -- 1423
+pop$ -- 1395
 preamble$ -- 1
-purify$ -- 51
+purify$ -- 50
 quote$ -- 2
-skip$ -- 3068
+skip$ -- 3042
 stack$ -- 0
-substring$ -- 1501
-swap$ -- 1988
+substring$ -- 1497
+swap$ -- 1976
 text.length$ -- 49
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 792
+type$ -- 777
 warning$ -- 22
 while$ -- 190
 width$ -- 0
-write$ -- 578
+write$ -- 568
 (There were 22 warnings)

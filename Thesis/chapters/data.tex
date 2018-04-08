@@ -1,4 +1,4 @@
-\chapter{Data \& Resources}
+\chapter{Data and Resources}
 \label{dataresources}
 
 \section{Data}
@@ -41,7 +41,7 @@ Hence, we apply notch filters at $60$ Hz and $120$ Hz to remove power line noise
 	\caption[Example of Spectrogram]{Spectrogram of a second of notch and bandpass filtered signal}\label{fig:stft}  
 \end{figure}
 
-Additionally, we globally normalize the signal power in order to standardize the input to the system that we designed and only use the real part of the spectrogram data. The raw time-domain data was not utilized in this experiment because the literature \cite{eegs_info, eeg_info2, eeg_info3, mayo_eegs} on EEGs indicated that the frequency domain is what contains data that is useful for our purpose.
+Additionally, we globally normalize the signal power in order to standardize the input to the system that we designed and only use the real part of the spectrogram data. The raw time-domain data was not utilized in this experiment because the literature \cite{eegs_info, eeg_info2, mayo_eegs} on EEGs indicated that the frequency domain is what contains data that is useful for our purpose.
 
 % Of course, recurrent neural networks may use been helpful in deciphering this information from the time domain itself, however, it is generally known that they are relatively harder to train and was by-passed. 
 
