@@ -32,9 +32,9 @@
 \contentsline {section}{\numberline {5.2}DCNN with Triplet Loss}{36}{section.5.2}
 \contentsline {subsection}{\numberline {5.2.1}Hyperparameter Selection}{37}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Measuring Performance}{38}{subsection.5.2.2}
-\contentsline {subsection}{\numberline {5.2.3}Comparison with a DCNN Classifier}{41}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.3}Comparison with a DCNN Classifier}{42}{subsection.5.2.3}
 \contentsline {subsection}{\numberline {5.2.4}Binary Classification Using the Latent Space}{43}{subsection.5.2.4}
-\contentsline {section}{\numberline {5.3}Analysis on Seizure-Like \& Noise-Like Files}{44}{section.5.3}
-\contentsline {chapter}{\numberline {6}Summary and Future Work}{51}{chapter.6}
-\contentsline {chapter}{\numberline {7}References}{54}{chapter.7}
-\contentsline {chapter}{\numberline {A}Code Sample}{60}{appendix.A}
+\contentsline {section}{\numberline {5.3}Analysis on Seizure-Like \& Noise-Like Files}{45}{section.5.3}
+\contentsline {chapter}{\numberline {6}Summary and Future Work}{52}{chapter.6}
+\contentsline {chapter}{\numberline {7}References}{55}{chapter.7}
+\contentsline {chapter}{\numberline {A}Code Sample}{61}{appendix.A}

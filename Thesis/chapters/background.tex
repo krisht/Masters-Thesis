@@ -2,13 +2,13 @@
 \label{bckgnd}
 
 \section{ Machine Learning}
-Machine learning is the field of computer science that allows computers to acquire knowledge from data and make some sort of prediction or estimation without explicitly programming said knowledge \cite{bishop_2013}. \citet{ai_text_book} say that a machine learning algorithm is designed for a particular task or problem, and is said to be learning if it improves its performance at that task based on a metric. Machine learning is often used for tasks that require pattern recognition, especially in large amounts of data.  Examples of such tasks include handwriting recognition, cybersecurity breach detection, medical disease diagnosis and autonomous cars control systems \cite{lecun1998mnist,cybersecurity,3d_conf_for_alzheimers,driverless_cars}. Due to the variety of tasks that could fit this broad definition, there are also a variety of approaches that could be used to solve each of those particular tasks.
+Machine learning is the field of computer science that allows computers to acquire knowledge from data and make some sort of prediction or estimation without explicitly programming that knowledge \cite{bishop_2013}. \citet{ai_text_book} say that a machine learning algorithm is designed for a particular task or problem, and is learning if it improves its performance at that task depending on a metric. Machine learning is useful for tasks that require pattern recognition, especially in large amounts of data.  Examples of such tasks include handwriting recognition, cybersecurity breach detection, medical disease diagnosis and autonomous cars control systems \cite{lecun1998mnist,cybersecurity,3d_conf_for_alzheimers,driverless_cars}. Due to the variety of tasks that could fit this broad definition, there are also a variety of approaches that we could use to solve each of those particular tasks.
 
 
 \subsection{Supervised Learning}
 \label{supervised}
 
-Supervised learning is a task that tries to learn a model that maps from a domain of inputs to a range of outputs based on data on which the task has already been accomplished. Mathematically, if $\mathcal{S} =\{ ( \mathbf{X_i}, \mathbf{y_i} ) \ | \ i = 1...N\} \subset \mathcal{P}$, then the machine learning task may be to find a function ,$ \mathbf{\hat{y}} = f(\mathbf{X}) $, an estimate of $\mathbf{y}$ for any $(\mathbf{X}, \mathbf{y}) \in \mathcal{P}$ where $\mathbf{X}$ is an input, $\mathbf{y}$ is an output (also called a label or a target), $\mathbf{\hat{y}}$  is an estimate of the output from the machine learning model, $\mathcal{S}$ is a set of $N$ examples of input-output pairs called training set, and $\mathcal{P}$ is the population of input-output pairs. For example, in the case of the hand-written digits recognition using the data provided by \citet{lecun1998mnist}, the input $\mathbf{X}$ may be the image of the digit, $\mathbf{y}$ will be the true label of the digit provided by the dataset, and $\mathbf{\hat{y}}$ is the discrete value that the algorithm infers restricted to the range of $\mathbf{y}$. This particular process is called classification since we are restricted to a discrete set of values that are predefined. In order to learn a mapping from $\mathbf{X}$ to $\mathbf{y}$, a loss function, $J(\mathbf{y}, \mathbf{\hat{y}})$, can be used to quantify how well our model performs on our sample set, $\mathcal{S}$. In supervised learning, $J(\mathbf{y}, \mathbf{\hat{y}}) \rightarrow 0 \ \text{as} \ \mathbf{\hat{y}} \rightarrow \mathbf{y}$. If the loss function's value is large, the model is doing poorly; if the loss function's value is small, it generally means that the algorithm is doing well on $\mathcal{S}$. The loss function's value can be fed back to the algorithm to iteratively change the algorithm until the loss function's value reaches convergence or until it is stopped by the developer before complete convergence. Iteratively changing the model while keeping track of this loss function will allow for the model's input-output mapping to improve over time. 
+Supervised learning is a task that tries to learn a model that maps from a domain of inputs to a range of outputs using data on which the task has already been accomplished by humans. Mathematically, if $\mathcal{S} =\{ ( \mathbf{X_i}, \mathbf{y_i} ) \ | \ i = 1...N\} \subset \mathcal{P}$, then the machine learning task may be to find a function ,$ \mathbf{\hat{y}} = f(\mathbf{X}) $, an estimate of $\mathbf{y}$ for any $(\mathbf{X}, \mathbf{y}) \in \mathcal{P}$ where $\mathbf{X}$ is an input, $\mathbf{y}$ is an output (the label or a target), $\mathbf{\hat{y}}$  is an estimate of the output from the machine learning model, $\mathcal{S}$ is the training set of $N$ examples of input-output pairs, and $\mathcal{P}$ is the population of input-output pairs. For example, in the case of the hand-written digits recognition using the data provided by \citet{lecun1998mnist}, the input $\mathbf{X}$ may be the image of the digit, $\mathbf{y}$ will be the true label of the digit provided by the dataset, and $\mathbf{\hat{y}}$ is the discrete value that the algorithm infers restricted to the range of $\mathbf{y}$. This particular process is called classification since we are restricted to a discrete set of values that are predefined. In order to learn a mapping from $\mathbf{X}$ to $\mathbf{y}$, a loss function, $J(\mathbf{y}, \mathbf{\hat{y}})$, can be used to quantify how well our model performs on our sample set, $\mathcal{S}$. In supervised learning, $J(\mathbf{y}, \mathbf{\hat{y}}) \rightarrow 0 \ \text{as} \ \mathbf{\hat{y}} \rightarrow \mathbf{y}$. If the loss function's value is large, the model is doing poorly; if the loss function's value is small, it generally means that the algorithm is doing well on $\mathcal{S}$. The loss function's value can be fed back to the algorithm to iteratively change the algorithm until the loss function's value reaches convergence or until it is stopped by the developer before complete convergence. Iteratively changing the model while keeping track of this loss function will allow for the model's input-output mapping to improve over time. 
 
 \subsection{Unsupervised Learning}
 
@@ -32,16 +32,6 @@ Another common task called dimensionality reduction attempts to use a set of obs
 \end{figure}
 
 Often, dimensionality reduction techniques are used to learn latent variables, which  are variables that are not directly observed. For example, in a picture of a kitten, a latent variable might be the cuteness of a kitten. Cuteness is not something that can be directly observed. A kitten can be observed to have a certain length of fur, a certain color of fur, eye diameter to head ratio, etc. but it is difficult to quantify a kitten's cuteness numerically. Whereas humans are able to claim a kitten is cute and can have a general consensus on it after looking at an image of a kitten, a machine might be able to learn what cuteness is by reducing the dimensionality of data and understanding it at a lower dimensional level but at a higher level of abstraction. These latent variables, along with other variables, can be used as input features to another machine learning algorithm which could be used learn more about the data. Hence, dimensionality reduction leads to processes known as feature extraction and feature engineering, the process of finding important variables derived directly or indirectly from raw input. Generally, the set of features that arise from feature extraction and engineering can form what is called a latent space (also called feature embedding, embedding space, latent space or space). The latent space is able to represent data that may have originally been incomparable by a machine as comparable points in this latent space. 
-
-% \subsection{Feature Extraction \& Feature Engineering}
-
-% Feature extraction is widely defined by \citet{bishop_2013} as the task of preprocessing the original input variables to transform them into some new domain space where it is hoped that pattern recognition and other machine learning problems are easier to solve. Any new data that is to be passed through the machine learning algorithm in the future would need to be transformed in the same way as the rest of the data. For example, the MNIST dataset, provided by \citet{lecun1998mnist}, is a database of handwritten numeric digits from the English language. If we are trying to identify these digits, a typical way to extract features from this image would be to translate, scale, rotate and normalize the images pixels so that the input into our algorithm is spatially invariant. In this case, each image is $28 \times \ 28$ pixels images of digits and every pixels' value in the image can be used as input into the value. This often leads to extra information that is not always needed or useful for the algorithm and can in fact hinder the algorithm's ability to find the best solution possible.
-
-% %  lead to a phenomena defined as over fitting where the machine learning algorithm essentially memorizes the data that it was shown (known as the training data), does not generalize to data that it has not seen before (known as testing data) and might ultimately be more erroneous than we might hope for.
-% Therefore, feature extraction itself does not suffice when looking at machine learning algorithms; it is as important to select and construct new features from the original data's features as much as it is to select the right algorithm.
-
-% Feature engineering is therefore the process of using domain knowledge, the understanding of a particular dataset and what features are generally important in the data dataset, to select and create features that have the potential to simplify the data as seen by the machine learning model and therefore, simplify the complexity of the machine learning model that results. Once these features are decided on and extracted from the raw data, it can be fed into machine learning algorithms for predictive analysis. There are multiple ways that this can be done. Typically, experts that have domain knowledge of the data tend to look at the data, manually identify potentially useful features, and use computer programming to transform the dataset as a whole so that it reflects these features. For example, in the case that we are attempting to classify a set of images of tumors as malignant or not, an expert in radiology and tumors may be needed to find features such as color or intensity that are important in identifying the characteristics of a tumor that might indicate that the tumor is malignant or not. This process takes a lot of time, effort and frankly is less automated than it could be. However, with the advent of some more advanced algorithms, it becomes possible to automatically learn the features that are important. One of these advanced algorithms utilizes artificial neural networks and deep learning to learn these features.
-
 \subsection{Parametric Modeling and Optimization}
 \label{paramsmodeling}
 
@@ -65,7 +55,7 @@ Unfortunately, as the number of parameters that the equation needs to train incr
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.45\linewidth]{pictures/minmax.pdf}
+	\includegraphics[width=0.6\linewidth]{pictures/minmax.pdf}
 	\caption{Illustration of global minimum vs. local minimum}\label{fig:minmax}  
 \end{figure}
 
@@ -86,7 +76,7 @@ It is evident from \cref{fig:overfit} that the twentieth-degree polynomial tries
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[height=0.35\linewidth]{pictures/poly_fit.pdf}
+	\includegraphics[width=\linewidth]{pictures/poly_fit.pdf}
 	\caption[Example of an under-fit and an over-fit model]{Example of an under-fit (left) and an over-fit (right) model}\label{fig:overfit}  
 \end{figure}
 
@@ -94,9 +84,12 @@ Bias is the error that arises from making overly simplistic assumptions about th
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[height=0.35\linewidth]{pictures/poly_fit_correct.pdf}
+	\includegraphics[width=0.5\linewidth]{pictures/poly_fit_correct.pdf}
 	\caption{Example of a well-fit model}\label{fig:wellfit}  
 \end{figure}
+
+
+\newpage
 
 There are two ways that we can approach this problem. Either we can start with a simplistic model and make it more complex or we can start with a complex model and make it simpler. The latter is easier and the general name given to the process of making a relatively complex model simpler is called regularization. An example of a well-fit polynomial fit after simplifying the twentieth-degree polynomial is shown in \cref{fig:wellfit}.
 
@@ -125,7 +118,6 @@ where $\lambda$ is a hyperparameter that controls how much we want to penalize a
 
 \Cref{eq:l1} is known as the $L_1$ penalty and promotes sparsity. This means that the penalty forces any parameter that does not contribute to the model to zero thereby reducing the total number of parameters involved in the model. $L_2$ penalty, shown in \cref{eq:l2}, on the other hand, minimizes the contribution of a parameter but it does not force it to zero. Therefore, the number of parameters tends to be high, but the overall complex nature of the model is reduced. It is important to tune the hyperparameter $\lambda$ based on validation results in order to accurately penalize complex models to find a trade-off between bias and variance. 
 
-%%TODO: Add cross-validation blurb here
 
 \section{Neural Networks and Deep Learning}
 
@@ -137,7 +129,7 @@ Neural networks were originally inspired by biological neurons. Biological neuro
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[height=0.35\linewidth]{pictures/Neuron.pdf}
+	\includegraphics[width=0.7\linewidth]{pictures/Neuron.pdf}
 	\caption[Illustration of a biological neuron]{Illustration of a biological neuron\cite{wiki:neuronpic}}\label{fig:bioneuron}  
 \end{figure}
 
@@ -202,7 +194,6 @@ As described in \cref{paramsmodeling}, training a model is optimizing its learna
 
 Backpropagation begins with the forward propagation of a set of inputs. Forward propagation is when a neural network infers the output for a particular set of inputs. The network propagates the inputs, $\mathbf{X}$, through each appropriate neuron in a neural network sequentially depending on the architecture until the propagation reaches the output neuron, which will result in $\mathbf{\hat{y}}$. The output neurons' results can be compared to the true output $\mathbf{y}$ and, unless the network is already trained, a significant amount of error is expected between $\mathbf{y}$ and $\mathbf{\hat{y}}$, which can be quantified by a loss function, $J(\mathbf{\hat{y}}, \mathbf{y})$. A large loss indicates that the parameters need to be optimized which means that each of the unoptimized parameters contributes a small error to the total error in the output. Therefore, we need to trace back the steps in the neural network and find the amount of error that each weight contributes for each input sample and adjust the respective weights. In other words, we are propagating the error backward towards every learnable parameter in the network, which is essentially the gradient of the loss function. Hence, \cref{eq:sgd} can be used to train the network. 
 
-% \subsection{Types of Neural Networks}
 
 \subsection{Fully Connected Feed-Forward Networks}
 
@@ -356,7 +347,6 @@ It is also better to use CNNs over FC networks for a task where spatially invari
 
 Series of convolutions can be placed sequentially after one another and gives the network a chance of learning more complicated spatial features that affect the final output. Networks that use series of convolutions one after another are commonly called deep convolutional neural networks or DCNNs\nomenclature{DCNN}{Deep Convolutional Neural Networks}. This is where the idea of deep learning arises since we are trying to increase the depth, the number of layers in a neural network, to learn more meaningful representations of data. 
 
-%\subsection{Other Neural Network Operations}
 
 \subsection{Pooling}
 Pooling is a non-linear, sub-sampling operation in DCNNs which are used to reduce dimensions and the number of inputs to the subsequent layer. Pooling operations are non-parametric and they usually operate on the feature maps provided by convolutional layers before it. Two common types of pooling operations are used in neural networks: max-pooling and average pooling. Max-pooling \cite{scherer2010evaluation} finds the maximum element in a receptive field while average pooling takes the average of elements in the receptive field. Pooling is used in situations where the absolute location of features do not matter as much as the relative location of features.
@@ -384,7 +374,7 @@ and the corresponding gradient is
 	\sigma ' (x)  = \frac{exp(x)}{(exp(x) + 1)^2}.
 \end{equation}. 
 
-Brief analysis of the sigmoid's gradient shows that it suffers from the vanishing gradient problem, which refers to the function's gradient approaching zero as the input, $x$, increases or decreases. Because of this, sigmoid activations lead to extremely small gradient valules and tend to slow down learning. However, sigmoids are very useful for final layers, especially in classification problems, since they limit output values to less than one. They are also commonly used in probability since the cumulative distribution function (CDF) of various probability distributions are sigmoidal in nature. As a result, the multi-dimensional analog of the sigmoid function, the softmax function, is used in neural network classification tasks to predict the probability that a given input is a particular class. 
+Brief analysis of the sigmoid's gradient shows that it suffers from the vanishing gradient problem, which refers to the function's gradient approaching zero as the input, $x$, increases or decreases. Because of this, sigmoid activations lead to extremely small gradient values and tend to slow down learning. However, sigmoids are very useful for final layers, especially in classification problems, since they limit output values to less than one. They are also commonly used in probability since the cumulative distribution function (CDF) of various probability distributions are sigmoidal in nature. As a result, the multi-dimensional analog of the sigmoid function, the softmax function, is used in neural network classification tasks to predict the probability that a given input is a particular class. 
 
 \subsubsection*{ReLU}
 
@@ -407,9 +397,6 @@ and the corresponding gradient is
 
 \noindent It is noticeable that the functional form of ReLU's gradient is a step function and only takes values of either 1 or 0. As a result, networks with ReLUs do not have to deal with vanishing gradient or the exploding gradient problems and leads to a faster learning network.
 
-
-% \subsubsection*{Leaky ReLU \& PReLU}
-
 \section{Basics About EEG Signals}
 
 The brain and the nervous system function on the basis of electrochemical reactions through biological neurons, as illustrated \cref{fig:bioneuron}, to send various signals to cells all over the body. Electroencephalography or EEG is a non-invasive way of measuring that electrical activity resulting on the surface of the brain due to these neurons. These signals can be used to diagnose seizures, brain tumors, head injuries, strokes, anesthesia overdose and many more ailments originating from the brain as described by \citet{mayo_eegs}.
@@ -425,7 +412,7 @@ According to \citet{eegs_info}, electrodes that measure voltage with respect to 
 
 Montages, voltage differences between certain probes, are used to extract information from these signals as opposed to the sole voltages sensed by the probes. Referential montages use the difference between a measuring electrode and a designated reference electrode. The reference electrode could be the ground which would mean the voltages sensed by the electrodes with respect to the ground can be used as the output of the EEG. In average reference montage, the outputs of all the electrodes are used as the reference voltage. Bipolar montages use the differences between two adjacent electrodes, e.g. F3 and C3 dubbed ``F3-C3'', as the output of the EEG. In Laplacian montages, the output is the voltage difference between an electrode and the average of the neighboring electrodes. 
 
-A variety of different information can be extracted from these montages that can be used to classify the EEG activity. Frequency is one of these measurements. Rhythmic activity is considered to be constant in frequency, arhythmic activity is where no rhythms are present, dysrhythmic activity is a pattern that is rarely seen in healthy subjects. Frequency is also generally classified as delta, theta, alpha or beta waves. Delta waves have a frequency of $3$Hz or below, theta waves have frequencies between $3.5$Hz to $7.5$Hz, alpha waves have frequencies between $7.5$Hz and $13$Hz, and beta waves have frequencies above $14$Hz. Generally, only waves between $0$Hz and $70$Hz are considered since the rest of the signal is considered to be high-frequency noise in most cases and can be ignored.
+A variety of different information can be extracted from these montages that can be used to classify the EEG activity. Frequency is one of these measurements. Rhythmic activity is considered to be constant in frequency, arrhythmic activity is where no rhythms are present, dysrhythmic activity is a pattern that is rarely seen in healthy subjects. Frequency is also generally classified as delta, theta, alpha or beta waves. Delta waves have a frequency of $3$Hz or below, theta waves have frequencies between $3.5$Hz to $7.5$Hz, alpha waves have frequencies between $7.5$Hz and $13$Hz, and beta waves have frequencies above $14$Hz. Generally, only waves between $0$Hz and $70$Hz are considered since the rest of the signal is considered to be high-frequency noise in most cases and can be ignored.
 
 The amplitude of these signals also tends to be useful. When a person is awake, beta waves usually dominate EEGs meaning that the average amplitude of the signals are small and the frequency is high. As a person starts to close their eyes, the average amplitude increases and the frequency starts to drop resulting in alpha waves. When a person starts to sleep, theta waves dominate, the average amplitude increases and the frequency decreases. Finally, in deep sleep, delta waves are observed in normal patients, the amplitude is generally large and the signal has very low frequencies. Therefore, we can logically deduce some things about the patient using amplitude and frequency together.  Heuristically say that if a person's EEG contains high frequencies and high amplitudes, they may be experiencing a seizure. 
 

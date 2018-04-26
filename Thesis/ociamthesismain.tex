@@ -32,15 +32,14 @@
 \usepackage[nottoc,numbib]{tocbibind}
 \usepackage{blindtext}
 \usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{silence}
+\usepackage{array}
 
 
 \pagestyle{plain}
-\rhead{}
-%\fancyhead[R]{\leftmark}
-%\fancyfoot[C]{\thepage}
  
-
-
 \makeatletter
 \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}
 \patchcmd{\ttlh@hang}{\noindent}{}{}{}
@@ -48,9 +47,7 @@
 
 \newcommand\hr{\par\vspace{-.5\ht\strutbox}\noindent\hrulefill\par}
 
-\usepackage{tikz}
-\usepackage{multicol}
-\usepackage{silence}
+
 \WarningFilter{latex}{Text page}
 
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows, shapes.geometric}
@@ -62,7 +59,7 @@
 \newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
 \renewcommand{\arraystretch}{1.2}
 
-\usepackage{array}
+
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \hypersetup{
@@ -80,7 +77,7 @@
   {\Huge\bfseries}
   {}
   {0pt}
-  {\thechapter.\ }
+  {\thechapter \ {\huge $\boldsymbol{\vert}$} }
 
 \titleformat{name=\chapter,numberless}[display]
   {\Huge\bfseries}
@@ -102,6 +99,7 @@
 \degreedate{April 4, 2018}
 
 \makenomenclature
+
 
 \begin{document}
 \baselineskip=18pt plus1pt
@@ -128,16 +126,16 @@
 \include{chapters/abstract}
 
 \begin{romanpages}
-								
+									
 	\tableofcontents
 	\listoffigures
 	\listoftables
-								
-								
+									
+									
 	\printnomenclature
 	\addcontentsline{toc}{chapter}{List of Abbreviations \& Symbols}
-								
-								
+									
+									
 \end{romanpages}
 
 \pagenumbering{arabic}
