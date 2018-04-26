@@ -4,7 +4,7 @@
 \contentsline {chapter}{Acknowledgements}{}{section*.2}
 \contentsline {chapter}{List of Figures}{iii}{chapter*.4}
 \contentsline {chapter}{List of Tables}{iv}{chapter*.5}
-\contentsline {chapter}{List of Abbreviations \& Symbols}{v}{chapter*.6}
+\contentsline {chapter}{List of Abbreviations \& Symbols}{iv}{chapter*.5}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {chapter}{\numberline {2}Background}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1} Machine Learning}{3}{section.2.1}

@@ -9,18 +9,38 @@ The data for this study was derived from the Temple University Hospital's EEG co
 	\captionsetup[table]{skip=10pt}
 	\centering
 	\caption[Set of classes]{Set of classes for the TUH EEG Corpus. After consulting \citet{harati2015improved}, it was determined that BCKG, ARTF and EYBL are noise-like signals, and the rest are seizure-like signals, i.e. indications of common events that occur in seizures. }
-	\begin{tabular}{rL{10cm}}
-		\toprule
-		Code Name & Description                                  \\ \midrule
-		BCKG     & Background noise                             \\
-		ARTF     & Artifacts                                    \\
-		EYBL     & Eyeball movement                             \\
-		SPSW     & Spikes and sharp waves                       \\
-		PLED     & Periodic lateralized epileptiform discharges \\
-		GPED     & Generalized periodic epileptiform discharges \\\bottomrule
-	\end{tabular}
+	\resizebox{\columnwidth}{!}{%
+	\small
+		\begin{tabular}{lm{10cm}l}
+			\cmidrule{1-2}
+			Code & Description                                  &                                                       \\ \cmidrule{1-2}
+			BCKG & Background noise                             & \multirow{3}{*}{$\left. \vphantom{\begin{tabular}{c}3 \\3\\3\end{tabular}}\right\}$Noise-Like}\\
+			ARTF & Artifacts                                    &                                                       \\
+			EYBL & Eyeball movement                             &                                                       \\
+			SPSW & Spikes \& sharp waves                        & \multirow{3}{*}{$\left. \vphantom{\begin{tabular}{c}3 \\3\\3\end{tabular}}\right\}$Seizure-Like}\\
+			PLED & Periodic lateralized epileptiform discharges &                                                       \\
+			GPED & Generalized periodic epileptiform discharges &                                                       \\\cmidrule{1-2}
+		\end{tabular}
+	}
 	\label{tab:classes}
 \end{table}
+
+% \begin{table}[!ht]
+% 	\captionsetup[table]{skip=10pt}
+% 	\centering
+% 	\caption[Set of classes]{Set of classes for the TUH EEG Corpus. After consulting \citet{harati2015improved}, it was determined that BCKG, ARTF and EYBL are noise-like signals, and the rest are seizure-like signals, i.e. indications of common events that occur in seizures. }
+% 	\begin{tabular}{rL{10cm}}
+% 		\toprule
+% 		Code Name & Description                                  \\ \midrule
+% 		BCKG     & Background noise                             \\
+% 		ARTF     & Artifacts                                    \\
+% 		EYBL     & Eyeball movement                             \\
+% 		SPSW     & Spikes and sharp waves                       \\
+% 		PLED     & Periodic lateralized epileptiform discharges \\
+% 		GPED     & Generalized periodic epileptiform discharges \\\bottomrule
+% 	\end{tabular}
+% 	\label{tab:classes}
+% \end{table}
 
 
 The EDF files contain raw signals with different channels from electrodes placed in the standard $10$-$20$ system and were decoded using Python's MNE package. A total of $22$ montages were found in each label file. The power spectral density (PSD\nomenclature{PSD}{Power Spectral Density}) of the signal was visualized using the \verb+RawEDF.plot_psd()+ function. The bandwidth of the signals was between $0$ Hz to around $130$ Hz. It was revealed that the signals contained power line noise at $60$ Hz and $120$ Hz as seen in \cref{fig:psd}. 
@@ -43,14 +63,14 @@ Additionally, we globally normalize the signal power in order to standardize the
 
 We did not use the spatial information implicitly provided to us by the $10$-$20$ system's spatial structure. This decision was made because the resulting tensor would have become a $22 \times 71 \times 125$ tensor of values and the amount of time taken to process this tensor would have been longer than the time taken to process a $71 \times 125$ tensor. Furthermore, even if it were computationally possible for us to process the larger tensor for each second of signal, there was no possible way to consistently label the tensor as each montage was labeled independently of the others. Hence, there was no possible way to consistently label all $22$ montages with a single label. As a result, we only used a single channel's input as opposed to all $22$ channels' inputs. 
 
-We also realized that the dataset is highly imbalanced. More than $80\%$ of the data was labeled as noise-like signals. Since we were looking for anomalies in the dataset, it was necessary to use stratified sampling to help compensate for this imbalance which may result in a high accuracy. We split the $71 \times 125$ tensors into mutually exclusive training and validation sets. Each set is disjoint in both patient and sample acquisition, i.e. no single patient appears in both sets and no two windows from a single acquisition appear in both sets. We follow an $85/15\%$ split for the training/validation set. Due to the large nature of the training set in this situation and the impossibility of training on every triplet possible, a random set of triplets were selected for each training iteration. 
+We also realized that the dataset is highly imbalanced. More than $80\%$ of the data was labeled as noise-like signals. Since we were looking for anomalies in the dataset, it was necessary to use stratified sampling to help compensate for this imbalance which may result in imbalanced training. We split the $71 \times 125$ tensors into mutually exclusive training and validation sets. Each set is disjoint in both patient and sample acquisition, i.e. no single patient appears in both sets and no two windows from a single acquisition appear in both sets. We follow an $85/15\%$ split for the training/validation set. Due to the large nature of the training set in this situation and the impossibility of training on every triplet possible, a random set of triplets were selected for each training iteration. 
 
 \section{Resources}
 
 
 \subsection*{Tensorflow}
 
-Tensorflow and TF-Slim, as described by \citet{tensorflow} and \citet{tfslim},  are frameworks which provided a way to build scalable, computational graphs for machine learning. Tensorflow's use of automatic differentiation, as described by \citet{autodiff}, allowed for precise calculations of gradients for networks without error due to floating-point errors. Furthermore, automatic differentiation also helped in this project since the loss function depended on multiple example data points, i.e. the anchor, the positive and the negative,  as opposed to a single example data point. TF-Slim's implementation of commonly used computational graph layers (e.g. convolutional layers) helped us define the network without explicitly defining and coding weight matrices. 
+Tensorflow and TF-Slim, as described by \citet{tensorflow} and \citet{tfslim},  are frameworks which provided a way to build scalable, computational graphs for machine learning. Tensorflow's use of automatic differentiation, as described by \citet{autodiff}, allowed for precise calculations of gradients for networks without floating-point errors. Furthermore, automatic differentiation also helped in this project since the loss function depended on multiple example data points, i.e. the anchor, the positive and the negative,  as opposed to a single example data point. TF-Slim's implementation of commonly used computational graph layers (e.g. convolutional layers) helped us define the network without explicitly defining and coding weight matrices. 
 
 \subsection*{SciKit Learn}
 SciKit Learn is a Python module developed by \citet{sklearn} that provided implementations of common machine learning algorithms and some commonly used accessory functions. In particular, it provided us the k-NN algorithm used throughout the paper to classify validation signals, the confusion matrix calculation function used to analyze our validation results, and the t-SNE reduction algorithm used to analyze the high dimensional latent space in a reduced, 2-dimensional space. SciKit Learn was also built with NumPy and matplotlib, and was easily compatible with the rest of our source code. 

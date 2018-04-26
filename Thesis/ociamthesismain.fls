@@ -252,6 +252,10 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/multirow/bigdelim.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/multirow/bigdelim.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/silence/silence.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/silence/silence.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
@@ -373,8 +377,6 @@ OUTPUT ociamthesismain.lof
 INPUT ociamthesismain.lot
 INPUT ociamthesismain.lot
 OUTPUT ociamthesismain.lot
-INPUT ociamthesismain.nls
-INPUT ociamthesismain.nls
 OUTPUT chapters/introduction.aux
 INPUT chapters/introduction.tex
 INPUT chapters/introduction.tex
@@ -454,6 +456,13 @@ OUTPUT chapters/data.aux
 INPUT chapters/data.tex
 INPUT chapters/data.tex
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT pictures/psd.pdf
 INPUT ./pictures/psd.pdf
 INPUT ./pictures/psd.pdf
@@ -463,13 +472,6 @@ INPUT ./pictures/plot21.pdf
 OUTPUT chapters/experimentation.aux
 INPUT chapters/experimentation.tex
 INPUT chapters/experimentation.tex
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT pictures/conf_mat_exp.pdf
 INPUT ./pictures/conf_mat_exp.pdf
 INPUT ./pictures/conf_mat_exp.pdf

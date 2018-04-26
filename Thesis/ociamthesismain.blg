@@ -51,43 +51,43 @@ Warning--empty journal in magnetloss
 Done.
 You've used 50 entries,
             4855 wiz_defined-function locations,
-            1211 strings with 17894 characters,
-and the built_in function-call counts, 42900 in all, are:
-= -- 3567
-> -- 1623
-< -- 260
-+ -- 782
+            1210 strings with 17890 characters,
+and the built_in function-call counts, 42657 in all, are:
+= -- 3544
+> -- 1619
+< -- 255
++ -- 780
 - -- 390
-* -- 2477
-:= -- 6438
+* -- 2465
+:= -- 6407
 add.period$ -- 107
 call.type$ -- 50
 change.case$ -- 100
-chr.to.int$ -- 616
+chr.to.int$ -- 604
 cite$ -- 73
-duplicate$ -- 2821
-empty$ -- 3060
+duplicate$ -- 2809
+empty$ -- 3047
 format.name$ -- 498
-if$ -- 9589
+if$ -- 9530
 int.to.chr$ -- 2
 int.to.str$ -- 51
-missing$ -- 482
+missing$ -- 481
 newline$ -- 192
 num.names$ -- 147
 pop$ -- 1395
 preamble$ -- 1
 purify$ -- 50
 quote$ -- 2
-skip$ -- 3042
+skip$ -- 3024
 stack$ -- 0
-substring$ -- 1497
-swap$ -- 1976
-text.length$ -- 49
+substring$ -- 1469
+swap$ -- 1959
+text.length$ -- 48
 text.prefix$ -- 0
 top$ -- 6
 type$ -- 777
 warning$ -- 22
-while$ -- 190
+while$ -- 186
 width$ -- 0
-write$ -- 568
+write$ -- 567
 (There were 22 warnings)
