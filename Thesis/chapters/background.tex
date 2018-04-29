@@ -91,9 +91,6 @@ Bias is the error that arises from making overly simplistic assumptions about th
 	\caption{Example of a well-fit model}\label{fig:wellfit}  
 \end{figure}
 
-
-\newpage
-
 There are two ways that we can approach this problem. Either we can start with a simplistic model and make it more complex or we can start with a complex model and make it simpler. The latter is easier and the general name given to the process of making a relatively complex model simpler is called regularization. An example of a well-fit polynomial fit after simplifying the twentieth-degree polynomial is shown in \cref{fig:wellfit}.
 
 In order for regularization to work, we need to know whether the model is generalizing well or not. Hence, we split the original training set, $\mathcal{S}$ into two mutually exclusive sets $\mathcal{S}_t$, the training set the model uses to learn, and $\mathcal{S}_v$, the validation set which we can use to see if the model is generalizing well to data that it has not seen before. If the validation accuracy is significantly lower than the training accuracy, we can infer that the model is not generalizing well.

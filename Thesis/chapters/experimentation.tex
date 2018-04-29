@@ -102,14 +102,14 @@ The classification accuracy provides a numerical value which could be used as a 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.65\linewidth]{pictures/tsne_plot_start.pdf}
-	\caption[t-SNE visualization after $5$k iterations]{t-SNE reduced 2D visualization  of validation set for the DCNN clustering network after five thousand iterations with $\alpha = 0.5$, $\eta = 10^{-5}$ after $5$k iterations, and an accuracy of $26.6\%$ with 31-NN classification after EEG signal was passed through the DCNN clustering network}\label{fig:tsne_start}  
+	\caption[t-SNE visualization after $5$k iterations]{t-SNE reduced 2D visualization  of validation set for the DCNN clustering network after 5k iterations with $\alpha = 0.5$, $\eta = 10^{-5}$ after $5$k iterations, and an accuracy of $26.6\%$ with 31-NN}\label{fig:tsne_start}  
 \end{figure}
 
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.65\linewidth]{pictures/tsne_plot.pdf}
-	\caption[t-SNE visualization after $105$k iterations]{t-SNE reduced 2D visualization  of validation set for the DCNN clustering network with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations, and an accuracy of $60.4\%$ with 31-NN classification after EEG signal was passed through the DCNN clustering network}\label{fig:tsne}  
+	\caption[t-SNE visualization after $105$k iterations]{t-SNE reduced 2D visualization  of validation set for the DCNN clustering network with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations, and an accuracy of $60.4\%$ with 31-NN}\label{fig:tsne}  
 \end{figure}
 
 We can see a clear difference of the t-SNE embedding after $100$k iterations. Initially, \cref{fig:tsne_start} shows that the GPED signal is separating out from the crescent in the middle but, the rest of the classes are far off from forming their own clusters and are mixed together. However, \cref{fig:tsne} shows that the clusters are forming even in a $2$-dimensional space.  GPED, BCKG and ARTF have clearly split away from each other and have formed their own clusters. 
@@ -123,7 +123,7 @@ Another way to measure the performance of the clustering network is to compare i
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.55\linewidth]{pictures/conf_mat_baseline.pdf}
-	\caption[Confusion matrix for the baseline DCNN classifier]{Confusion matrix for the baseline DCNN classifier with the same hyperparameters as \cref{fig:dcnnlarge} after 200k iterations and an accuracy of $50.2\%$ with $31$-NN classification}\label{fig:dcnnclasslarge}  
+	\caption[Confusion matrix for the baseline DCNN classifier]{Confusion matrix for the baseline DCNN classifier with the same hyperparameters as the ones the network in \cref{fig:dcnnlarge} used after 200k iterations and an accuracy of $50.2\%$ with $31$-NN classification}\label{fig:dcnnclasslarge}  
 \end{figure}
 
 These results were perplexing. A classifier is particularly trained on the task of discriminating between different classes whereas our clustering network is trained on the triplet loss which hoped to group similar signals together. It was surprising that a network trained to classify did not do better than the network that was trained to cluster. These results suggest that it may actually better to use the triplet loss in any situation since it provides more information about the original data, can work with any number of classes and possibly detect new classes once trained, and still perform better than the DCNN on a classification task. 
@@ -137,13 +137,13 @@ We were curious as to how well our system would work if we only used it to class
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.425\linewidth]{pictures/conf_mat_exp_pooled.pdf}
-	\caption[Binary Confusion Matrix for  the DCNN Clustering Network]{Binary confusion matrix for the DCNN clustering network with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations, and an accuracy of $90.2\%$ with 31-NN classifier}\label{fig:conf_mat_exp_pooled}
+	\caption[Binary confusion matrix for the DCNN clustering network]{Binary confusion matrix for the DCNN clustering network with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations, and an accuracy of $90.2\%$ with 31-NN classifier}\label{fig:conf_mat_exp_pooled}
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/tsne_plot_binary.pdf}
-	\caption[k-NN Binary Decision Boundary on t-SNE Reduced Embedding]{k-NN classifier decision boundary for t-SNE reduced 2D visualization of validation set for the DCNN clustering network after five thousand iterations with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:tsne_plot_binary}  
+	\caption[k-NN binary decision boundary on t-SNE reduced embedding]{k-NN classifier decision boundary for t-SNE reduced 2D visualization of validation set for the DCNN clustering network after 5k iterations with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:tsne_plot_binary}  
 \end{figure}
 
 Modifying the t-SNE to label seizure-like signals and noise-like signals, and plotting the decision boundary of a k-NN classifier as shown in \cref{fig:tsne_plot_binary} demonstrates that there is a boundary that separates seizure-like signal from noise-like signal clearly. Even though we trained on all types of triplets (e.g. PLED-PLED-GPED, GPED-GPED-BCKG etc.), we still found a clean separation between seizure-like signals and noise-like signals. This phenomena demonstrates that not only are the set of triplet classes that we train on separating, but their super classes, i.e. the general signal types, are separating which can possibly lead to a better, hierarchical taxonomy. 
@@ -163,7 +163,7 @@ We were able to separate the different signals based on their original session a
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/conf_mat_exp_without_seizure.pdf}
-	\caption[Confusion Matrix on Sessions without Seizure-Like Signals]{Confusion matrix of DCNN clustering network on files without seizures resulting in an accuracy of $64.6\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_without_seizure}  
+	\caption[Confusion matrix on sessions without seizure-like signals]{Confusion matrix of DCNN clustering network on files without seizures resulting in an accuracy of $64.6\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_without_seizure}  
 \end{figure}
 
 The confusion matrix shown in \cref{fig:conf_mat_exp_without_seizure} is on the data from sessions that do not contain any seizure-like signals. These sessions only contain BCKG, ARTF and EYBL signals. Hence, the bottom half of the confusion matrix is empty. The right half of the confusion matrix is not completely empty because the DCNN along with the k-NN classifier still predicts some of these signals to be GPED, SPSW or PLED since the network is still trained on the training set which contains all the classes. These incorrect predictions are expected to occur due to various sources of natural background noise, and incorrect true labels or shared characteristics that are closer to seizure-like signals as opposed to noise-like signals. This results in a $64.6\%$ overall accuracy after $105$k iterations.
@@ -171,7 +171,7 @@ The confusion matrix shown in \cref{fig:conf_mat_exp_without_seizure} is on the 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.425\linewidth]{pictures/conf_mat_exp_without_seizure_pooled.pdf}
-	\caption[Binary Confusion Matrix on Sessions without Seizure-Like Signals]{Binary classification confusion matrix of DCNN clustering network on files without seizures resulting in a binary accuracy of $93.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_without_seizure_pooled}  
+	\caption[Binary confusion matrix on sessions without seizure-like signals]{Binary classification confusion matrix of DCNN clustering network on files without seizures resulting in a binary accuracy of $93.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_without_seizure_pooled}  
 \end{figure}
 
 As we had done before, we had also made a binary confusion matrix as well. Just like the confusion matrix presented in \cref{fig:conf_mat_exp_without_seizure}, the bottom half of the confusion matrix is empty and the top-right of the confusion matrix is not empty. The system achieved a $93\%$ accuracy in detecting that a second of signal is noise-like and not a seizure-like signal. In other words, given only noise-like signals, we are able to classify 93\% of those signals as noise-like signals using our system and the remaining 7\% as not noise-like (i.e. seizure-like) signals. 
@@ -181,7 +181,7 @@ The confusion matrix in \cref{fig:conf_mat_exp_with_seizure} is on sessions that
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/conf_mat_exp_with_seizure.pdf}
-	\caption[Confusion Matrix on Sessions with Seizure-Like Signals]{Confusion matrix of DCNN clustering network on files with seizures resulting in an accuracy of $56.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_seizure}  
+	\caption[Confusion matrix on sessions with seizure-like signals]{Confusion matrix of DCNN clustering network on files with seizures resulting in an accuracy of $56.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_seizure}  
 \end{figure}
 
 As before, we also constructed a binary classification confusion matrix. In this case, given that the session contains a seizure, we are able to classify the signal as seizure-like or noise-like with an accuracy of 85\%. The noise-like signals were detected correctly 78\% of the time and the seizure-like signals were detected correctly 91\% of the time. 
@@ -190,7 +190,7 @@ As before, we also constructed a binary classification confusion matrix. In this
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.425\linewidth]{pictures/conf_mat_exp_with_seizure_pooled.pdf}
-	\caption[Binary Confusion Matrix on Sessions with Seizure-Like Signals]{Confusion matrix of DCNN clustering network on files with seizures resulting in an accuracy of $85.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_seizure_pooled}  
+	\caption[Binary confusion matrix on sessions with seizure-like signals]{Binary classification confusion matrix of DCNN clustering network on files with seizures resulting in an accuracy of $85.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_seizure_pooled}  
 \end{figure}
 
 Finally, the confusion matrix in \cref{fig:conf_mat_exp_with_only_seizure} is on sessions that contain seizure-like signals excluding noise-like signals to explore how the system performs on just signals that have seizures (i.e. GPED, SPSW, PLED). This is why the top half of the confusion matrix is empty and we see that most of the predictions are within the bottom right square of the confusion matrix, which is what we expected. Note that the signals that were tested to produce this confusion matrix are not necessarily mutually exclusive from the signals that we tested in \cref{fig:conf_mat_exp_with_seizure} since the signals used to form that confusion matrix were the ones that contained seizures. The experiment results in an overall validation accuracy of $60.4\%$ after $105$k iterations. We also see that a lot of the SPSW are being classified as PLED. This is likely because of the high similarity between PLED and SPSW.
@@ -198,13 +198,13 @@ Finally, the confusion matrix in \cref{fig:conf_mat_exp_with_only_seizure} is on
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.7\linewidth]{pictures/conf_mat_exp_with_only_seizure.pdf}
-	\caption[Confusion Matrix on Sessions with only Seizure-Like Signals]{Confusion matrix of DCNN clustering network on files with ONLY seizure signals resulting in an accuracy of $63.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_only_seizure}  
+	\caption[Confusion matrix on sessions with only seizure-like signals]{Confusion matrix of DCNN clustering network on files with ONLY seizure signals resulting in an accuracy of $63.0\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_only_seizure}  
 \end{figure}
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.425\linewidth]{pictures/conf_mat_exp_with_only_seizure_pooled.pdf}
-	\caption[Binary Confusion Matrix on Sessions with only Seizure-Like Signals]{Confusion matrix of DCNN clustering network on files with ONLY seizure signals resulting in an accuracy of $91.8\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_only_seizure_pooled}  
+	\caption[Binary confusion matrix on sessions with only seizure-like signals]{Binary classification confusion matrix of DCNN clustering network on files with ONLY seizure signals resulting in an accuracy of $91.8\%$ with $\alpha = 0.5$, $\eta = 10^{-5}$ after $105$k iterations and a 31-NN classifier}\label{fig:conf_mat_exp_with_only_seizure_pooled}  
 \end{figure}
 
 Similar to the last experiment, we also generated a binary classification confusion matrix. Given that the session contains a seizure and we are only looking at a seizure-like signal in that particular session, we are able to observe that the signal presented to the system is seizure-like 92\% of the time and mis-classified the signal as noise 8\% of the time. 
